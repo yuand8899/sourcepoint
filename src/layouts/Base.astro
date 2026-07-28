@@ -1,0 +1,149 @@
+---
+import "../styles/global.css";
+import { site, nav } from "../data/content.ts";
+const { title, description } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" width="34" height="34">
+            <path d="M20 6 C14 12 14 20 20 26 C26 20 26 12 20 6 Z" fill="none" stroke="var(--sage)" stroke-width="1.6"/>
+            <path d="M20 26 V34" stroke="var(--clay)" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M20 30 C16 30 13 33 13 33 M20 30 C24 30 27 33 27 33" stroke="var(--clay)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-en">{site.nameEn}</span>
+          <span class="brand-zh">{site.nameZh}</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main">
+        {nav.map((n) => (
+          <a href={`#${n.id}`}>
+            <span class="nl-en">{n.en}</span>
+            <span class="nl-zh">{n.zh}</span>
+          </a>
+        ))}
+      </nav>
+
+      <a href="#contact" class="btn btn-primary nav-cta">
+        <span class="btn-stack">
+          <span class="en">Book a Consultation</span>
+          <span class="zh">预约咨询</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <slot />
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="f-brand">{site.nameEn} · {site.nameZh}</div>
+        <p class="f-note">Traditional Chinese Medicine · Acupuncture · Holistic Wellness</p>
+      </div>
+      <div class="f-contact">
+        <div>📍 {site.location.en}</div>
+        <div>📞 {site.phone}　✉️ {site.email}　💬 WeChat: {site.wechat}</div>
+      </div>
+    </div>
+    <div class="container f-legal">
+      <p>© {new Date().getFullYear()} {site.nameEn} 源真中医. All rights reserved.</p>
+      <p class="disclaimer">This website is for informational purposes only and does not constitute medical advice. 本网站仅供参考，不构成医疗建议。</p>
+    </div>
+  </footer>
+
+  <style>
+    /* Nav */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(251,247,240,.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { display: flex; align-items: center; gap: 20px; height: 72px; }
+    .brand { display: flex; align-items: center; gap: 10px; margin-right: auto; }
+    .brand-mark { display: inline-flex; }
+    .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .brand-en { font-family: var(--serif); font-weight: 700; color: var(--ink); font-size: .95rem; letter-spacing: .5px; }
+    .brand-zh { font-family: var(--serif); color: var(--clay); font-size: .82rem; }
+
+    .nav-links { display: flex; gap: 22px; }
+    .nav-links a { display: flex; flex-direction: column; align-items: center; line-height: 1.15; padding: 4px 0; }
+    .nl-en { font-size: .84rem; font-weight: 500; color: var(--ink); }
+    .nl-zh { font-size: .72rem; color: var(--ink-3); }
+    .nav-links a:hover .nl-en, .nav-links a:hover .nl-zh { color: var(--clay); }
+
+    .nav-cta { padding: 8px 18px; }
+    .nav-cta .en { font-size: .85rem; }
+    .nav-cta .zh { font-size: .72rem; }
+
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .nav-toggle span { width: 24px; height: 2px; background: var(--ink); border-radius: 2px; }
+
+    @media (max-width: 940px) {
+      .nav-links {
+        position: absolute; top: 72px; left: 0; right: 0;
+        flex-direction: column; gap: 0;
+        background: var(--cream); border-bottom: 1px solid var(--line);
+        max-height: 0; overflow: hidden; transition: max-height .3s ease;
+      }
+      .nav-links.open { max-height: 460px; }
+      .nav-links a { flex-direction: row; gap: 8px; padding: 14px 24px; border-top: 1px solid var(--line); }
+      .nav-cta { display: none; }
+      .nav-toggle { display: flex; }
+    }
+
+    /* Footer */
+    .footer { background: var(--ink); color: #d9d0c4; padding: 48px 0 28px; margin-top: 0; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; padding-bottom: 26px; border-bottom: 1px solid rgba(255,255,255,.12); }
+    .f-brand { font-family: var(--serif); font-size: 1.15rem; color: #fff; margin-bottom: 6px; }
+    .f-note { color: #b3a897; font-size: .9rem; }
+    .f-contact { font-size: .9rem; display: flex; flex-direction: column; gap: 6px; text-align: right; }
+    .f-legal { padding-top: 18px; font-size: .82rem; color: #9d9080; }
+    .f-legal .disclaimer { margin-top: 6px; color: #857a6b; }
+    @media (max-width: 700px) {
+      .footer-inner { flex-direction: column; }
+      .f-contact { text-align: left; }
+    }
+  </style>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.getElementById('navToggle');
+    const links = document.querySelector('.nav-links');
+    toggle?.addEventListener('click', () => links?.classList.toggle('open'));
+    links?.querySelectorAll('a').forEach((a) =>
+      a.addEventListener('click', () => links.classList.remove('open'))
+    );
+
+    // Scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+---
+// 服务项目线条图标。stroke 使用 clay 色，风格与设计稿一致。
+const { name } = Astro.props;
+
+const icons: Record<string, string> = {
+  needle: `<svg viewBox="0 0 48 48"><path d="M8 40 L40 8"/><path d="M14 34 L20 40"/><path d="M20 28 L26 34"/><path d="M26 22 L32 28"/><path d="M36 6 l6 6"/></svg>`,
+  taiji:  `<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><path d="M24 6 a9 9 0 0 1 0 18 a9 9 0 0 0 0 18"/><circle cx="24" cy="15" r="1.6"/><circle cx="24" cy="33" r="1.6"/></svg>`,
+  mortar: `<svg viewBox="0 0 48 48"><path d="M12 24 h24 a12 12 0 0 1 -24 0 z"/><path d="M18 24 v-2 a6 6 0 0 1 12 0 v2"/><path d="M30 10 l6 -4"/></svg>`,
+  woman:  `<svg viewBox="0 0 48 48"><circle cx="24" cy="14" r="6"/><path d="M24 20 v14"/><path d="M18 40 h12"/><path d="M20 37 h8"/></svg>`,
+  child:  `<svg viewBox="0 0 48 48"><circle cx="24" cy="15" r="6"/><path d="M14 40 c0 -8 4 -12 10 -12 s10 4 10 12"/></svg>`,
+  book:   `<svg viewBox="0 0 48 48"><path d="M24 12 c-4 -3 -10 -3 -14 -1 v24 c4 -2 10 -2 14 1"/><path d="M24 12 c4 -3 10 -3 14 -1 v24 c-4 -2 -10 -2 -14 1"/><path d="M24 12 v24"/></svg>`,
+  check:  `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12 l3 3 l5 -6"/></svg>`,
+};
+---
+<span class="icon" set:html={icons[name] ?? ""}></span>
+
+<style>
+  .icon { display: inline-flex; }
+  .icon :global(svg) { width: 46px; height: 46px; }
+  .icon :global(svg *) { stroke: var(--clay); stroke-width: 1.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+</style>

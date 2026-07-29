@@ -90,7 +90,7 @@ export const about = {
 // ---- Founder ----------------------------------------------------------------
 export const founder = {
   eyebrow: { en: 'Meet Our Founder', zh: '创始人介绍' },
-  name: { en: 'Yuan Ding (Yolanda Ding)', zh: '丁媛（Yolanda Ding）' },
+  name: { en: 'Yuan Ding (Yolanda Ding)', zh: '丁源（Yolanda Ding）' },
   credentials: [
     {
       en: 'Registered Traditional Chinese Medicine Practitioner (BC)',
@@ -105,11 +105,11 @@ export const founder = {
   bio: [
     {
       en: 'Yolanda Ding is a Registered Traditional Chinese Medicine Practitioner and Registered Acupuncturist in British Columbia, Canada. She was formerly licensed as a Traditional Chinese Medicine Physician in China and completed more than eight years of formal medical and Traditional Chinese Medicine education.',
-      zh: '丁媛女士为加拿大 BC 省注册中医师及注册针灸师，曾获中国中医执业医师资格。她在中国完成八年以上系统医学及中医专业教育。',
+      zh: '丁源女士为加拿大 BC 省注册中医师及注册针灸师，曾获中国中医执业医师资格。她在中国完成八年以上系统医学及中医专业教育。',
     },
     {
       en: 'With over twenty years of clinical, teaching, and healthcare education experience, she brings a unique blend of traditional knowledge and modern healthcare understanding to her practice. Coming from a family with a multi-generational background in Traditional Chinese Medicine, Yolanda represents the third generation of TCM practitioners in her family.',
-      zh: '她拥有二十余年中医临床、教学及健康教育经验。丁媛女士出身于中医世家，为家族第三代中医传承人，自幼受到中医文化熏陶，对中医事业怀有深厚热爱与使命感。',
+      zh: '她拥有二十余年中医临床、教学及健康教育经验。丁源女士出身于中医世家，为家族第三代中医传承人，自幼受到中医文化熏陶，对中医事业怀有深厚热爱与使命感。',
     },
     {
       en: 'In addition to clinical practice, she has dedicated many years to Traditional Chinese Medicine education and international healthcare training. She currently serves as a college instructor and clinical supervisor in British Columbia and has trained numerous healthcare professionals both in Canada and internationally.',

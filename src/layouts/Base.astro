@@ -1,149 +1,341 @@
 ---
-import "../styles/global.css";
-import { site, nav } from "../data/content.ts";
+import '../styles/global.css';
+import { site, nav, hero, footer, langToggle } from '../data/content';
+
+interface Props { title: string; description: string; }
 const { title, description } = Astro.props;
 ---
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title}</title>
-  <meta name="description" content={description} />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet" />
-</head>
-<body>
-  <header class="nav" id="nav">
-    <div class="container nav-inner">
-      <a href="#top" class="brand">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 40 40" width="34" height="34">
-            <path d="M20 6 C14 12 14 20 20 26 C26 20 26 12 20 6 Z" fill="none" stroke="var(--sage)" stroke-width="1.6"/>
-            <path d="M20 26 V34" stroke="var(--clay)" stroke-width="1.6" stroke-linecap="round"/>
-            <path d="M20 30 C16 30 13 33 13 33 M20 30 C24 30 27 33 27 33" stroke="var(--clay)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <span class="brand-text">
-          <span class="brand-en">{site.nameEn}</span>
-          <span class="brand-zh">{site.nameZh}</span>
-        </span>
-      </a>
+<html lang="en" data-lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- 首屏前根据存储/浏览器语言设定 data-lang，避免闪烁 -->
+    <script is:inline>
+      (function () {
+        try {
+          var saved = localStorage.getItem('sp-lang');
+          var lang = saved || (/(zh|cn)/i.test(navigator.language || '') ? 'zh' : 'en');
+          var el = document.documentElement;
+          el.setAttribute('data-lang', lang);
+          el.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content 跳到正文</a>
 
-      <nav class="nav-links" aria-label="Main">
-        {nav.map((n) => (
-          <a href={`#${n.id}`}>
-            <span class="nl-en">{n.en}</span>
-            <span class="nl-zh">{n.zh}</span>
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a class="brand" href="#top">
+          <span class="brand-en lang-en">{site.name.en}</span>
+          <span class="brand-zh lang-zh">{site.name.zh}</span>
+        </a>
+
+        <nav class="nav-desktop" aria-label="Primary">
+          {nav.map((item) => (
+            <a href={`#${item.id}`}>
+              <span class="lang-en">{item.label.en}</span>
+              <span class="lang-zh">{item.label.zh}</span>
+            </a>
+          ))}
+        </nav>
+
+        <div class="header-actions">
+          <!-- 语言切换按钮 -->
+          <button
+            id="lang-toggle"
+            class="lang-btn"
+            type="button"
+            aria-label="Switch language 切换语言"
+          >
+            <span class="lang-en">{langToggle.toZh}<span class="lang-btn-hint"> 中文</span></span>
+            <span class="lang-zh">{langToggle.toEn}<span class="lang-btn-hint"> EN</span></span>
+          </button>
+
+          <a href="#contact" class="btn btn-primary book-btn">
+            <span class="lang-en">{hero.ctaBook.en}</span>
+            <span class="lang-zh">{hero.ctaBook.zh}</span>
+          </a>
+
+          <button
+            id="menu-toggle"
+            class="menu-toggle"
+            type="button"
+            aria-label="Open menu 打开菜单"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 移动端菜单 -->
+      <nav class="nav-mobile" id="nav-mobile" aria-label="Mobile">
+        {nav.map((item) => (
+          <a href={`#${item.id}`} class="nav-mobile-link">
+            <span class="lang-en">{item.label.en}</span>
+            <span class="lang-zh">{item.label.zh}</span>
           </a>
         ))}
+        <a href="#contact" class="btn btn-primary nav-mobile-link">
+          <span class="lang-en">{hero.ctaBook.en}</span>
+          <span class="lang-zh">{hero.ctaBook.zh}</span>
+        </a>
       </nav>
+    </header>
 
-      <a href="#contact" class="btn btn-primary nav-cta">
-        <span class="btn-stack">
-          <span class="en">Book a Consultation</span>
-          <span class="zh">预约咨询</span>
-        </span>
-      </a>
+    <main id="main">
+      <slot />
+    </main>
 
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <main id="top">
-    <slot />
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>
-        <div class="f-brand">{site.nameEn} · {site.nameZh}</div>
-        <p class="f-note">Traditional Chinese Medicine · Acupuncture · Holistic Wellness</p>
+    <footer class="site-footer">
+      <div class="container">
+        <p class="footer-brand">
+          <span class="lang-en">{site.name.en}</span>
+          <span class="lang-zh">{site.name.zh}</span>
+        </p>
+        <p class="footer-tag">
+          <span class="lang-en">{site.tagline.en}</span>
+          <span class="lang-zh">{site.tagline.zh}</span>
+        </p>
+        <p class="footer-contact">
+          <span>📍 <span class="lang-en">{site.region.en}</span><span class="lang-zh">{site.region.zh}</span></span>
+          <span>📞 <a href={`tel:${site.phone}`}>{site.phone}</a></span>
+          <span>✉️ <a href={`mailto:${site.email}`}>{site.email}</a></span>
+          <span>💬 <span class="lang-en">WeChat</span><span class="lang-zh">微信</span>: {site.wechat}</span>
+        </p>
+        <p class="footer-legal">
+          <span class="lang-en">{footer.rights.en}</span>
+          <span class="lang-zh">{footer.rights.zh}</span>
+        </p>
+        <p class="footer-disclaimer">
+          <span class="lang-en">{footer.disclaimer.en}</span>
+          <span class="lang-zh">{footer.disclaimer.zh}</span>
+        </p>
       </div>
-      <div class="f-contact">
-        <div>📍 {site.location.en}</div>
-        <div>📞 {site.phone}　✉️ {site.email}　💬 WeChat: {site.wechat}</div>
-      </div>
-    </div>
-    <div class="container f-legal">
-      <p>© {new Date().getFullYear()} {site.nameEn} 源真中医. All rights reserved.</p>
-      <p class="disclaimer">This website is for informational purposes only and does not constitute medical advice. 本网站仅供参考，不构成医疗建议。</p>
-    </div>
-  </footer>
+    </footer>
 
-  <style>
-    /* Nav */
-    .nav {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(251,247,240,.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-inner { display: flex; align-items: center; gap: 20px; height: 72px; }
-    .brand { display: flex; align-items: center; gap: 10px; margin-right: auto; }
-    .brand-mark { display: inline-flex; }
-    .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
-    .brand-en { font-family: var(--serif); font-weight: 700; color: var(--ink); font-size: .95rem; letter-spacing: .5px; }
-    .brand-zh { font-family: var(--serif); color: var(--clay); font-size: .82rem; }
+    <script is:inline>
+      // ---- 语言切换 ----
+      (function () {
+        var btn = document.getElementById('lang-toggle');
+        var el = document.documentElement;
+        if (btn) {
+          btn.addEventListener('click', function () {
+            var next = el.getAttribute('data-lang') === 'zh' ? 'en' : 'zh';
+            el.setAttribute('data-lang', next);
+            el.setAttribute('lang', next === 'zh' ? 'zh-CN' : 'en');
+            try { localStorage.setItem('sp-lang', next); } catch (e) {}
+          });
+        }
+      })();
 
-    .nav-links { display: flex; gap: 22px; }
-    .nav-links a { display: flex; flex-direction: column; align-items: center; line-height: 1.15; padding: 4px 0; }
-    .nl-en { font-size: .84rem; font-weight: 500; color: var(--ink); }
-    .nl-zh { font-size: .72rem; color: var(--ink-3); }
-    .nav-links a:hover .nl-en, .nav-links a:hover .nl-zh { color: var(--clay); }
+      // ---- 移动端菜单 ----
+      (function () {
+        var toggle = document.getElementById('menu-toggle');
+        var menu = document.getElementById('nav-mobile');
+        if (!toggle || !menu) return;
+        function close() {
+          menu.classList.remove('open');
+          toggle.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+        toggle.addEventListener('click', function () {
+          var open = menu.classList.toggle('open');
+          toggle.classList.toggle('open', open);
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        menu.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', close);
+        });
+      })();
 
-    .nav-cta { padding: 8px 18px; }
-    .nav-cta .en { font-size: .85rem; }
-    .nav-cta .zh { font-size: .72rem; }
+      // ---- 滚动进入动画 ----
+      (function () {
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var items = document.querySelectorAll('.reveal');
+        if (reduce || !('IntersectionObserver' in window)) {
+          items.forEach(function (i) { i.classList.add('is-visible'); });
+          return;
+        }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-visible');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        items.forEach(function (i) { io.observe(i); });
+      })();
 
-    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
-    .nav-toggle span { width: 24px; height: 2px; background: var(--ink); border-radius: 2px; }
+      // ---- 顶栏滚动阴影 ----
+      (function () {
+        var header = document.querySelector('.site-header');
+        if (!header) return;
+        var onScroll = function () {
+          header.classList.toggle('scrolled', window.scrollY > 12);
+        };
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+      })();
+    </script>
 
-    @media (max-width: 940px) {
-      .nav-links {
-        position: absolute; top: 72px; left: 0; right: 0;
-        flex-direction: column; gap: 0;
-        background: var(--cream); border-bottom: 1px solid var(--line);
-        max-height: 0; overflow: hidden; transition: max-height .3s ease;
+    <style>
+      /* ---- 顶栏 ---- */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(251, 247, 240, 0.86);
+        backdrop-filter: saturate(1.4) blur(10px);
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.25s ease, box-shadow 0.25s ease;
       }
-      .nav-links.open { max-height: 460px; }
-      .nav-links a { flex-direction: row; gap: 8px; padding: 14px 24px; border-top: 1px solid var(--line); }
-      .nav-cta { display: none; }
-      .nav-toggle { display: flex; }
-    }
+      .site-header.scrolled {
+        border-bottom-color: var(--line);
+        box-shadow: 0 4px 20px rgba(46, 42, 38, 0.05);
+      }
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        min-height: 70px;
+      }
+      .brand {
+        font-family: var(--font-serif);
+        font-weight: 700;
+        font-size: 1.28rem;
+        color: var(--ink);
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+      }
+      .brand-zh { letter-spacing: 0.08em; }
 
-    /* Footer */
-    .footer { background: var(--ink); color: #d9d0c4; padding: 48px 0 28px; margin-top: 0; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; padding-bottom: 26px; border-bottom: 1px solid rgba(255,255,255,.12); }
-    .f-brand { font-family: var(--serif); font-size: 1.15rem; color: #fff; margin-bottom: 6px; }
-    .f-note { color: #b3a897; font-size: .9rem; }
-    .f-contact { font-size: .9rem; display: flex; flex-direction: column; gap: 6px; text-align: right; }
-    .f-legal { padding-top: 18px; font-size: .82rem; color: #9d9080; }
-    .f-legal .disclaimer { margin-top: 6px; color: #857a6b; }
-    @media (max-width: 700px) {
-      .footer-inner { flex-direction: column; }
-      .f-contact { text-align: left; }
-    }
-  </style>
+      .nav-desktop { display: flex; gap: 1.6rem; }
+      .nav-desktop a {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--ink-soft);
+        position: relative;
+        padding: 0.3rem 0;
+        transition: color 0.18s ease;
+      }
+      .nav-desktop a::after {
+        content: '';
+        position: absolute;
+        left: 0; bottom: -2px;
+        width: 0; height: 2px;
+        background: var(--clay);
+        transition: width 0.22s ease;
+      }
+      .nav-desktop a:hover { color: var(--ink); }
+      .nav-desktop a:hover::after { width: 100%; }
 
-  <script>
-    // Mobile nav toggle
-    const toggle = document.getElementById('navToggle');
-    const links = document.querySelector('.nav-links');
-    toggle?.addEventListener('click', () => links?.classList.toggle('open'));
-    links?.querySelectorAll('a').forEach((a) =>
-      a.addEventListener('click', () => links.classList.remove('open'))
-    );
+      .header-actions { display: flex; align-items: center; gap: 0.7rem; }
 
-    // Scroll reveal
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-  </script>
-</body>
+      /* 语言切换按钮 */
+      .lang-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        border: 1.5px solid var(--clay);
+        color: var(--clay);
+        background: transparent;
+        border-radius: 999px;
+        padding: 0.42rem 0.85rem;
+        font-family: var(--font-body);
+        font-weight: 700;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: background 0.18s ease, color 0.18s ease;
+        line-height: 1;
+      }
+      .lang-btn:hover { background: var(--clay); color: var(--white); }
+      .lang-btn-hint { font-weight: 500; font-size: 0.82rem; }
+
+      .book-btn { padding: 0.6rem 1.15rem; font-size: 0.92rem; }
+
+      /* 汉堡按钮 */
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 42px; height: 42px;
+        border: none; background: transparent; cursor: pointer;
+        padding: 8px;
+      }
+      .menu-toggle span {
+        display: block; height: 2px; width: 100%;
+        background: var(--ink); border-radius: 2px;
+        transition: transform 0.25s ease, opacity 0.2s ease;
+      }
+      .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .menu-toggle.open span:nth-child(2) { opacity: 0; }
+      .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+      /* 移动端菜单 */
+      .nav-mobile {
+        display: none;
+        flex-direction: column;
+        gap: 0.35rem;
+        padding: 0.5rem clamp(1.25rem, 5vw, 2.5rem) 1.2rem;
+        border-top: 1px solid var(--line);
+        background: var(--cream);
+      }
+      .nav-mobile.open { display: flex; }
+      .nav-mobile-link {
+        padding: 0.7rem 0.2rem;
+        font-weight: 500;
+        color: var(--ink);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav-mobile a.btn { justify-content: center; margin-top: 0.6rem; border-bottom: none; }
+
+      @media (max-width: 940px) {
+        .nav-desktop { display: none; }
+        .book-btn { display: none; }
+        .menu-toggle { display: flex; }
+      }
+      @media (max-width: 420px) {
+        .lang-btn-hint { display: none; }
+      }
+
+      /* ---- 页脚 ---- */
+      .site-footer {
+        background: var(--ink);
+        color: #d9d2c8;
+        padding-block: clamp(2.5rem, 6vw, 4rem);
+        text-align: center;
+      }
+      .footer-brand {
+        font-family: var(--font-serif);
+        font-size: 1.4rem;
+        color: var(--white);
+        margin-bottom: 0.4rem;
+      }
+      .footer-tag { color: var(--clay-soft); font-size: 0.95rem; margin-bottom: 1.4rem; }
+      .footer-contact {
+        display: flex; flex-wrap: wrap; justify-content: center;
+        gap: 0.5rem 1.6rem; font-size: 0.92rem; margin-bottom: 1.4rem;
+      }
+      .footer-contact a { border-bottom: 1px solid rgba(255,255,255,.25); }
+      .footer-contact a:hover { color: var(--white); }
+      .footer-legal { font-size: 0.85rem; color: #a49c90; margin-bottom: 0.3rem; }
+      .footer-disclaimer { font-size: 0.8rem; color: #8a8278; max-width: 60ch; margin-inline: auto; }
+    </style>
+  </body>
 </html>

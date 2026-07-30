@@ -24,7 +24,9 @@ const { title, description } = Astro.props;
       (function () {
         try {
           var saved = localStorage.getItem('sp-lang');
-          var lang = saved || (/(zh|cn)/i.test(navigator.language || '') ? 'zh' : 'en');
+          var langs = navigator.languages || [navigator.language || 'en'];
+          var isZh = langs.some(function (l) { return /^zh/i.test(l); });
+          var lang = saved || (isZh ? 'zh' : 'en');
           var el = document.documentElement;
           el.setAttribute('data-lang', lang);
           el.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');

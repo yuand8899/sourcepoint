@@ -4,7 +4,7 @@ import Icon from '../components/Icon.astro';
 import {
   site, hero, about, founder, servicesEyebrow, services,
   modalitiesEyebrow, modalities, educationEyebrow, education,
-  whyEyebrow, why, vision, contact,
+  whyEyebrow, why, billingEyebrow, billing, vision, contact,
 } from '../data/content';
 
 const pageTitle =
@@ -180,6 +180,24 @@ const pageDesc =
           </div>
         ))}
       </div>
+    </div>
+  </section>
+
+  <!-- ===================== INSURANCE & BILLING ===================== -->
+  <section class="section section--alt" id="billing">
+    <div class="container billing-inner">
+      <p class="eyebrow reveal">
+        <span class="lang-en">{billingEyebrow.en}</span>
+        <span class="lang-zh">{billingEyebrow.zh}</span>
+      </p>
+      <ul class="billing-list reveal">
+        {billing.map((b) => (
+          <li>
+            <span class="lang-en">{b.en}</span>
+            <span class="lang-zh">{b.zh}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
@@ -414,6 +432,22 @@ const pageDesc =
     font-size: 0.85rem; font-weight: 700;
   }
 
+  /* ===================== INSURANCE & BILLING ===================== */
+  .billing-inner { max-width: 820px; }
+  .billing-list {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem; margin-top: 1.4rem; list-style: none; padding: 0;
+  }
+  .billing-list li {
+    position: relative; padding: 0.9rem 1.1rem 0.9rem 2.6rem;
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: var(--radius-sm); font-weight: 600; color: var(--ink);
+  }
+  .billing-list li::before {
+    content: '✓'; position: absolute; left: 1.1rem; top: 0.9rem;
+    color: var(--sage); font-weight: 700;
+  }
+
   /* ===================== VISION ===================== */
   .vision-inner { max-width: 820px; }
   .vision-body {
@@ -477,6 +511,7 @@ const pageDesc =
     .services-grid,
     .why-grid,
     .two-col,
+    .billing-list,
     .vision-pillars { grid-template-columns: 1fr; }
     .hero-cta .btn,
     .contact-btns .btn { flex: 1 1 auto; justify-content: center; }

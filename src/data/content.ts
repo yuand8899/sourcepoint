@@ -288,7 +288,7 @@ export const vision = {
 export const contact = {
   eyebrow: { en: 'Contact Us', zh: '联系我们' },
   hours: {
-    en: 'Mon–Sun 9:00 AM – 5:00 PM (By Appointment)
+    en: 'Mon–Sun 9:00 AM – 5:00 PM (By Appointment)',
     zh: '周一至周日 9:00–17:00（预约制）',
   },
   emailBtn: { en: 'Email Us', zh: '发送邮件' },

@@ -47,7 +47,10 @@ export const hero = {
   },
   body: {
     en: 'Personalized acupuncture and Traditional Chinese Medicine to relieve pain, restore balance, and support women\u2019s health, pediatric care, stress management, digestive health, cosmetic acupuncture, and lifelong wellness.',
-    zh: '源真中医相信，健康不仅是没有疾病，更是身心平衡、充满活力与幸福感的状态。我们提供个性化针灸及传统中医治疗，专注于疼痛治疗、女性健康、儿童健康、压力管理、美容针灸及长期健康调理，为您和家人的健康保驾护航。',
+    zh: [
+      '源真中医相信，健康不仅是没有疾病，更是身心平衡、充满活力与幸福感的状态。我们致力于通过中医智慧帮助个人与家庭实现最佳健康状态。',
+      '我们提供个性化针灸及传统中医治疗，专注于疼痛治疗、女性健康、儿童健康、压力管理、美容针灸及长期健康调理，为您和家人的健康保驾护航。'
+    ].
   },
   values: {
     en: 'Evidence-Informed · Patient-Centered · Rooted in Tradition',

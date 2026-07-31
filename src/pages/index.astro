@@ -31,7 +31,7 @@ const pageDesc =
       </p>
       <p class="hero-body reveal">
         <span class="lang-en">{hero.body.en}</span>
-        <span class="lang-zh">{hero.body.zh}</span>
+        <span class="lang-zh">{hero.body.zh.map((p) => <span class="hero-body-p">{p}</span>)}</span>
       </p>
       <div class="hero-cta reveal">
         <a href="#contact" class="btn btn-primary">
@@ -96,6 +96,9 @@ const pageDesc =
             <li><span class="lang-en">{c.en}</span><span class="lang-zh">{c.zh}</span></li>
           ))}
         </ul>
+        {founder.bio.map((p) => (
+          <p class="founder-bio"><span class="lang-en">{p.en}</span><span class="lang-zh">{p.zh}</span></p>
+        ))}
         <h3 class="expertise-title">
           <span class="lang-en">{founder.expertiseTitle.en}</span>
           <span class="lang-zh">{founder.expertiseTitle.zh}</span>
@@ -226,6 +229,10 @@ const pageDesc =
         </h2>
         <ul class="contact-list">
           <li>
+            <span class="c-ico">🕒</span>
+            <span><span class="lang-en">{contact.hours.en}</span><span class="lang-zh">{contact.hours.zh}</span></span>
+          </li>
+          <li>
             <span class="c-ico">📍</span>
             <span><span class="lang-en">{site.region.en}</span><span class="lang-zh">{site.region.zh}</span></span>
           </li>
@@ -276,6 +283,7 @@ const pageDesc =
       radial-gradient(50% 50% at 12% 88%, rgba(111, 122, 90, 0.18), transparent 60%);*/
     pointer-events: none;
   }
+  .hero-body-p { display: block; margin-bottom: 0.8rem; }
   .hero-inner { position: relative; max-width: 860px; }
   .hero-values {
     font-size: 0.82rem; font-weight: 600; letter-spacing: 0.14em;

@@ -17,8 +17,8 @@ export const site = {
   email: 'info@sourcepointacu.com',
   wechat: 'YMLUCKY999',
   region: {
-    en: 'White Rock / South Surrey, British Columbia, Canada',
-    zh: '加拿大 BC 省 White Rock / South Surrey',
+    en: 'Unit 203 1548 Johnston Road, White Rock, BC, V4B 3Z7',
+    zh: 'Unit 203 1548 Johnston Road, White Rock, BC, V4B 3Z7',
   },
   legalName: {
     en: 'Sourcepoint Wellness Inc.',
@@ -127,20 +127,6 @@ export const founder = {
       en: 'Outside of her professional work, Yolanda enjoys reading, writing, hiking, and painting. She believes that lifelong learning and maintaining balance in life are essential to lasting health\u2014a philosophy that also guides her approach to patient care.',
       zh: '工作之余，丁医师喜欢阅读、写作、徒步旅行及绘画。她相信持续学习以及保持身心平衡，是实现长期健康的重要基础，而这一理念也贯穿于她的临床实践之中。',
     },
-  ] as Bi[],
-  expertiseTitle: { en: 'Areas of Expertise', zh: '专业领域' },
-  expertise: [
-    { en: 'Acupuncture', zh: '针灸治疗' },
-    { en: 'Chinese Herbal Medicine', zh: '中药调理' },
-    { en: 'Pain Management', zh: '疼痛管理' },
-    { en: 'Sleep Disorders', zh: '睡眠障碍' },
-    { en: 'Digestive Health', zh: '消化健康' },
-    { en: 'Stress & Emotional Wellness', zh: '压力与情绪调节' },
-    { en: 'Cosmetic Acupuncture', zh: '美容针灸' },
-    { en: 'Weight Management', zh: '体重管理' },
-    { en: "Women's Health", zh: '女性健康' },
-    { en: 'Fertility Support', zh: '生育支持' },
-    { en: 'Pediatric Care', zh: '儿童健康' },
   ] as Bi[],
 };
 
@@ -296,24 +282,14 @@ export const vision = {
     en: 'To become a trusted center for Traditional Chinese Medicine, Acupuncture, Wellness Education, and Community Health Promotion while building bridges between Eastern healing wisdom and modern healthcare.',
     zh: '成为一家值得信赖的传统中医、针灸、健康教育及社区健康促进中心，搭建东方医学智慧与现代医疗之间的桥梁，为更多家庭提供高质量的健康服务。',
   },
-  pillars: [
-    { en: 'Traditional Chinese Medicine', zh: '中医诊疗中心' },
-    { en: 'Acupuncture', zh: '针灸健康中心' },
-    { en: 'Wellness Education', zh: '健康教育平台' },
-    { en: 'Community Health Promotion', zh: '社区健康促进' },
-  ] as Bi[],
 };
 
 // ---- Contact ----------------------------------------------------------------
 export const contact = {
   eyebrow: { en: 'Contact Us', zh: '联系我们' },
-  ctaTitle: {
-    en: 'Ready to Begin Your Wellness Journey?',
-    zh: '开启您的健康之旅',
-  },
-  ctaBody: {
-    en: 'Your journey toward better health starts here. Experience a personalized approach to health and wellness through the wisdom of Traditional Chinese Medicine.',
-    zh: '您的健康旅程从这里开始。通过传统中医智慧，体验个性化的健康管理方案。',
+  hours: {
+    en: 'Mon–Sun 9:00 AM – 5:00 PM (By Appointment)
+    zh: '周一至周日 9:00–17:00（预约制）',
   },
   emailBtn: { en: 'Email Us', zh: '发送邮件' },
   callBtn: { en: 'Call Now', zh: '电话联系' },
@@ -329,7 +305,7 @@ export const contact = {
 // ---- Footer / 免责声明 -------------------------------------------------------
 export const footer = {
   rights: {
-    en: '© 2026 Sourcepoint Wellness. All rights reserved.',
+    en: '© 2026 Sourcepoint Wellness Inc. All rights reserved.',
     zh: '© 2026 源真中医. 版权所有。',
   },
   disclaimer: {

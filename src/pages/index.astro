@@ -96,9 +96,6 @@ const pageDesc =
             <li><span class="lang-en">{c.en}</span><span class="lang-zh">{c.zh}</span></li>
           ))}
         </ul>
-        {founder.bio.map((p) => (
-          <p class="founder-bio"><span class="lang-en">{p.en}</span><span class="lang-zh">{p.zh}</span></p>
-        ))}
         <h3 class="expertise-title">
           <span class="lang-en">{founder.expertiseTitle.en}</span>
           <span class="lang-zh">{founder.expertiseTitle.zh}</span>
@@ -211,15 +208,7 @@ const pageDesc =
       <p class="vision-body reveal">
         <span class="lang-en">{vision.body.en}</span>
         <span class="lang-zh">{vision.body.zh}</span>
-      </p>
-      <div class="vision-pillars reveal">
-        {vision.pillars.map((p) => (
-          <div class="pillar">
-            <span class="lang-en">{p.en}</span>
-            <span class="lang-zh">{p.zh}</span>
-          </div>
-        ))}
-      </div>
+      </p>      
     </div>
   </section>
 
@@ -263,22 +252,7 @@ const pageDesc =
             <span class="lang-zh">{contact.callBtn.zh}</span>
           </a>
         </div>
-      </div>
-
-      <div class="contact-cta reveal">
-        <h3 class="cta-title">
-          <span class="lang-en">{contact.ctaTitle.en}</span>
-          <span class="lang-zh">{contact.ctaTitle.zh}</span>
-        </h3>
-        <p class="cta-body">
-          <span class="lang-en">{contact.ctaBody.en}</span>
-          <span class="lang-zh">{contact.ctaBody.zh}</span>
-        </p>
-        <a href={`mailto:${site.email}`} class="btn btn-primary cta-btn">
-          <span class="lang-en">{contact.bookBtn.en}</span>
-          <span class="lang-zh">{contact.bookBtn.zh}</span>
-        </a>
-      </div>
+      </div>      
     </div>
   </section>
 </Base>

@@ -436,8 +436,9 @@ const pageDesc =
     text-wrap: balance;
   }
   .service-body {
-    font-size: 0.95rem; line-height: 1.65;
-    color: var(--ink-soft);
+    font-size: 1rem;          /* 原 0.95rem，略放大 */
+    line-height: 1.7;         /* 原 1.65，再松一点 */
+    color: var(--ink);        /* 原 var(--ink-soft)，改用更深的主文字色 */
   }
 
   /* ===================== MODALITIES + EDUCATION ===================== */
@@ -494,8 +495,8 @@ const pageDesc =
   .vision-body {
     position: relative;
     font-family: var(--font-serif);
-    font-size: clamp(1.25rem, 2.8vw, 1.75rem);
-    line-height: 1.6;
+    font-size: clamp(1.2rem, 2.4vw, 1.55rem);   /* 原 clamp(1.25rem, 2.8vw, 1.75rem)，上限降到 1.55 */     
+    line-height: 1.75;                          /* 原 1.6，提高让行间更松 */
     color: var(--clay-dark);
     background: var(--cream);
     border: 1px solid var(--line);
@@ -507,7 +508,8 @@ const pageDesc =
   .vision-body::before {
     content: '\201C';
     position: absolute;
-    top: -0.35em; left: 0.35em;
+    top: 0.35em;      /* 原 -0.35em，改成正值 → 收进卡片内 */
+    left: 0.45em;     /* 原 0.35em，略微右移一点 */
     font-family: var(--font-serif);
     font-size: 3.2rem;
     line-height: 1;

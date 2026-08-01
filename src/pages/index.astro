@@ -508,13 +508,13 @@ const pageDesc =
   .vision-body::before {
     content: '\201C';
     position: absolute;
-    top: 0.35em;      /* 原 -0.35em，改成正值 → 收进卡片内 */
-    left: 0.45em;     /* 原 0.35em，略微右移一点 */
-    font-family: var(--font-serif);
-    font-size: 3.2rem;
+    top: 0.2em;              /* 正值,收进卡片内 */
+    left: 0.3em;
+    font-size: 5rem;         /* 放大,原来大概 3.2rem,大了才像装饰 */
     line-height: 1;
     color: var(--clay-soft);
-    opacity: 0.55;
+    opacity: 0.35;           /* 调淡,像水印 */
+    font-family: var(--font-serif);
   }
 
   /* ===================== CONTACT ===================== */

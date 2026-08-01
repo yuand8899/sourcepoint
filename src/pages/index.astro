@@ -99,15 +99,6 @@ const pageDesc =
         {founder.bio.map((p) => (
           <p class="founder-bio"><span class="lang-en">{p.en}</span><span class="lang-zh">{p.zh}</span></p>
         ))}
-        <h3 class="expertise-title">
-          <span class="lang-en">{founder.expertiseTitle.en}</span>
-          <span class="lang-zh">{founder.expertiseTitle.zh}</span>
-        </h3>
-        <div class="chip-row">
-          {founder.expertise.map((e) => (
-            <span class="chip"><span class="lang-en">{e.en}</span><span class="lang-zh">{e.zh}</span></span>
-          ))}
-        </div>
       </div>
     </div>
   </section>
@@ -211,7 +202,7 @@ const pageDesc =
       <p class="vision-body reveal">
         <span class="lang-en">{vision.body.en}</span>
         <span class="lang-zh">{vision.body.zh}</span>
-      </p>      
+      </p>
     </div>
   </section>
 
@@ -259,7 +250,7 @@ const pageDesc =
             <span class="lang-zh">{contact.callBtn.zh}</span>
           </a>
         </div>
-      </div>      
+      </div>
     </div>
   </section>
 </Base>
@@ -274,13 +265,7 @@ const pageDesc =
   }
   .hero-bg {
     position: absolute; inset: 0;
-    /* 图片横幅（需要 public/images/hero.jpg 存在才显示） */
     background: url('/images/hero.jpg') center / cover no-repeat;
-  
-    /* 渐变横幅（备用方案，启用时取消下面注释、并注释掉上面那行）*/
-    /*background:
-      radial-gradient(60% 55% at 78% 18%, rgba(232, 167, 107, 0.35), transparent 62%),
-      radial-gradient(50% 50% at 12% 88%, rgba(111, 122, 90, 0.18), transparent 60%);*/
     pointer-events: none;
   }
   .hero-body-p { display: block; margin-bottom: 0.8rem; }
@@ -332,13 +317,6 @@ const pageDesc =
     background: linear-gradient(135deg, var(--clay-soft), var(--sage));
     box-shadow: var(--shadow-lg);
   }
-  .photo-placeholder {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    text-align: center; color: rgba(255,255,255,.92);
-    font-size: 0.9rem; line-height: 1.6; padding: 1.5rem;
-    background: rgba(46,42,38,.14);
-  }
   .founder-name { margin-bottom: 1.2rem; }
   .cred-list { list-style: none; padding: 0; margin: 0 0 1.5rem; }
   .cred-list li {
@@ -350,15 +328,6 @@ const pageDesc =
     width: 8px; height: 8px; border-radius: 50%; background: var(--clay);
   }
   .founder-bio { color: var(--ink-soft); margin-bottom: 1rem; }
-  .expertise-title {
-    font-size: 1.15rem; margin: 1.8rem 0 1rem; color: var(--clay-dark);
-  }
-  .chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .chip {
-    background: var(--cream); border: 1px solid var(--line);
-    padding: 0.4rem 0.85rem; border-radius: 999px;
-    font-size: 0.88rem; color: var(--ink-soft);
-  }
 
   /* ===================== SERVICES ===================== */
   .services-grid {
@@ -437,17 +406,7 @@ const pageDesc =
     font-size: clamp(1.3rem, 3vw, 1.9rem);
     line-height: 1.5; margin-bottom: 2rem;
   }
-  .vision-pillars {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
-  }
-  .pillar {
-    background: var(--cream);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-sm);
-    padding: 1rem; text-align: center;
-    font-weight: 600; font-size: 0.95rem;
-    color: var(--ink);
-  }
+
   /* ===================== CONTACT ===================== */
   .contact-grid {
     display: grid; grid-template-columns: 1.1fr 0.9fr;
@@ -463,21 +422,6 @@ const pageDesc =
   .contact-list a { border-bottom: 1px solid var(--clay); color: var(--clay-dark); }
   .contact-btns { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem; }
 
-  .contact-cta {
-    background: linear-gradient(155deg, var(--clay), var(--clay-dark));
-    color: var(--white);
-    border-radius: var(--radius);
-    padding: clamp(2rem, 4vw, 3rem);
-    display: flex; flex-direction: column; justify-content: center;
-    box-shadow: var(--shadow-lg);
-  }
-  .cta-title { color: var(--white); font-size: 1.6rem; margin-bottom: 1rem; }
-  .cta-body { color: rgba(255,255,255,.9); margin-bottom: 1.8rem; }
-  .contact-cta .cta-btn {
-    background: var(--white); color: var(--clay-dark); align-self: flex-start;
-  }
-  .contact-cta .cta-btn:hover { background: var(--cream); }
-
   /* ===================== 响应式 ===================== */
   @media (max-width: 940px) {
     .about-grid,
@@ -485,7 +429,6 @@ const pageDesc =
     .why-grid { grid-template-columns: 1fr 1fr; }
     .founder-grid { grid-template-columns: 1fr; }
     .founder-photo { position: static; max-width: 380px; }
-    .vision-pillars { grid-template-columns: 1fr 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 560px) {
@@ -493,8 +436,7 @@ const pageDesc =
     .services-grid,
     .why-grid,
     .two-col,
-    .billing-list,
-    .vision-pillars { grid-template-columns: 1fr; }
+    .billing-list { grid-template-columns: 1fr; }
     .hero-cta .btn,
     .contact-btns .btn { flex: 1 1 auto; justify-content: center; }
   }

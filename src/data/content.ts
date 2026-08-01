@@ -6,6 +6,10 @@ export type Bi = { en: string; zh: string };
 
 export const site = {
   name: { en: 'Sourcepoint Wellness', zh: '源真中医' },
+  // Logo 图片路径（页头、页脚、Hero 共用）。以后换 Logo 只改这一行。
+  // 建议放在 public/images/logo.svg 或 .png；留空 '' 时前端回退为纯文字店名。
+  logo: '/images/logo.svg',
+  logoAlt: { en: 'Sourcepoint Wellness logo', zh: '源真中医 Logo' },
   tagline: {
     en: 'Traditional Chinese Medicine · Acupuncture · Herbal Medicine · Wellness Education',
     zh: '针灸 · 中药 · 推拿 · 健康管理',
@@ -35,6 +39,12 @@ export const nav: { id: string; label: Bi }[] = [
 ];
 
 export const hero = {
+  // Hero 配图路径（右侧分栏图）。以后换图只改这一行。
+  image: '/images/hero.jpg',
+  imageAlt: {
+    en: 'Calm natural setting representing balance and wellness',
+    zh: '象征平衡与健康的自然场景',
+  },
   title: { en: 'Sourcepoint Wellness', zh: '源真中医' },
   subtitle: {
     en: 'Helping You Feel Better, Naturally',

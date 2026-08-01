@@ -70,11 +70,11 @@ const { title, description } = Astro.props;
             <span class="lang-en">中</span>
             <span class="lang-zh">EN</span>
           </button>
-
-          <a href="#contact" class="btn btn-primary book-btn">
+          <!-- 预约咨询按钮, 暂时屏蔽-->
+          <!-- <a href="#contact" class="btn btn-primary book-btn">
             <span class="lang-en">{hero.ctaBook.en}</span>
             <span class="lang-zh">{hero.ctaBook.zh}</span>
-          </a>
+          </a> -->
 
           <button
             id="menu-toggle"
@@ -96,10 +96,13 @@ const { title, description } = Astro.props;
             <span class="lang-zh">{item.label.zh}</span>
           </a>
         ))}
+        <!-- 预约咨询按钮, 暂时屏蔽-->
+        <!-- 
         <a href="#contact" class="btn btn-primary nav-mobile-link">
           <span class="lang-en">{hero.ctaBook.en}</span>
           <span class="lang-zh">{hero.ctaBook.zh}</span>
         </a>
+        -->
       </nav>
     </header>
 

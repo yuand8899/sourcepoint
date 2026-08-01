@@ -17,6 +17,10 @@ export const site = {
   phone: '604-722-9799',
   email: 'info@sourcepointacu.com',
   wechat: 'YMLUCKY999',
+  facebook: 'https://www.facebook.com/yolanda.fang.108',
+  // 微信二维码图片路径。请把从微信 App 导出的个人二维码放到 public/images/wechat-qr.png
+  // 留空 '' 时前端回退显示微信号文字。
+  wechatQr: '/images/wechat-qr.png',
   region: {
     en: 'Unit 203 1548 Johnston Road, White Rock, BC, V4B 3Z7',
     zh: 'Unit 203 1548 Johnston Road, White Rock, BC, V4B 3Z7',
@@ -33,6 +37,7 @@ export const nav: { id: string; label: Bi }[] = [
   { id: 'services', label: { en: 'Services', zh: '服务项目' } },
   { id: 'modalities', label: { en: 'Treatments', zh: '治疗方式' } },
   { id: 'education', label: { en: 'Education', zh: '健康教育' } },
+  { id: 'why', label: { en: 'Why Us', zh: '为什么选我们' } },
   { id: 'billing', label: { en: 'Insurance', zh: '保险结算' } },
   { id: 'vision', label: { en: 'Vision', zh: '我们的愿景' } },
   { id: 'contact', label: { en: 'Contact', zh: '联系我们' } },
@@ -144,6 +149,7 @@ export const founder = {
 };
 
 export const servicesEyebrow = { en: 'Our Services', zh: '我们的服务' };
+export const servicesTitle = { en: 'Care for the whole person', zh: '关照身心整体的健康' };
 export const services: { icon: string; title: Bi; body: Bi }[] = [
   {
     icon: 'pain',
@@ -250,6 +256,7 @@ export const education: Bi[] = [
 ];
 
 export const whyEyebrow = { en: 'Why Choose Sourcepoint Wellness', zh: '为什么选择源真中医' };
+export const whyTitle = { en: 'Depth of training you can trust', zh: '值得信赖的专业积淀' };
 export const why: Bi[] = [
   {
     en: 'Registered Traditional Chinese Medicine Practitioner & Acupuncturist in BC',
@@ -276,6 +283,7 @@ export const why: Bi[] = [
 ];
 
 export const billingEyebrow = { en: 'Insurance & Direct Billing', zh: '保险及直接结算' };
+export const billingTitle = { en: 'Coverage made simple', zh: '保险结算，轻松无忧' };
 export const billing: Bi[] = [
   { en: 'ICBC', zh: 'ICBC（卑诗省机动车事故保险）' },
   { en: 'WCB', zh: 'WCB（工伤保险）' },

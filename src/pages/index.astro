@@ -54,23 +54,34 @@ const pageDesc =
         <span class="lang-zh">{about.eyebrow.zh}</span>
       </p>
       <div class="about-grid">
-        <div class="about-card reveal">
-          <h2 class="about-h">
-            <span class="lang-en">{about.missionTitle.en}</span>
-            <span class="lang-zh">{about.missionTitle.zh}</span>
+        <div class="about-intro reveal">
+          <h2 class="section-title">
+            <span class="lang-en">About Sourcepoint Wellness</span>
+            <span class="lang-zh">关于源真中医</span>
           </h2>
-          {about.mission.map((p) => (
-            <p><span class="lang-en">{p.en}</span><span class="lang-zh">{p.zh}</span></p>
+          {about.intro.map((p) => (
+            <p class="about-intro-p"><span class="lang-en">{p.en}</span><span class="lang-zh">{p.zh}</span></p>
           ))}
         </div>
-        <div class="about-card reveal">
-          <h2 class="about-h">
-            <span class="lang-en">{about.philosophyTitle.en}</span>
-            <span class="lang-zh">{about.philosophyTitle.zh}</span>
-          </h2>
-          {about.philosophy.map((p) => (
-            <p><span class="lang-en">{p.en}</span><span class="lang-zh">{p.zh}</span></p>
-          ))}
+        <div class="about-cards">
+          <div class="about-card about-card--ink reveal">
+            <h3 class="about-h">
+              <span class="lang-en">{about.missionTitle.en}</span>
+              <span class="lang-zh">{about.missionTitle.zh}</span>
+            </h3>
+            {about.mission.map((p) => (
+              <p><span class="lang-en">{p.en}</span><span class="lang-zh">{p.zh}</span></p>
+            ))}
+          </div>
+          <div class="about-card about-card--ink reveal">
+            <h3 class="about-h">
+              <span class="lang-en">{about.philosophyTitle.en}</span>
+              <span class="lang-zh">{about.philosophyTitle.zh}</span>
+            </h3>
+            {about.philosophy.map((p) => (
+              <p><span class="lang-en">{p.en}</span><span class="lang-zh">{p.zh}</span></p>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -292,17 +303,38 @@ const pageDesc =
 
   /* ===================== ABOUT ===================== */
   .about-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 1.5rem; margin-top: 1.5rem;
+    display: grid; grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(2rem, 5vw, 4rem); margin-top: 1.5rem;
+    align-items: start;
   }
+  .about-intro .section-title { margin-bottom: 1.4rem; }
+  .about-intro-p { color: var(--ink-soft); font-size: 1.05rem; margin-bottom: 1rem; }
+  .about-cards { display: flex; flex-direction: column; gap: 1.2rem; }
   .about-card {
+    position: relative;
+    overflow: hidden;
     background: var(--white);
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    padding: clamp(1.6rem, 3vw, 2.4rem);
+    padding: clamp(1.6rem, 3vw, 2.2rem);
     box-shadow: var(--shadow);
   }
-  .about-h { font-size: 1.4rem; margin-bottom: 1rem; color: var(--clay-dark); }
+  /* CSS 水墨底纹：右上角几团柔和的暖色晕染，模拟宣纸水墨 */
+  .about-card--ink::before {
+    content: '';
+    position: absolute;
+    top: -30%; right: -20%;
+    width: 70%; height: 90%;
+    background:
+      radial-gradient(45% 45% at 70% 30%, rgba(194,99,46,0.10), transparent 70%),
+      radial-gradient(40% 40% at 40% 60%, rgba(111,122,90,0.08), transparent 70%),
+      radial-gradient(50% 50% at 60% 70%, rgba(232,167,107,0.10), transparent 70%);
+    filter: blur(6px);
+    pointer-events: none;
+  }
+  .about-card > * { position: relative; }
+  .about-h { font-size: 1.3rem; margin-bottom: 0.9rem; color: var(--clay-dark); }
+  .about-card p { color: var(--ink-soft); font-size: 0.98rem; }
 
   /* ===================== FOUNDER ===================== */
   .founder-grid {
@@ -447,7 +479,7 @@ const pageDesc =
 
   /* ===================== 响应式 ===================== */
   @media (max-width: 940px) {
-    .about-grid,
+    .about-grid { grid-template-columns: 1fr; }
     .services-grid,
     .why-grid,
     .billing-list { grid-template-columns: 1fr 1fr; }

@@ -309,6 +309,16 @@ const pageDesc =
             </a>
         </div>
       </div>
+      <!-- 地图 -->
+        <div class="contact-map reveal">
+          <iframe
+            src={contact.mapEmbedSrc}
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+            title="SourcePoint Wellness location / 诊所位置"
+          ></iframe>
+        </div>
       </div>
     </div>
   </section>
@@ -609,6 +619,21 @@ const pageDesc =
   .contact-qr {
     text-align: center;
   }
+  .contact-map {
+      margin-top: clamp(2rem, 5vw, 3rem);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    .contact-map iframe {
+      display: block;
+      width: 100%;
+      height: 380px;
+      border: 0;
+    }
+    @media (max-width: 640px) {
+      .contact-map iframe { height: 280px; }
+    }
   .qr-frame {
     width: 180px; height: 180px; margin: 0 auto 1rem;
     border-radius: var(--radius-sm);

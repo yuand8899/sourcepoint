@@ -96,6 +96,9 @@ img { max-width: 100%; display: block; }
 }
 
 .section { padding-block: var(--section-y); }
+/* 给带锚点的板块留出顶栏高度，避免跳转时被 sticky 顶栏遮挡 */
+.section[id],
+.hero[id] { scroll-margin-top: 84px; }
 .section--alt { background: var(--cream-2); }
 .section--sage { background: var(--sage); color: var(--white); }
 .section--sage h2,
@@ -103,14 +106,23 @@ img { max-width: 100%; display: block; }
 
 /* ---- 区块标题（eyebrow + 标题 + 下划线） ---- */
 .eyebrow {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--clay);
-  margin-bottom: 0.9rem;
+  margin-bottom: 1.1rem;
+}
+.eyebrow::before {
+  content: '';
+  width: 26px;
+  height: 2px;
+  background: var(--clay);
+  border-radius: 2px;
 }
 .section--sage .eyebrow { color: var(--clay-soft); }
 

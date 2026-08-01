@@ -5,11 +5,11 @@
 export type Bi = { en: string; zh: string };
 
 export const site = {
-  name: { en: 'Sourcepoint Wellness', zh: '源真中医' },
+  name: { en: 'SourcePoint Wellness', zh: '源真中医' },
   // Logo 图片路径（页头、页脚、Hero 共用）。以后换 Logo 只改这一行。
   // 建议放在 public/images/logo.svg 或 .png；留空 '' 时前端回退为纯文字店名。
   logo: '/images/logo.png',
-  logoAlt: { en: 'Sourcepoint Wellness logo', zh: '源真中医 Logo' },
+  logoAlt: { en: 'SourcePoint Wellness logo', zh: '源真中医 Logo' },
   tagline: {
     en: 'Traditional Chinese Medicine · Acupuncture · Herbal Medicine · Wellness Education',
     zh: '针灸 · 中药 · 推拿 · 健康管理',
@@ -26,7 +26,7 @@ export const site = {
     zh: 'Unit 203 1548 Johnston Road, White Rock, BC, V4B 3Z7',
   },
   legalName: {
-    en: 'Sourcepoint Wellness',
+    en: 'SourcePoint Wellness',
     zh: '源真中医',
   },
 };
@@ -35,11 +35,11 @@ export const nav: { id: string; label: Bi }[] = [
   { id: 'about', label: { en: 'About', zh: '关于我们' } },
   { id: 'founder', label: { en: 'Founder', zh: '创始人' } },
   { id: 'services', label: { en: 'Services', zh: '服务项目' } },
-  { id: 'modalities', label: { en: 'Treatments', zh: '治疗方式' } },
-  { id: 'education', label: { en: 'Education', zh: '健康教育' } },
-  { id: 'why', label: { en: 'Why Us', zh: '为什么选我们' } },
+  //{ id: 'modalities', label: { en: 'Treatments', zh: '治疗方式' } },
+  //{ id: 'education', label: { en: 'Education', zh: '健康教育' } },
+  //{ id: 'why', label: { en: 'Why Us', zh: '为什么选我们' } },
   { id: 'billing', label: { en: 'Insurance', zh: '保险结算' } },
-  { id: 'vision', label: { en: 'Vision', zh: '我们的愿景' } },
+  //{ id: 'vision', label: { en: 'Vision', zh: '我们的愿景' } },
   { id: 'contact', label: { en: 'Contact', zh: '联系我们' } },
 ];
 
@@ -50,7 +50,7 @@ export const hero = {
     en: 'Calm natural setting representing balance and wellness',
     zh: '象征平衡与健康的自然场景',
   },
-  title: { en: 'Sourcepoint Wellness', zh: '源真中医' },
+  title: { en: 'SourcePoint Wellness', zh: '源真中医' },
   subtitle: {
     en: 'Helping You Feel Better, Naturally',
     zh: '让健康回归自然，让生活重拾平衡',
@@ -74,7 +74,7 @@ export const about = {
   eyebrow: { en: 'About Us', zh: '关于我们' },
   intro: [
     {
-      en: 'Sourcepoint Wellness is a Canadian wellness clinic dedicated to the promotion and practice of Traditional Chinese Medicine, acupuncture, herbal medicine, and holistic health education.',
+      en: 'SourcePoint Wellness is a Canadian wellness clinic dedicated to the promotion and practice of Traditional Chinese Medicine, acupuncture, herbal medicine, and holistic health education.',
       zh: '源真中医是一家位于加拿大的专业健康机构，致力于中医、针灸、中药调理及健康教育的推广与实践。',
     },
     {
@@ -255,7 +255,7 @@ export const education: Bi[] = [
   { en: 'International Educational Collaboration', zh: '国际教育合作' },
 ];
 
-export const whyEyebrow = { en: 'Why Choose Sourcepoint Wellness', zh: '为什么选择源真中医' };
+export const whyEyebrow = { en: 'Why Choose SourcePoint', zh: '为什么选择源真' };
 export const whyTitle = { en: 'Depth of training you can trust', zh: '值得信赖的专业积淀' };
 export const why: Bi[] = [
   {
@@ -318,7 +318,7 @@ export const contact = {
 
 export const footer = {
   rights: {
-    en: '© 2026 Sourcepoint Wellness Inc. All rights reserved.',
+    en: '© 2026 SourcePoint Wellness Inc. All rights reserved.',
     zh: '© 2026 源真中医. 版权所有。',
   },
   disclaimer: {

@@ -109,7 +109,7 @@ const { title, description } = Astro.props;
 
     <footer class="site-footer">
       <div class="container">
-        {site.logo ? (
+        <!-- {site.logo ? (
           <img class="footer-logo" src={site.logo} alt={site.logoAlt.en} />
         ) : (
           <p class="footer-brand">
@@ -126,7 +126,7 @@ const { title, description } = Astro.props;
           <span>📞 <a href={`tel:${site.phone}`}>{site.phone}</a></span>
           <span>✉️ <a href={`mailto:${site.email}`}>{site.email}</a></span>
           <span>💬 <span class="lang-en">WeChat</span><span class="lang-zh">微信</span>: {site.wechat}</span>
-        </p>
+        </p>  -->
         <p class="footer-legal">
           <span class="lang-en">{footer.rights.en}</span>
           <span class="lang-zh">{footer.rights.zh}</span>
@@ -190,6 +190,20 @@ const { title, description } = Astro.props;
           });
         }, { threshold: 0.12 });
         items.forEach(function (i) { io.observe(i); });
+      })();
+
+      // ---- LOGO / #top 点击回到最顶部（兜底） ----
+      // 处理"URL 已是 #top，再点同一锚点浏览器不滚动"的情况，并保证平滑回顶。
+      (function () {
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var links = document.querySelectorAll('a[href$="#top"], a[href="#top"]');
+        links.forEach(function (el) {
+          el.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+            try { history.replaceState(null, '', location.pathname + '#top'); } catch (err) {}
+          });
+        });
       })();
 
       // ---- 顶栏滚动阴影 ----

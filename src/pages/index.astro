@@ -332,7 +332,7 @@ const pageDesc =
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(2rem, 5vw, 4.5rem);
-    align-items: center;
+    align-items: stretch;
   }
   .hero-inner { max-width: 560px; }
   .hero-logo {
@@ -370,7 +370,8 @@ const pageDesc =
 
   /* 右侧配图 */
   .hero-media {
-    aspect-ratio: 4 / 5;
+    height: 100%;              /* 撑满左栏高度：顶贴 eyebrow 行，底贴按钮 */
+    min-height: 0;             /* 允许在 grid 中正确收缩 */
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow-lg);

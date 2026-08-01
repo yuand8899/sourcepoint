@@ -202,7 +202,7 @@ export const services: { icon: string; title: Bi; body: Bi }[] = [
     title: { en: 'TCM Massage & Acupressure', zh: '中医经络推拿' },
     body: {
       en: 'Traditional Chinese Medicine massage and acupressure techniques help promote circulation, relieve pain, reduce muscle tension, improve mobility, and support overall wellness. Suitable for: muscle tension, neck/shoulder/back pain, sports recovery, fatigue management, and general wellness maintenance.',
-      zh: '通过经络推拿、穴位调理及软组织手法促进气血循环、缓解疼痛、放松肌肉、改善身体功能。适用于：肌肉紧张、颈肩腰背疼痛、疲劳恢复、运动损伤康复、亚健康调理、日常养生保健。',
+      zh: '通过经络推拿、穴位调理及软组织手法促进气血循环、缓解疼痛、放松肌肉、改善身体功能。',
     },
   },
 ];

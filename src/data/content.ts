@@ -315,7 +315,7 @@ export const contact = {
     wechat: { en: 'WeChat', zh: '微信' },
   },
   // 新增：地图嵌入地址
-  mapEmbedSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d360.735457794334!2d-122.80140703725354!3d49.03035889654661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485c37c3858ea93%3A0x9f8ff4198508d8d5!2s1548%20Johnston%20Rd%2C%20White%20Rock%2C%20BC%20V4B%203Z7!5e1!3m2!1sen!2sca!4v1785620328223!5m2!1sen!2sca',
+  mapEmbedSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1555.4477990000466!2d-122.8004009081786!3d49.03072997472316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485c37c3858ea93%3A0x9f8ff4198508d8d5!2s1548%20Johnston%20Rd%2C%20White%20Rock%2C%20BC%20V4B%203Z7!5e0!3m2!1sen!2sca!4v1785620825186!5m2!1sen!2sca",
 };
 
 export const footer = {

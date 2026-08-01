@@ -2,9 +2,9 @@
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import {
-  site, hero, about, founder, servicesEyebrow, services,
+  site, hero, about, founder, servicesEyebrow, servicesTitle, services,
   modalitiesEyebrow, modalities, educationEyebrow, education,
-  whyEyebrow, why, billingEyebrow, billing, vision, contact,
+  whyEyebrow, whyTitle, why, billingEyebrow, billingTitle, billing, vision, contact,
 } from '../data/content';
 
 const pageTitle =
@@ -111,9 +111,11 @@ const pageDesc =
             <li><span class="lang-en">{c.en}</span><span class="lang-zh">{c.zh}</span></li>
           ))}
         </ul>
-        {founder.bio.map((p) => (
-          <p class="founder-bio"><span class="lang-en">{p.en}</span><span class="lang-zh">{p.zh}</span></p>
-        ))}
+        <div class="founder-bio-cols">
+          {founder.bio.map((p) => (
+            <p class="founder-bio"><span class="lang-en">{p.en}</span><span class="lang-zh">{p.zh}</span></p>
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -125,6 +127,10 @@ const pageDesc =
         <span class="lang-en">{servicesEyebrow.en}</span>
         <span class="lang-zh">{servicesEyebrow.zh}</span>
       </p>
+      <h2 class="section-title reveal">
+        <span class="lang-en">{servicesTitle.en}</span>
+        <span class="lang-zh">{servicesTitle.zh}</span>
+      </h2>
       <div class="services-grid">
         {services.map((s) => (
           <article class="service-card reveal">
@@ -178,10 +184,13 @@ const pageDesc =
         <span class="lang-en">{whyEyebrow.en}</span>
         <span class="lang-zh">{whyEyebrow.zh}</span>
       </p>
+      <h2 class="section-title reveal">
+        <span class="lang-en">{whyTitle.en}</span>
+        <span class="lang-zh">{whyTitle.zh}</span>
+      </h2>
       <div class="why-grid">
         {why.map((w) => (
           <div class="why-item reveal">
-            <span class="why-check" aria-hidden="true">✓</span>
             <span><span class="lang-en">{w.en}</span><span class="lang-zh">{w.zh}</span></span>
           </div>
         ))}
@@ -196,6 +205,10 @@ const pageDesc =
         <span class="lang-en">{billingEyebrow.en}</span>
         <span class="lang-zh">{billingEyebrow.zh}</span>
       </p>
+      <h2 class="section-title reveal">
+        <span class="lang-en">{billingTitle.en}</span>
+        <span class="lang-zh">{billingTitle.zh}</span>
+      </h2>
       <ul class="billing-list reveal">
         {billing.map((b) => (
           <li>
@@ -223,8 +236,9 @@ const pageDesc =
 
   <!-- ===================== CONTACT ===================== -->
   <section class="section" id="contact">
-    <div class="container contact-grid">
-      <div class="contact-info reveal">
+    <div class="container">
+      <!-- 表头：横跨整行 -->
+      <div class="contact-head reveal">
         <p class="eyebrow">
           <span class="lang-en">{contact.eyebrow.en}</span>
           <span class="lang-zh">{contact.eyebrow.zh}</span>
@@ -233,38 +247,68 @@ const pageDesc =
           <span class="lang-en">{site.legalName.en}</span>
           <span class="lang-zh">{site.legalName.zh}</span>
         </h2>
-        <ul class="contact-list">
+      </div>
+
+      <!-- 主体：左联系方式 / 右二维码，首行顶部锁死对齐 -->
+      <div class="contact-grid">
+        <!-- 左列：联系方式 -->
+        <ul class="contact-list reveal">
           <li>
-            <span class="c-ico">🕒</span>
+            <span class="c-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
             <span><span class="lang-en">{contact.hours.en}</span><span class="lang-zh">{contact.hours.zh}</span></span>
           </li>
           <li>
-            <span class="c-ico">📍</span>
+            <span class="c-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            </span>
             <span><span class="lang-en">{site.region.en}</span><span class="lang-zh">{site.region.zh}</span></span>
           </li>
           <li>
-            <span class="c-ico">📞</span>
+            <span class="c-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0 9 6 15 15 15v-4l-4-1-2 2c-3-1.5-5.5-4-7-7l2-2-1-4z"/></svg>
+            </span>
             <a href={`tel:${site.phone}`}>{site.phone}</a>
           </li>
           <li>
-            <span class="c-ico">✉️</span>
+            <span class="c-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            </span>
             <a href={`mailto:${site.email}`}>{site.email}</a>
           </li>
           <li>
-            <span class="c-ico">💬</span>
-            <span><span class="lang-en">WeChat</span><span class="lang-zh">微信</span>: <strong>{site.wechat}</strong></span>
+            <span class="c-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg>
+            </span>
+            <a href={site.facebook} target="_blank" rel="noopener">
+              <span class="lang-en">Facebook</span><span class="lang-zh">Facebook 主页</span>
+            </a>
           </li>
         </ul>
-        <div class="contact-btns">
-          <a href={`mailto:${site.email}`} class="btn btn-primary">
-            <span class="lang-en">{contact.emailBtn.en}</span>
-            <span class="lang-zh">{contact.emailBtn.zh}</span>
-          </a>
-          <a href={`tel:${site.phone}`} class="btn btn-ghost">
-            <span class="lang-en">{contact.callBtn.en}</span>
-            <span class="lang-zh">{contact.callBtn.zh}</span>
-          </a>
+
+        <!-- 右列：微信二维码 + 两个按钮 -->
+        <div class="contact-qr reveal">
+          <div class="qr-frame">
+            {site.wechatQr
+              ? <img src={site.wechatQr} alt="WeChat QR / 微信二维码" class="qr-img" />
+              : <div class="qr-fallback" aria-hidden="true"></div>}
+          </div>
+          <p class="qr-hint">
+            <span class="lang-en">Scan to add on WeChat</span>
+            <span class="lang-zh">扫码添加微信</span>
+          </p>
+          <div class="contact-btns">
+            <a href={`mailto:${site.email}`} class="btn btn-primary">
+              <span class="lang-en">{contact.emailBtn.en}</span>
+              <span class="lang-zh">{contact.emailBtn.zh}</span>
+            </a>
+            <a href={`tel:${site.phone}`} class="btn btn-ghost">
+              <span class="lang-en">{contact.callBtn.en}</span>
+              <span class="lang-zh">{contact.callBtn.zh}</span>
+            </a>
         </div>
+      </div>
       </div>
     </div>
   </section>
@@ -346,6 +390,8 @@ const pageDesc =
   }
   .about-intro .section-title { margin-bottom: 1.4rem; }
   .about-intro-p { color: var(--ink-soft); font-size: 1.05rem; margin-bottom: 1rem; }
+  /* 首段用主文字色，与后续淡色段落拉开层次（贴近 Demo） */
+  .about-intro-p:first-of-type { color: var(--ink); font-size: 1.12rem; }
   .about-cards { display: flex; flex-direction: column; gap: 1.2rem; }
   .about-card {
     position: relative;
@@ -370,7 +416,7 @@ const pageDesc =
     pointer-events: none;
   }
   .about-card > * { position: relative; }
-  .about-h { font-size: 1.3rem; margin-bottom: 0.9rem; color: var(--clay-dark); }
+  .about-h { font-size: 1.3rem; margin-bottom: 0.9rem; color: var(--sage-dark); }
   .about-card p { color: var(--ink-soft); font-size: 0.98rem; }
 
   /* ===================== FOUNDER ===================== */
@@ -392,16 +438,28 @@ const pageDesc =
     text-wrap: balance;
     hyphens: none;
   }
-  .cred-list { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+  .cred-list { list-style: none; padding: 0; margin: 0 0 1.8rem; }
   .cred-list li {
-    position: relative; padding-left: 1.4rem; margin-bottom: 0.5rem;
+    position: relative; padding-left: 1.6rem; margin-bottom: 0.55rem;
     font-weight: 600; color: var(--ink);
   }
+  /* 圆点改为对勾，呼应 Demo 与截图 3 */
   .cred-list li::before {
-    content: ''; position: absolute; left: 0; top: 0.62em;
-    width: 8px; height: 8px; border-radius: 50%; background: var(--clay);
+    content: '✓'; position: absolute; left: 0; top: 0;
+    color: var(--clay); font-weight: 700; font-size: 1rem;
   }
-  .founder-bio { color: var(--ink-soft); margin-bottom: 1rem; }
+  /* 介绍改为双栏结构，文字更淡 */
+  .founder-bio-cols {
+    columns: 2;
+    column-gap: clamp(1.8rem, 4vw, 3rem);
+  }
+  .founder-bio {
+    color: var(--ink-soft);
+    opacity: 0.85;               /* 比正文再淡一些，贴近截图 3 */
+    font-size: 0.98rem;
+    margin: 0 0 1rem;
+    break-inside: avoid;
+  }
 
   /* ===================== SERVICES ===================== */
   .services-grid {
@@ -433,9 +491,10 @@ const pageDesc =
     text-wrap: balance;
   }
   .service-body {
-    font-size: 1rem;          /* 原 0.95rem，略放大 */
-    line-height: 1.7;         /* 原 1.65，再松一点 */
-    color: var(--ink);        /* 原 var(--ink-soft)，改用更深的主文字色 */
+    font-size: 0.92rem;       /* 服务明细偏辅助信息，略缩小 */
+    line-height: 1.65;
+    color: var(--ink-soft);   /* 改淡，贴近 Demo 与截图 4 */
+    opacity: 0.9;
   }
 
   /* ===================== MODALITIES + EDUCATION ===================== */
@@ -454,35 +513,38 @@ const pageDesc =
   /* ===================== WHY ===================== */
   .why-grid {
     display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 0.4rem 2.2rem; margin-top: 2rem;
+    gap: 0.9rem; margin-top: 2rem;
   }
+  /* 卡片式标签：白底 + 发丝边 + 左侧陶土色粗边（贴近截图 1 / Demo） */
   .why-item {
-    display: flex; align-items: flex-start; gap: 0.8rem;
-    padding: 0.95rem 0;
-    border-bottom: 1px solid var(--line);
-    font-weight: 500; line-height: 1.5;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--clay);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.2rem;
+    font-weight: 500; line-height: 1.45;
+    color: var(--ink);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
   }
-  /* 简洁细勾，去掉圆形色块，减轻"清单页"观感 */
-  .why-check {
-    flex: none;
-    color: var(--clay);
-    font-size: 1rem; font-weight: 700;
-    line-height: 1.5;
-  }
+  .why-item:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 
   /* ===================== INSURANCE & BILLING ===================== */
   .billing-inner { max-width: 1000px; }
+  /* 胶囊标签：横向排列、自动换行到下一行，单个标签宽度随文字、内部不折行 */
   .billing-list {
-    display: grid; grid-template-columns: repeat(4, 1fr);
+    display: flex; flex-wrap: wrap;
     gap: 0.8rem; margin-top: 1.4rem; list-style: none; padding: 0;
   }
   .billing-list li {
-    position: relative; padding: 0.9rem 1.1rem 0.9rem 2.6rem;
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    padding: 0.7rem 1.4rem;
     background: var(--white); border: 1px solid var(--line);
-    border-radius: var(--radius-sm); font-weight: 600; color: var(--ink);
+    border-radius: 999px;              /* 大圆角胶囊 */
+    font-weight: 600; color: var(--ink);
+    white-space: nowrap;               /* 标签内文字不换行 */
   }
   .billing-list li::before {
-    content: '✓'; position: absolute; left: 1.1rem; top: 0.9rem;
+    content: '✓';
     color: var(--sage); font-weight: 700;
   }
 
@@ -515,30 +577,79 @@ const pageDesc =
   }
 
   /* ===================== CONTACT ===================== */
+  /* 表头横跨整行 */
+  .contact-head { margin-bottom: clamp(1.8rem, 4vw, 2.6rem); }
   .contact-grid {
     display: grid; grid-template-columns: 1.1fr 0.9fr;
-    gap: clamp(2rem, 5vw, 3.5rem); align-items: stretch;
+    gap: clamp(2rem, 5vw, 3.5rem);
+    align-items: start;   /* 列表首行与二维码顶部锁死对齐 */
   }
-  .contact-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .contact-list { list-style: none; padding: 0; margin: 0; }
   .contact-list li {
-    display: flex; align-items: center; gap: 0.8rem;
-    padding: 0.7rem 0; border-bottom: 1px solid var(--line);
-    font-size: 1.02rem;
+    display: flex; align-items: center; gap: 0.9rem;
+    padding: 0.95rem 0; border-bottom: 1px solid var(--line);
+    font-size: 1rem;
   }
-  .c-ico { font-size: 1.15rem; flex: none; }
-  .contact-list a { border-bottom: 1px solid var(--clay); color: var(--clay-dark); }
-  .contact-btns { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem; }
+  .contact-list li:first-child { padding-top: 0; }   /* 首行贴顶，便于与二维码对齐 */
+  /* 统一的线性图标方块，与 Demo 一致 */
+  .c-ico {
+    flex: none;
+    width: 40px; height: 40px;
+    display: grid; place-content: center;
+    border-radius: 10px;
+    background: rgba(111,122,90,0.10);   /* 淡鼠尾草底 */
+    color: var(--sage-dark);
+  }
+  .c-ico svg { width: 20px; height: 20px; display: block; }
+  .contact-list a { color: var(--clay-dark); }
+  .contact-list a:hover { color: var(--clay); }
+
+  /* 右列：二维码（无卡片背景，二维码直接置于页面上） */
+  .contact-qr {
+    text-align: center;
+  }
+  .qr-frame {
+    width: 180px; height: 180px; margin: 0 auto 1rem;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--cream-2);
+    box-shadow: var(--shadow-lg);   /* 柔和投影，让二维码"立"起来 */
+  }
+  .qr-img { width: 100%; height: 100%; object-fit: cover; }
+  /* 无二维码图片时的占位纹理 */
+  .qr-fallback {
+    width: 100%; height: 100%;
+    background:
+      repeating-linear-gradient(90deg, var(--ink) 0 8px, transparent 8px 16px),
+      repeating-linear-gradient(0deg, var(--ink) 0 8px, transparent 8px 16px);
+    opacity: 0.85;
+  }
+  .qr-hint {
+    font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-soft); margin: 0;
+  }
+  .contact-btns {
+    display: flex; flex-wrap: wrap; gap: 0.8rem;
+    justify-content: center;
+    margin-top: 3rem;   /* 与二维码/提示拉开约两行的距离 */
+  }
 
   /* ===================== 响应式 ===================== */
   @media (max-width: 940px) {
     .about-grid { grid-template-columns: 1fr; }
-    .services-grid,
-    .billing-list { grid-template-columns: 1fr 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
     .why-grid { grid-template-columns: 1fr 1fr; gap: 0.2rem 1.6rem; }
     .founder-grid { grid-template-columns: 1fr; }
     .founder-text { max-width: none; }
+    .founder-bio-cols { columns: 1; }
     .founder-photo { position: static; max-width: 340px; }
-    .contact-grid { grid-template-columns: 1fr; }
+    .contact-grid {
+      grid-template-columns: 1fr;   /* 叠成单列：联系方式在上，二维码在下 */
+      gap: 2.5rem;
+    }
+    /* 单列时二维码居中，宽度自适应 */
+    .contact-qr { max-width: 320px; margin-inline: auto; }
     /* hero 分栏在窄屏叠成单列：文字在上，图片在下 */
     .hero-grid { grid-template-columns: 1fr; }
     .hero-inner { max-width: none; }
@@ -548,8 +659,7 @@ const pageDesc =
     .about-grid,
     .services-grid,
     .why-grid,
-    .two-col,
-    .billing-list { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
     .hero-cta .btn,
     .contact-btns .btn { flex: 1 1 auto; justify-content: center; }
   }

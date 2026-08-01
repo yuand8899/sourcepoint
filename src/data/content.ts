@@ -8,7 +8,7 @@ export const site = {
   name: { en: 'Sourcepoint Wellness', zh: '源真中医' },
   // Logo 图片路径（页头、页脚、Hero 共用）。以后换 Logo 只改这一行。
   // 建议放在 public/images/logo.svg 或 .png；留空 '' 时前端回退为纯文字店名。
-  logo: '/images/logo.svg',
+  logo: '/images/logo.png',
   logoAlt: { en: 'Sourcepoint Wellness logo', zh: '源真中医 Logo' },
   tagline: {
     en: 'Traditional Chinese Medicine · Acupuncture · Herbal Medicine · Wellness Education',

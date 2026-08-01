@@ -21,7 +21,7 @@ export const site = {
     zh: 'Unit 203 1548 Johnston Road, White Rock, BC, V4B 3Z7',
   },
   legalName: {
-    en: 'Sourcepoint Wellness Inc.',
+    en: 'Sourcepoint Wellness',
     zh: '源真中医',
   },
 };

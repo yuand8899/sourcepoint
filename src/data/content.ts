@@ -18,7 +18,7 @@ export const site = {
     zh: 'Unit 203 1548 Johnston Road, White Rock, BC, V4B 3Z7',
   },
   legalName: {
-    en: 'Sourcepoint Wellness Inc.',
+    en: 'Sourcepoint Wellness',
     zh: '源真中医',
   },
 };
@@ -57,6 +57,16 @@ export const hero = {
 
 export const about = {
   eyebrow: { en: 'About Us', zh: '关于我们' },
+  intro: [
+    {
+      en: 'Sourcepoint Wellness is a Canadian wellness clinic dedicated to the promotion and practice of Traditional Chinese Medicine, acupuncture, herbal medicine, and holistic health education.',
+      zh: '源真中医是一家位于加拿大的专业健康机构，致力于中医、针灸、中药调理及健康教育的推广与实践。',
+    },
+    {
+      en: 'Founded by Yuan Ding (Yolanda Ding), R.Ac., the clinic combines years of clinical experience, teaching, and international healthcare training to provide compassionate and individualized care.',
+      zh: '由注册针灸师丁源（Yolanda Ding）创立，结合多年临床经验、教学经验及国际医疗培训背景，为患者提供个性化、专业化的健康服务。',
+    },
+  ] as Bi[],
   missionTitle: { en: 'Our Mission', zh: '我们的使命' },
   mission: [
     {

@@ -130,16 +130,6 @@ img { max-width: 100%; display: block; }
   font-size: clamp(1.75rem, 4vw, 2.6rem);
   max-width: 22ch;
 }
-.section-title::after {
-  content: '';
-  display: block;
-  width: 54px;
-  height: 3px;
-  background: var(--clay);
-  border-radius: 2px;
-  margin-top: 1rem;
-}
-.section--sage .section-title::after { background: var(--clay-soft); }
 
 /* ---- 按钮 ---- */
 .btn {

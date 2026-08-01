@@ -15,33 +15,40 @@ const pageDesc =
 <Base title={pageTitle} description={pageDesc}>
   <!-- ===================== HERO ===================== -->
   <section class="hero" id="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="container hero-inner">
-      <p class="hero-values reveal">
-        <span class="lang-en">{hero.values.en}</span>
-        <span class="lang-zh">{hero.values.zh}</span>
-      </p>
-      <h1 class="hero-title reveal">
-        <span class="lang-en">{hero.title.en}</span>
-        <span class="lang-zh">{hero.title.zh}</span>
-      </h1>
-      <p class="hero-sub reveal">
-        <span class="lang-en">{hero.subtitle.en}</span>
-        <span class="lang-zh">{hero.subtitle.zh}</span>
-      </p>
-      <p class="hero-body reveal">
-        <span class="lang-en">{hero.body.en}</span>
-        <span class="lang-zh">{hero.body.zh.map((p) => <span class="hero-body-p">{p}</span>)}</span>
-      </p>
-      <div class="hero-cta reveal">
-        <a href="#contact" class="btn btn-primary">
-          <span class="lang-en">{hero.ctaBook.en}</span>
-          <span class="lang-zh">{hero.ctaBook.zh}</span>
-        </a>
-        <a href="#contact" class="btn btn-ghost">
-          <span class="lang-en">{hero.ctaContact.en}</span>
-          <span class="lang-zh">{hero.ctaContact.zh}</span>
-        </a>
+    <div class="container hero-grid">
+      <div class="hero-inner reveal">
+        {site.logo && (
+          <img class="hero-logo" src={site.logo} alt={site.logoAlt.en} />
+        )}
+        <p class="hero-values">
+          <span class="lang-en">{hero.values.en}</span>
+          <span class="lang-zh">{hero.values.zh}</span>
+        </p>
+        <h1 class="hero-title">
+          <span class="lang-en">{hero.title.en}</span>
+          <span class="lang-zh">{hero.title.zh}</span>
+        </h1>
+        <p class="hero-sub">
+          <span class="lang-en">{hero.subtitle.en}</span>
+          <span class="lang-zh">{hero.subtitle.zh}</span>
+        </p>
+        <p class="hero-body">
+          <span class="lang-en">{hero.body.en}</span>
+          <span class="lang-zh">{hero.body.zh.map((p) => <span class="hero-body-p">{p}</span>)}</span>
+        </p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">
+            <span class="lang-en">{hero.ctaBook.en}</span>
+            <span class="lang-zh">{hero.ctaBook.zh}</span>
+          </a>
+          <a href="#contact" class="btn btn-ghost">
+            <span class="lang-en">{hero.ctaContact.en}</span>
+            <span class="lang-zh">{hero.ctaContact.zh}</span>
+          </a>
+        </div>
+      </div>
+      <div class="hero-media reveal">
+        <img class="hero-img" src={hero.image} alt={hero.imageAlt.en} />
       </div>
     </div>
   </section>
@@ -267,39 +274,72 @@ const pageDesc =
 </Base>
 
 <style>
+  /* ===================== 全局节奏覆盖 ===================== */
+  /* 加大区块垂直留白，让每个 section 更有呼吸感（西式审美偏好） */
+  .section { padding-block: clamp(4.5rem, 9vw, 8rem); }
+  .eyebrow { margin-bottom: 0.4rem; }
+  .section-title { text-wrap: balance; }
+
   /* ===================== HERO ===================== */
   .hero {
     position: relative;
     overflow: hidden;
-    padding-block: clamp(4rem, 12vw, 8rem);
     background: linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%);
+    padding-block: clamp(3rem, 7vw, 6rem);
   }
-  .hero-bg {
-    position: absolute; inset: 0;
-    background: url('/images/hero.jpg') center / cover no-repeat;
-    pointer-events: none;
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
   }
-  .hero-body-p { display: block; margin-bottom: 0.8rem; }
-  .hero-inner { position: relative; max-width: 860px; }
+  .hero-inner { max-width: 560px; }
+  .hero-logo {
+    height: clamp(48px, 6vw, 68px);
+    width: auto;
+    margin-bottom: 1.6rem;
+    display: block;
+  }
   .hero-values {
-    font-size: 0.82rem; font-weight: 600; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--clay); margin-bottom: 1.2rem;
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--clay);
+    margin-bottom: 1.2rem;
   }
   .hero-title {
-    font-size: clamp(2.6rem, 7vw, 4.6rem);
-    line-height: 1.08; margin-bottom: 1.2rem;
+    font-family: var(--font-serif);
+    font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+    line-height: 1.06; margin-bottom: 1.1rem;
+    color: var(--clay-dark);
+    text-wrap: balance;
   }
   .hero-title .lang-zh { letter-spacing: 0.04em; }
   .hero-sub {
     font-family: var(--font-serif);
-    font-size: clamp(1.15rem, 2.6vw, 1.6rem);
-    color: var(--clay-dark); margin-bottom: 1.5rem; max-width: 30ch;
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+    color: var(--clay); margin-bottom: 1.5rem; max-width: 34ch;
   }
   .hero-body {
-    font-size: 1.14rem; color: var(--ink);
-    max-width: 56ch; margin-bottom: 2rem;
+    font-size: 1.06rem; line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 52ch; margin-bottom: 2.2rem;
   }
+  .hero-body-p { display: block; margin-bottom: 0.7rem; }
   .hero-cta { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+
+  /* 右侧配图 */
+  .hero-media {
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    background: linear-gradient(135deg, var(--clay-soft), var(--sage));
+  }
+  .hero-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
   /* ===================== ABOUT ===================== */
   .about-grid {
@@ -350,7 +390,11 @@ const pageDesc =
     background: linear-gradient(135deg, var(--clay-soft), var(--sage));
     box-shadow: var(--shadow-lg);
   }
-  .founder-name { margin-bottom: 1.2rem; }
+  .founder-name {
+    margin-bottom: 1.2rem;
+    text-wrap: balance;
+    hyphens: none;
+  }
   .cred-list { list-style: none; padding: 0; margin: 0 0 1.5rem; }
   .cred-list li {
     position: relative; padding-left: 1.4rem; margin-bottom: 0.5rem;
@@ -387,36 +431,45 @@ const pageDesc =
     color: var(--clay);
   }
   .service-icon svg { width: 30px; height: 30px; }
-  .service-title { font-size: 1.18rem; margin-bottom: 0.6rem; }
-  .service-body { font-size: 0.95rem; color: var(--ink-soft); }
+  .service-title {
+    font-size: 1.18rem; margin-bottom: 0.6rem;
+    text-wrap: balance;
+  }
+  .service-body {
+    font-size: 0.95rem; line-height: 1.65;
+    color: var(--ink-soft);
+  }
 
   /* ===================== MODALITIES + EDUCATION ===================== */
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); }
-  .tick-list { list-style: none; padding: 0; margin: 1.2rem 0 0; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 6vw, 5rem); }
+  .tick-list { list-style: none; padding: 0; margin: 1.6rem 0 0; }
   .tick-list li {
-    position: relative; padding: 0.7rem 0 0.7rem 1.9rem;
-    border-bottom: 1px solid var(--line); font-weight: 500;
+    position: relative; padding: 0.95rem 0 0.95rem 1.9rem;
+    border-bottom: 1px solid var(--line);
+    font-weight: 500; font-size: 1.02rem;
   }
   .tick-list li::before {
-    content: '✓'; position: absolute; left: 0; top: 0.7rem;
+    content: '✓'; position: absolute; left: 0; top: 0.95rem;
     color: var(--sage); font-weight: 700;
   }
 
   /* ===================== WHY ===================== */
   .why-grid {
     display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 0.7rem; margin-top: 1.5rem;
+    gap: 0.4rem 2.2rem; margin-top: 2rem;
   }
   .why-item {
-    display: flex; align-items: flex-start; gap: 0.7rem;
-    background: var(--cream-2); border-radius: var(--radius-sm);
-    padding: 1.1rem 1.2rem; font-weight: 500;
+    display: flex; align-items: flex-start; gap: 0.8rem;
+    padding: 0.95rem 0;
+    border-bottom: 1px solid var(--line);
+    font-weight: 500; line-height: 1.5;
   }
+  /* 简洁细勾，去掉圆形色块，减轻"清单页"观感 */
   .why-check {
-    flex: none; width: 24px; height: 24px; border-radius: 50%;
-    background: var(--clay); color: var(--white);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.85rem; font-weight: 700;
+    flex: none;
+    color: var(--clay);
+    font-size: 1rem; font-weight: 700;
+    line-height: 1.5;
   }
 
   /* ===================== INSURANCE & BILLING ===================== */
@@ -481,12 +534,16 @@ const pageDesc =
   @media (max-width: 940px) {
     .about-grid { grid-template-columns: 1fr; }
     .services-grid,
-    .why-grid,
     .billing-list { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; gap: 0.2rem 1.6rem; }
     .founder-grid { grid-template-columns: 1fr; }
     .founder-text { max-width: none; }
     .founder-photo { position: static; max-width: 340px; }
     .contact-grid { grid-template-columns: 1fr; }
+    /* hero 分栏在窄屏叠成单列：文字在上，图片在下 */
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-inner { max-width: none; }
+    .hero-media { aspect-ratio: 16 / 10; max-height: 420px; }
   }
   @media (max-width: 560px) {
     .about-grid,

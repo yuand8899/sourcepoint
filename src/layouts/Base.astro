@@ -40,8 +40,14 @@ const { title, description } = Astro.props;
     <header class="site-header" id="top">
       <div class="container header-inner">
         <a class="brand" href="#top">
-          <span class="brand-en lang-en">{site.name.en}</span>
-          <span class="brand-zh lang-zh">{site.name.zh}</span>
+          {site.logo ? (
+            <img class="brand-logo" src={site.logo} alt={site.logoAlt.en} />
+          ) : (
+            <>
+              <span class="brand-en lang-en">{site.name.en}</span>
+              <span class="brand-zh lang-zh">{site.name.zh}</span>
+            </>
+          )}
         </a>
 
         <nav class="nav-desktop" aria-label="Primary">
@@ -103,10 +109,14 @@ const { title, description } = Astro.props;
 
     <footer class="site-footer">
       <div class="container">
-        <p class="footer-brand">
-          <span class="lang-en">{site.name.en}</span>
-          <span class="lang-zh">{site.name.zh}</span>
-        </p>
+        {site.logo ? (
+          <img class="footer-logo" src={site.logo} alt={site.logoAlt.en} />
+        ) : (
+          <p class="footer-brand">
+            <span class="lang-en">{site.name.en}</span>
+            <span class="lang-zh">{site.name.zh}</span>
+          </p>
+        )}
         <p class="footer-tag">
           <span class="lang-en">{site.tagline.en}</span>
           <span class="lang-zh">{site.tagline.zh}</span>
@@ -225,6 +235,15 @@ const { title, description } = Astro.props;
         white-space: nowrap;
       }
       .brand-zh { letter-spacing: 0.08em; }
+      /* 页头 Logo：限定高度，宽度自适应 */
+      .brand-logo {
+        height: 42px;
+        width: auto;
+        display: block;
+      }
+      @media (max-width: 420px) {
+        .brand-logo { height: 36px; }
+      }
 
       .nav-desktop { display: flex; gap: 1.6rem; }
       .nav-desktop a {
@@ -328,6 +347,16 @@ const { title, description } = Astro.props;
         font-size: 1.4rem;
         color: var(--white);
         margin-bottom: 0.4rem;
+      }
+      /* 页脚 Logo：居中；深色背景上用 filter 反白（适用于单色 Logo）。
+         若 Logo 为多色，请改用 content.ts 里的浅色版字段替换此处 src。 */
+      .footer-logo {
+        height: 46px;
+        width: auto;
+        display: block;
+        margin: 0 auto 0.8rem;
+        filter: brightness(0) invert(1);
+        opacity: 0.92;
       }
       .footer-tag { color: var(--clay-soft); font-size: 0.95rem; margin-bottom: 1.4rem; }
       .footer-contact {

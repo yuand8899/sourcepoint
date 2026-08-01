@@ -1,12 +1,9 @@
 // ============================================================================
 // content.ts — 全站中英文文案中枢
-// 每条文案都是 { en, zh } 结构；语言切换时前端根据当前语言取对应字段。
-// 日常改文字只需改这一个文件。
 // ============================================================================
 
 export type Bi = { en: string; zh: string };
 
-// ---- 站点基础信息 / 联系方式 -------------------------------------------------
 export const site = {
   name: { en: 'Sourcepoint Wellness', zh: '源真中医' },
   tagline: {
@@ -21,12 +18,11 @@ export const site = {
     zh: 'Unit 203 1548 Johnston Road, White Rock, BC, V4B 3Z7',
   },
   legalName: {
-    en: 'Sourcepoint Wellness',
+    en: 'Sourcepoint Wellness Inc.',
     zh: '源真中医',
   },
 };
 
-// ---- 导航 -------------------------------------------------------------------
 export const nav: { id: string; label: Bi }[] = [
   { id: 'about', label: { en: 'About', zh: '关于我们' } },
   { id: 'founder', label: { en: 'Founder', zh: '创始人' } },
@@ -38,7 +34,6 @@ export const nav: { id: string; label: Bi }[] = [
   { id: 'contact', label: { en: 'Contact', zh: '联系我们' } },
 ];
 
-// ---- Hero -------------------------------------------------------------------
 export const hero = {
   title: { en: 'Sourcepoint Wellness', zh: '源真中医' },
   subtitle: {
@@ -60,7 +55,6 @@ export const hero = {
   ctaContact: { en: 'Contact Us', zh: '联系我们' },
 };
 
-// ---- About ------------------------------------------------------------------
 export const about = {
   eyebrow: { en: 'About Us', zh: '关于我们' },
   missionTitle: { en: 'Our Mission', zh: '我们的使命' },
@@ -91,7 +85,6 @@ export const about = {
   ] as Bi[],
 };
 
-// ---- Founder ----------------------------------------------------------------
 export const founder = {
   eyebrow: { en: 'Meet Our Founder', zh: '创始人介绍' },
   name: { en: 'Yuan Ding (Yolanda Ding)', zh: '丁源（Yolanda Ding）' },
@@ -130,7 +123,6 @@ export const founder = {
   ] as Bi[],
 };
 
-// ---- Services (卡片，含图标 key) ---------------------------------------------
 export const servicesEyebrow = { en: 'Our Services', zh: '我们的服务' };
 export const services: { icon: string; title: Bi; body: Bi }[] = [
   {
@@ -215,7 +207,6 @@ export const services: { icon: string; title: Bi; body: Bi }[] = [
   },
 ];
 
-// ---- Treatment Modalities（顺序以中文文档为准）------------------------------
 export const modalitiesEyebrow = { en: 'Treatment Modalities', zh: '治疗方式' };
 export const modalities: Bi[] = [
   { en: 'Acupuncture', zh: '针灸' },
@@ -228,7 +219,6 @@ export const modalities: Bi[] = [
   { en: 'Lifestyle & Wellness Guidance', zh: '健康生活方式指导' },
 ];
 
-// ---- Wellness Education -----------------------------------------------------
 export const educationEyebrow = { en: 'Wellness Education', zh: '健康教育' };
 export const education: Bi[] = [
   { en: 'Community Health Lectures', zh: '社区健康讲座' },
@@ -239,7 +229,6 @@ export const education: Bi[] = [
   { en: 'International Educational Collaboration', zh: '国际教育合作' },
 ];
 
-// ---- Why Choose Us ----------------------------------------------------------
 export const whyEyebrow = { en: 'Why Choose Sourcepoint Wellness', zh: '为什么选择源真中医' };
 export const why: Bi[] = [
   {
@@ -266,7 +255,6 @@ export const why: Bi[] = [
   { en: 'English & Chinese Services', zh: '提供中英文双语服务' },
 ];
 
-// ---- Insurance & Billing ----------------------------------------------------
 export const billingEyebrow = { en: 'Insurance & Direct Billing', zh: '保险及直接结算' };
 export const billing: Bi[] = [
   { en: 'ICBC', zh: 'ICBC（卑诗省机动车事故保险）' },
@@ -275,7 +263,6 @@ export const billing: Bi[] = [
   { en: 'Direct Billing Available', zh: '提供直接保险结算（Direct Billing）' },
 ];
 
-// ---- Vision -----------------------------------------------------------------
 export const vision = {
   eyebrow: { en: 'Our Vision', zh: '我们的愿景' },
   body: {
@@ -284,7 +271,6 @@ export const vision = {
   },
 };
 
-// ---- Contact ----------------------------------------------------------------
 export const contact = {
   eyebrow: { en: 'Contact Us', zh: '联系我们' },
   hours: {
@@ -302,7 +288,6 @@ export const contact = {
   },
 };
 
-// ---- Footer / 免责声明 -------------------------------------------------------
 export const footer = {
   rights: {
     en: '© 2026 Sourcepoint Wellness Inc. All rights reserved.',
@@ -314,7 +299,6 @@ export const footer = {
   },
 };
 
-// ---- 语言切换按钮文案 --------------------------------------------------------
 export const langToggle = {
   toEn: 'EN',
   toZh: '中',

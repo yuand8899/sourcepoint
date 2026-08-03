@@ -307,17 +307,18 @@ const pageDesc =
               <span class="lang-en">{contact.callBtn.en}</span>
               <span class="lang-zh">{contact.callBtn.zh}</span>
             </a>
-        </div>
-      </div>
-      <!-- 地图 -->
-        <div class="contact-map reveal">
-          <iframe
-            src={contact.mapEmbedSrc}
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen
-            title="SourcePoint Wellness location / 诊所位置"
-          ></iframe>
+          </div>
+
+          <!-- 地图（移入右列，填补右侧空白） -->
+          <div class="contact-map reveal">
+            <iframe
+              src={contact.mapEmbedSrc}
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+              title="SourcePoint Wellness location / 诊所位置"
+            ></iframe>
+          </div>
         </div>
       </div>
     </div>
@@ -598,7 +599,7 @@ const pageDesc =
   .contact-list { list-style: none; padding: 0; margin: 0; }
   .contact-list li {
     display: flex; align-items: center; gap: 0.9rem;
-    padding: 0.95rem 0; border-bottom: 1px solid var(--line);
+    padding: 0.55rem 0;
     font-size: 1rem;
   }
   .contact-list li:first-child { padding-top: 0; }   /* 首行贴顶，便于与二维码对齐 */
@@ -618,22 +619,26 @@ const pageDesc =
   /* 右列：二维码（无卡片背景，二维码直接置于页面上） */
   .contact-qr {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .contact-map {
-      margin-top: clamp(2rem, 5vw, 3rem);
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    }
-    .contact-map iframe {
-      display: block;
-      width: 100%;
-      height: 380px;
-      border: 0;
-    }
-    @media (max-width: 640px) {
-      .contact-map iframe { height: 280px; }
-    }
+    width: 100%;
+    margin-top: 2rem;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+  .contact-map iframe {
+    display: block;
+    width: 100%;
+    height: 300px;
+    border: 0;
+  }
+  @media (max-width: 640px) {
+    .contact-map iframe { height: 280px; }
+  }
   .qr-frame {
     width: 180px; height: 180px; margin: 0 auto 1rem;
     border-radius: var(--radius-sm);
@@ -658,7 +663,7 @@ const pageDesc =
   .contact-btns {
     display: flex; flex-wrap: wrap; gap: 0.8rem;
     justify-content: center;
-    margin-top: 3rem;   /* 与二维码/提示拉开约两行的距离 */
+    margin-top: 1.5rem;   /* 与二维码/提示拉开约两行的距离 */
   }
 
   /* ===================== 响应式 ===================== */

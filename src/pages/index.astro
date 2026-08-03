@@ -599,7 +599,7 @@ const pageDesc =
   .contact-list { list-style: none; padding: 0; margin: 0; }
   .contact-list li {
     display: flex; align-items: center; gap: 0.9rem;
-    padding: 0.95rem 0; border-bottom: 1px solid var(--line);
+    padding: 0.95rem 0; /*border-bottom: 1px solid var(--line);*/
     font-size: 1rem;
   }
   .contact-list li:first-child { padding-top: 0; }   /* 首行贴顶，便于与二维码对齐 */
@@ -622,7 +622,7 @@ const pageDesc =
   }
   .contact-map {
     grid-column: 1 / -1;   /* 横跨整行，填满右下空白 */
-    margin-top: clamp(2rem, 5vw, 3rem);
+    margin-top: clamp(1rem, 3vw, 1.5rem);   /* 原 clamp(2rem, 5vw, 3rem) */
     border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);

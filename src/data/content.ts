@@ -186,6 +186,7 @@ export const services = {
   } as SectionHeading,
   items: [
     {
+      icon: 'pain',
       title: { en: 'Pain Management', zh: '疼痛治疗' },
       body: {
         en: 'Neck pain · Back pain · Shoulder pain · Arthritis · Sciatica · Headaches & migraines · Joint pain',
@@ -193,6 +194,7 @@ export const services = {
       },
     },
     {
+      icon: 'sports',
       title: { en: 'Sports Injuries', zh: '运动损伤' },
       body: {
         en: 'Helping active individuals recover from sports injuries, improve mobility, reduce pain, and return to the activities they enjoy.',
@@ -200,6 +202,7 @@ export const services = {
       },
     },
     {
+      icon: 'women',
       title: { en: "Women's Health", zh: '女性健康' },
       body: {
         en: 'Menstrual concerns · Fertility support · Pregnancy care · Menopause',
@@ -207,6 +210,7 @@ export const services = {
       },
     },
     {
+      icon: 'sleep',
       title: { en: 'Stress, Anxiety & Sleep', zh: '压力、焦虑与睡眠' },
       body: {
         en: 'Support for emotional well-being, better sleep, and improved resilience.',
@@ -214,6 +218,7 @@ export const services = {
       },
     },
     {
+      icon: 'beauty',
       title: { en: 'Cosmetic Acupuncture', zh: '美容针灸' },
       body: {
         en: 'A natural approach to healthier-looking skin and facial rejuvenation.',
@@ -221,6 +226,7 @@ export const services = {
       },
     },
     {
+      icon: 'digest',
       title: { en: 'Digestive Health', zh: '消化系统调理' },
       body: {
         en: 'Bloating · IBS · Acid reflux · Digestive discomfort',
@@ -228,6 +234,7 @@ export const services = {
       },
     },
     {
+      icon: 'child',
       title: { en: 'Pediatric Care', zh: '儿童健康' },
       body: {
         en: 'Gentle Traditional Chinese Medicine and Pediatric Tuina for children.',
@@ -235,6 +242,7 @@ export const services = {
       },
     },
     {
+      icon: 'herb',
       title: { en: 'Chinese Herbal Medicine', zh: '中药调理' },
       body: {
         en: 'Customized herbal prescriptions based on Traditional Chinese Medicine diagnosis.',
@@ -242,13 +250,14 @@ export const services = {
       },
     },
     {
+      icon: 'massage',
       title: { en: 'Tuina Therapy (Acupressure)', zh: '中医推拿（Tuina）' },
       body: {
         en: 'Hands-on therapy to improve mobility, relieve muscle tension, and restore function.',
         zh: '运用传统中医推拿手法，帮助缓解肌肉紧张、减轻疼痛、改善关节活动能力，促进身体恢复。',
       },
     },
-  ] as { title: Bi; body: Bi }[],
+  ] as { icon: string; title: Bi; body: Bi }[],
 };
 
 // ---- 初次就诊流程（4 步骤） ----

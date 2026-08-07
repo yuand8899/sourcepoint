@@ -1,5 +1,5 @@
 // ============================================================================
-// content.ts — 全站中英文文案中枢
+// content.ts — 全站中英文文案中枢（按 DEMO 重构）
 // ============================================================================
 
 export type Bi = { en: string; zh: string };
@@ -7,7 +7,6 @@ export type Bi = { en: string; zh: string };
 export const site = {
   name: { en: 'SourcePoint Wellness', zh: '源真中医' },
   // Logo 图片路径（页头、页脚、Hero 共用）。以后换 Logo 只改这一行。
-  // 建议放在 public/images/logo.svg 或 .png；留空 '' 时前端回退为纯文字店名。
   logo: '/images/logo.png',
   logoAlt: { en: 'SourcePoint Wellness logo', zh: '源真中医 Logo' },
   tagline: {
@@ -18,8 +17,7 @@ export const site = {
   email: 'info@sourcepointacu.com',
   wechat: 'YMLUCKY999',
   facebook: 'https://www.facebook.com/yolanda.fang.108',
-  // 微信二维码图片路径。请把从微信 App 导出的个人二维码放到 public/images/wechat-qr.png
-  // 留空 '' 时前端回退显示微信号文字。
+  // 微信二维码图片路径。留空 '' 时前端回退显示微信号文字。
   wechatQr: '/images/wechat-qr.png',
   region: {
     en: 'Unit 203 1548 Johnston Road, White Rock, BC, V4B 3Z7',
@@ -35,11 +33,7 @@ export const nav: { id: string; label: Bi }[] = [
   { id: 'about', label: { en: 'About', zh: '关于我们' } },
   { id: 'founder', label: { en: 'Founder', zh: '创始人' } },
   { id: 'services', label: { en: 'Services', zh: '服务项目' } },
-  //{ id: 'modalities', label: { en: 'Treatments', zh: '治疗方式' } },
-  //{ id: 'education', label: { en: 'Education', zh: '健康教育' } },
-  //{ id: 'why', label: { en: 'Why Us', zh: '为什么选我们' } },
   { id: 'billing', label: { en: 'Insurance', zh: '保险结算' } },
-  //{ id: 'vision', label: { en: 'Vision', zh: '我们的愿景' } },
   { id: 'contact', label: { en: 'Contact', zh: '联系我们' } },
 ];
 
@@ -50,259 +44,229 @@ export const hero = {
     en: 'Calm natural setting representing balance and wellness',
     zh: '象征平衡与健康的自然场景',
   },
-  //title: { en: 'SourcePoint Wellness', zh: '源真中医' },
+  eyebrow: { en: 'SourcePoint Wellness', zh: '源真中医' },
   title: { en: 'Acupuncture · Traditional Chinese Medicine', zh: '针灸 · 中药 · 推拿 · 健康管理' },
   subtitle: {
-    //en: 'Helping You Feel Better, Naturally',
-    //zh: '让健康回归自然，让生活重拾平衡',
     en: 'Evidence-Informed · Patient-Centered · Rooted in Tradition',
     zh: '循证实践 · 以患者为中心 · 传承中医精髓',
   },
   body: {
-    en: 'Personalized acupuncture and Traditional Chinese Medicine to relieve pain, restore balance, and support women\u2019s health, pediatric care, stress management, digestive health, cosmetic acupuncture, and lifelong wellness.',
+    en: 'Personalized acupuncture and Traditional Chinese Medicine to relieve pain, restore balance, and support women\\u2019s health, pediatric care, stress management, digestive health, cosmetic acupuncture, and lifelong wellness.',
     zh: [
       '源真中医相信，健康不仅是没有疾病，更是身心平衡、充满活力与幸福感的状态。我们致力于通过中医智慧帮助个人与家庭实现最佳健康状态。',
       '我们提供个性化针灸及传统中医治疗，专注于疼痛治疗、女性健康、儿童健康、压力管理、美容针灸及长期健康调理，为您和家人的健康保驾护航。'
     ],
   },
-  values: {
-    //en: 'Evidence-Informed · Patient-Centered · Rooted in Tradition',
-    //zh: '循证实践 · 以患者为中心 · 传承中医精髓',
-    en: 'SourcePoint Wellness',
-    zh: '源真中医',
+  // Hero 右侧图片上叠加的竖排寄语。中文四行、英文三行（按你的要求）。
+  overlay: {
+    zh: ['源于初心', '守于至真', '寻其根本', '扶助正气'],
+    en: ['Find the Root', 'Restore Balance', 'Live Well.'],
   },
   ctaBook: { en: 'Book a Consultation', zh: '预约咨询' },
   ctaContact: { en: 'Contact Us', zh: '联系我们' },
 };
 
-export const about = {
-  eyebrow: { en: 'About Us', zh: '关于我们' },
-  intro: [
-    {
-      en: 'SourcePoint Wellness is a Canadian wellness clinic dedicated to the promotion and practice of Traditional Chinese Medicine, acupuncture, herbal medicine, and holistic health education.',
-      zh: '源真中医是一家位于加拿大的专业健康机构，致力于中医、针灸、中药调理及健康教育的推广与实践。',
-    },
-    {
-      en: 'Founded by Yuan Ding (Yolanda Ding), R.Ac., the clinic combines years of clinical experience, teaching, and international healthcare training to provide compassionate and individualized care.',
-      zh: '由注册针灸师丁源（Yolanda Ding）创立，结合多年临床经验、教学经验及国际医疗培训背景，为患者提供个性化、专业化的健康服务。',
-    },
-  ] as Bi[],
-  missionTitle: { en: 'Our Mission', zh: '我们的使命' },
-  mission: [
-    {
-      en: 'At SourcePoint Wellness, our mission is to integrate the wisdom of Traditional Chinese Medicine with modern healthcare to provide compassionate, personalized, and evidence-informed care.',
-      zh: '源真中医致力于将传统中医智慧与现代健康理念相结合，为每一位患者提供专业、个性化及循证实践的健康服务。',
-    },
-    {
-      en: 'We are dedicated to helping individuals and families restore balance, improve health, prevent illness, and enhance their quality of life.',
-      zh: '我们希望帮助个人和家庭恢复平衡、改善健康、预防疾病，并提升生活品质。',
-    },
-  ] as Bi[],
-  philosophyTitle: { en: 'Our Philosophy', zh: '我们的理念' },
-  philosophy: [
-    {
-      en: 'Traditional Chinese Medicine views the human body as an interconnected whole.',
-      zh: '传统中医认为，人体是一个相互联系、协调统一的整体。',
-    },
-    {
-      en: 'We believe lasting health comes from understanding and addressing the underlying causes of health concerns, rather than simply managing symptoms.',
-      zh: '我们相信，真正持久的健康来自于发现并解决健康问题背后的根本原因，而不仅仅是缓解症状。',
-    },
-    {
-      en: "Our approach emphasizes prevention, balance, and supporting the body's natural ability to heal.",
-      zh: '我们的诊疗理念强调预防疾病、维持平衡，并激发人体自身的自然修复能力。',
-    },
-  ] as Bi[],
+// ---- WHY CHOOSE（DEMO：4 张特色卡片） ----
+export const whyChooseEyebrow = { en: 'Why Choose SourcePoint', zh: '为什么选择源真中医' };
+export const whyChooseTitle = {
+  en: 'Personalized Care. Professional Expertise. Compassionate Treatment.',
+  zh: '守正求本 · 辨证施治 · 用心守护',
 };
-
-export const founder = {
-  eyebrow: { en: 'Meet Our Founder', zh: '创始人介绍' },
-  name: { en: 'Yuan Ding (Yolanda Ding)', zh: '丁源（Yolanda Ding）' },
-  credentials: [
-    {
-      en: 'Registered Traditional Chinese Medicine Practitioner (BC)',
-      zh: '加拿大BC省注册中医师',
-    },
-    { en: 'Registered Acupuncturist (BC)', zh: '加拿大BC省注册针灸师' },
-    {
-      en: 'Formerly Licensed Traditional Chinese Medicine Physician in China',
-      zh: '中华人民共和国执业中医师',
-    },
-  ] as Bi[],
-  bio: [
-    {
-      en: 'Yolanda Ding is a Registered Traditional Chinese Medicine Practitioner and Registered Acupuncturist in British Columbia, Canada. She holds a Master\u2019s Degree in Traditional Chinese Medicine and completed over eight years of formal medical education before becoming a licensed Traditional Chinese Medicine Physician in China. With over twenty years of clinical, teaching, and healthcare education experience, she combines the depth of Traditional Chinese Medicine with an evidence-informed, patient-centered approach to care.',
-      zh: '丁源女士现为加拿大BC省注册中医师及注册针灸师。她拥有中医硕士学位，在成为中国执业中医师之前接受了八年以上系统、正规的中医专业教育。她拥有二十余年中医临床、医学教学及健康培训经验，将深厚的传统中医理论与循证医学理念相结合，坚持以患者为中心，为每位患者提供科学、个性化的中医诊疗服务。',
-    },
-    {
-      en: 'Coming from a family with a multi-generational heritage in Traditional Chinese Medicine, Yolanda represents the third generation of TCM practitioners in her family.',
-      zh: '丁医师出身于中医世家，为家族第三代中医传承人。自幼受到中医文化熏陶，对中医事业怀有深厚热爱与使命感。',
-    },
-    {
-      en: 'In addition to clinical practice, she has dedicated many years to Traditional Chinese Medicine education and international healthcare training. She currently serves as a college instructor and clinical supervisor in British Columbia and has trained numerous healthcare professionals in Canada and internationally.',
-      zh: '除临床工作外，她长期从事中医教育及国际医疗培训工作，目前担任加拿大中医学院课程讲师及临床指导老师，并培养了众多加拿大及国际医疗专业人员。',
-    },
-    {
-      en: 'Her mission is to help individuals and families achieve lasting health through compassionate, personalized, and evidence-informed care.',
-      zh: '她始终秉持以患者为中心的理念，希望通过富有同理心、个性化及循证医学实践的中医服务，帮助更多个人与家庭获得持久健康。',
-    },
-    {
-      en: 'Outside of her professional work, Yolanda enjoys reading, writing, hiking, and painting. She believes that lifelong learning and maintaining balance in life are essential to lasting health\u2014a philosophy that also guides her approach to patient care.',
-      zh: '工作之余，丁医师喜欢阅读、写作、徒步旅行及绘画。她相信持续学习以及保持身心平衡，是实现长期健康的重要基础，而这一理念也贯穿于她的临床实践之中。',
-    },
-  ] as Bi[],
+export const whyChooseSub = {
+  en: 'Healthcare is personal. Your treatment should be too.',
+  zh: '医疗不仅是治疗疾病，更是理解每一位患者。',
 };
-
-export const servicesEyebrow = { en: 'Our Services', zh: '我们的服务' };
-export const servicesTitle = { en: 'Care for the whole person', zh: '关照身心整体的健康' };
-export const services: { icon: string; title: Bi; body: Bi }[] = [
+export const whyChoose: { icon: string; title: Bi; body: Bi }[] = [
   {
-    icon: 'pain',
-    title: { en: 'Pain Management', zh: '疼痛管理' },
+    icon: 'plus',
+    title: { en: '20+ Years of Clinical Experience', zh: '二十余年临床经验' },
     body: {
-      en: 'Neck Pain · Shoulder Pain · Back Pain · Sciatica · Arthritis · Sports Injuries · Headaches & Migraines',
-      zh: '颈肩腰腿痛 · 坐骨神经痛 · 关节疼痛 · 运动损伤 · 头痛及偏头痛',
+      en: 'From hospital practice in China to patient care in British Columbia, our focus has always been helping people recover, heal, and live healthier lives.',
+      zh: '从中国医院临床，到加拿大执业，二十余年始终专注于帮助患者恢复健康、改善生活品质。',
     },
   },
   {
-    icon: 'women',
-    title: { en: "Women's Health & Fertility", zh: '女性健康与生育支持' },
+    icon: 'badge',
+    title: { en: 'Registered & Licensed in BC', zh: '加拿大注册执业' },
     body: {
-      en: 'Menstrual Health · Fertility Support · Pregnancy Wellness · Postpartum Recovery · Menopause Care',
+      en: 'Receive care from a Registered Traditional Chinese Medicine Practitioner and Registered Acupuncturist.',
+      zh: '严格遵循BC省专业医疗规范，为患者提供安全、规范的治疗。',
+    },
+  },
+  {
+    icon: 'evidence',
+    title: { en: 'Evidence-Informed Care', zh: '循证与传统相结合' },
+    body: {
+      en: 'Traditional wisdom is integrated with current clinical evidence and patient-centred practice.',
+      zh: '尊重中医传统，同时结合现代医学研究成果与患者需求。',
+    },
+  },
+  {
+    icon: 'heart',
+    title: { en: 'Individualized Treatment', zh: '个性化治疗' },
+    body: {
+      en: 'Your treatment plan is designed around your health concerns, goals, and progress.',
+      zh: '根据您的健康状况、生活方式及治疗目标制定专属方案。',
+    },
+  },
+];
+
+export const founder = {
+  eyebrow: { en: 'About Yolanda', zh: '关于丁源医师' },
+  title: { en: 'Meet Your Practitioner', zh: '认识您的治疗师' },
+  name: { en: 'Yolanda Ding, R.TCM.P. & R.Ac.', zh: '丁源 Yolanda Ding' },
+  credentials: [
+    { en: 'Registered TCM Practitioner (BC)', zh: '加拿大注册中医师（R.TCM.P.）' },
+    { en: 'Registered Acupuncturist (BC)', zh: '加拿大注册针灸师（R.Ac.）' },
+    { en: 'Former Licensed TCM Physician (China)', zh: '中华人民共和国执业中医师' },
+    { en: 'College Instructor & Clinical Educator', zh: '加拿大中医学院讲师及临床导师' },
+  ] as Bi[],
+  bio: [
+    {
+      en: 'Raised in a third-generation Traditional Chinese Medicine family, Yolanda developed a deep appreciation for holistic healthcare from an early age. She earned a Master\\u2019s degree in Traditional Chinese Medicine after completing more than eight years of formal university education in China, followed by years of hospital and clinical experience.',
+      zh: '丁源医师出生于中医世家，是第三代中医传承者，自幼受中医文化熏陶，对中医产生了浓厚兴趣，并坚定地选择了中医作为一生的事业。她在中国完成了八年以上系统的中医医学大学学位，获得中医硕士学位，随后长期从事医院及临床诊疗及教学工作。',
+    },
+    {
+      en: 'Today, with over 20 years of healthcare experience and professional practice in Canada, she combines deep traditional knowledge with modern, evidence-informed care to help patients achieve lasting health. She believes lasting health comes from understanding the root cause of illness — not simply managing symptoms.',
+      zh: '如今，拥有二十余年医疗健康领域经验的丁医师，在加拿大继续从事中医临床及教学工作，将传统中医智慧与现代循证医学相结合，帮助患者实现更加持久、全面的健康管理。她始终相信：真正持久的健康，来自于找到疾病的根源，而不仅仅是缓解症状。',
+    },
+    {
+      en: '“Helping people feel better is more than my profession — it\\u2019s my lifelong commitment.”',
+      zh: '“帮助更多人恢复健康，不仅是我的职业，更是我一生坚持的使命。”',
+    },
+  ] as Bi[],
+};
+
+// ---- SERVICES（DEMO：12 项，无图标，纯卡片） ----
+export const servicesEyebrow = { en: 'Services', zh: '服务项目' };
+export const servicesTitle = {
+  en: 'Comprehensive Care for Every Stage of Life',
+  zh: '全生命周期健康管理',
+};
+export const servicesSub = {
+  en: 'Whether you\\u2019re recovering from pain, managing a chronic condition, or investing in long-term wellness, we\\u2019re here to help.',
+  zh: '无论您希望缓解疼痛、改善慢性疾病，还是追求长期健康管理，我们都愿意陪伴您。',
+};
+export const services: { title: Bi; body: Bi }[] = [
+  {
+    title: { en: 'Pain Management', zh: '疼痛治疗' },
+    body: {
+      en: 'Neck pain · Back pain · Shoulder pain · Arthritis · Sciatica · Headaches & migraines · Joint pain',
+      zh: '颈肩腰腿痛 · 关节炎 · 坐骨神经痛 · 头痛及偏头痛 · 关节肌肉疼痛等',
+    },
+  },
+  {
+    title: { en: 'Sports Injuries', zh: '运动损伤' },
+    body: {
+      en: 'Helping active individuals recover from sports injuries, improve mobility, reduce pain, and return to the activities they enjoy.',
+      zh: '帮助运动爱好者及日常活动受伤患者缓解疼痛、恢复功能、尽快回归工作、运动和日常生活。',
+    },
+  },
+  {
+    title: { en: "Women's Health", zh: '女性健康' },
+    body: {
+      en: 'Menstrual concerns · Fertility support · Pregnancy care · Menopause',
       zh: '月经调理 · 备孕支持 · 孕期保健 · 产后恢复 · 更年期调理',
     },
   },
   {
-    icon: 'sleep',
-    title: { en: 'Sleep & Stress Management', zh: '睡眠与压力管理' },
+    title: { en: 'Stress, Anxiety & Sleep', zh: '压力、焦虑与睡眠' },
     body: {
-      en: 'Insomnia · Stress · Anxiety · Fatigue · Emotional Wellness',
-      zh: '失眠 · 焦虑 · 压力 · 疲劳 · 情绪调节',
+      en: 'Support for emotional well-being, better sleep, and improved resilience.',
+      zh: '帮助缓解压力、焦虑及睡眠问题，促进身心平衡。',
     },
   },
   {
-    icon: 'beauty',
     title: { en: 'Cosmetic Acupuncture', zh: '美容针灸' },
     body: {
-      en: 'Natural Facial Rejuvenation · Skin Health · Collagen Stimulation · Facial Muscle Toning',
-      zh: '自然美容 · 面部年轻化 · 改善皮肤状态 · 面部肌肉提升 · 健康美学管理',
+      en: 'A natural approach to healthier-looking skin and facial rejuvenation.',
+      zh: '通过自然、安全的方式改善肤质，促进胶原蛋白生成，帮助面部恢复健康光泽。',
     },
   },
   {
-    icon: 'child',
-    title: { en: 'Pediatric Care & Tuina', zh: '儿童健康与小儿推拿' },
+    title: { en: 'Digestive Health', zh: '消化系统调理' },
     body: {
-      en: 'Immunity · Digestion · Sleep · Development Support · Recurring Colds',
-      zh: '免疫力调理 · 消化调理 · 睡眠改善 · 生长发育支持 · 反复感冒咳嗽',
+      en: 'Bloating · IBS · Acid reflux · Digestive discomfort',
+      zh: '腹胀 · 胃食管反流 · 肠易激综合征（IBS） · 消化功能紊乱',
     },
   },
   {
-    icon: 'digest',
-    title: { en: 'Digestive Health', zh: '消化健康' },
+    title: { en: 'Pediatric Care', zh: '儿童健康' },
     body: {
-      en: 'Indigestion · Bloating · Acid Reflux · IBS · Digestive Imbalance',
-      zh: '消化不良 · 腹胀 · 胃食管反流 · 肠易激综合征（IBS） · 胃肠功能失调',
+      en: 'Gentle Traditional Chinese Medicine and Pediatric Tuina for children.',
+      zh: '采用温和中医小儿推拿及调理方式，帮助儿童健康成长。',
     },
   },
   {
-    icon: 'weight',
-    title: { en: 'Weight Management', zh: '体重管理' },
-    body: {
-      en: 'Metabolic Health & Lifestyle Guidance',
-      zh: '个性化体重管理与健康生活方式指导',
-    },
-  },
-  {
-    icon: 'consult',
-    title: { en: 'TCM Consultation', zh: '中医问诊' },
-    body: {
-      en: 'Comprehensive TCM Assessment & Personalized Treatment Planning',
-      zh: '中医整体辨证评估与个性化治疗方案制定',
-    },
-  },
-  {
-    icon: 'herb',
     title: { en: 'Chinese Herbal Medicine', zh: '中药调理' },
     body: {
-      en: 'Personalized Herbal Prescriptions',
-      zh: '个性化中药处方及调理建议',
+      en: 'Customized herbal prescriptions based on Traditional Chinese Medicine diagnosis.',
+      zh: '依据中医辨证，制定个性化中药调理方案。',
     },
   },
   {
-    icon: 'massage',
-    title: { en: 'TCM Massage & Acupressure', zh: '中医经络推拿' },
+    title: { en: 'Tuina Therapy (Acupressure)', zh: '中医推拿（Tuina）' },
     body: {
-      en: 'Traditional Chinese Medicine massage and acupressure techniques help promote circulation, relieve pain, reduce muscle tension, improve mobility, and support overall wellness.',
-      zh: '通过经络推拿、穴位调理及软组织手法促进气血循环、缓解疼痛、放松肌肉、改善身体功能。',
+      en: 'Hands-on therapy to improve mobility, relieve muscle tension, and restore function.',
+      zh: '运用传统中医推拿手法，帮助缓解肌肉紧张、减轻疼痛、改善关节活动能力，促进身体恢复。',
     },
   },
 ];
 
-export const modalitiesEyebrow = { en: 'Treatment Modalities', zh: '治疗方式' };
-export const modalities: Bi[] = [
-  { en: 'Acupuncture', zh: '针灸' },
-  { en: 'Chinese Herbal Medicine', zh: '中药调理' },
-  { en: 'Acupressure & Tuina', zh: '穴位按压与中医经络推拿' },
-  { en: 'Pediatric Tuina', zh: '小儿推拿' },
-  { en: 'Moxibustion', zh: '艾灸疗法' },
-  { en: 'Cupping Therapy', zh: '拔罐疗法' },
-  { en: 'Gua Sha', zh: '刮痧疗法' },
-  { en: 'Lifestyle & Wellness Guidance', zh: '健康生活方式指导' },
-];
-
-export const educationEyebrow = { en: 'Wellness Education', zh: '健康教育' };
-export const education: Bi[] = [
-  { en: 'Community Health Lectures', zh: '社区健康讲座' },
-  { en: 'Professional Continuing Education', zh: '专业继续教育' },
-  { en: 'Traditional Chinese Medicine Courses', zh: '中医课程培训' },
-  { en: 'Pediatric Tuina Training', zh: '小儿推拿培训' },
-  { en: 'Canadian Red Cross First Aid Training', zh: '加拿大红十字急救培训' },
-  { en: 'International Educational Collaboration', zh: '国际教育合作' },
-];
-
-export const whyEyebrow = { en: 'Why Choose SourcePoint', zh: '为什么选择源真' };
-export const whyTitle = { en: 'Depth of training you can trust', zh: '值得信赖的专业积淀' };
-export const why: Bi[] = [
-  {
-    en: 'Registered Traditional Chinese Medicine Practitioner & Acupuncturist in BC',
-    zh: '加拿大BC省注册中医师及注册针灸师',
-  },
-  { en: 'Over 20 Years of Clinical and Teaching Experience', zh: '20余年临床及教学经验' },
-  {
-    en: 'Master\u2019s Degree in Traditional Chinese Medicine',
-    zh: '中医学硕士，八年以上系统中医专业教育',
-  },
-  {
-    en: 'Formerly Licensed Traditional Chinese Medicine Physician in China',
-    zh: '中华人民共和国执业中医师',
-  },
-  {
-    en: 'College Instructor & Clinical Supervisor in British Columbia',
-    zh: '加拿大中医学院课程讲师及临床指导老师',
-  },
-  { en: 'Third Generation TCM Family Heritage', zh: '中医世家第三代传承人' },
-  { en: 'International Healthcare Training Experience', zh: '丰富的国际医疗培训经验' },
-  { en: 'Evidence-Informed Practice', zh: '循证医学理念指导临床实践' },
-  { en: 'Personalized Treatment Plans', zh: '个性化治疗方案' },
-  { en: 'English & Chinese Services', zh: '提供中英文双语服务' },
-];
-
-export const billingEyebrow = { en: 'Insurance & Direct Billing', zh: '保险及直接结算' };
-export const billingTitle = { en: 'Coverage made simple', zh: '保险结算，轻松无忧' };
-export const billing: Bi[] = [
-  { en: 'ICBC', zh: 'ICBC（卑诗省机动车事故保险）' },
-  { en: 'WCB', zh: 'WCB（工伤保险）' },
-  { en: 'Extended Health Plans', zh: '各类商业医疗保险' },
-  { en: 'Direct Billing Available', zh: '提供直接保险结算（Direct Billing）' },
-];
-
-export const vision = {
-  eyebrow: { en: 'Our Vision', zh: '我们的愿景' },
-  body: {
-    en: 'To become a trusted center for Traditional Chinese Medicine, Acupuncture, Wellness Education, and Community Health Promotion while building bridges between Eastern healing wisdom and modern healthcare.',
-    zh: '成为一家值得信赖的传统中医、针灸、健康教育及社区健康促进中心，搭建东方医学智慧与现代医疗之间的桥梁，为更多家庭提供高质量的健康服务。',
-  },
+// ---- 初次就诊流程（DEMO：4 步骤） ----
+export const firstVisitEyebrow = { en: 'What to Expect', zh: '初次就诊流程' };
+export const firstVisitTitle = {
+  en: 'Your First Visit Made Simple',
+  zh: '轻松、安心地开始治疗',
 };
+export const firstVisit: { step: string; title: Bi; body: Bi }[] = [
+  {
+    step: '01',
+    title: { en: 'Consultation', zh: '初诊咨询' },
+    body: {
+      en: 'We\\u2019ll take the time to understand your health concerns, medical history, and goals.',
+      zh: '详细了解您的健康状况、病史及治疗目标。',
+    },
+  },
+  {
+    step: '02',
+    title: { en: 'Assessment', zh: '中医辨证评估' },
+    body: {
+      en: 'A Traditional Chinese Medicine assessment helps us identify patterns and underlying imbalances.',
+      zh: '通过中医辨证分析身体整体状态及失衡原因。',
+    },
+  },
+  {
+    step: '03',
+    title: { en: 'Personalized Treatment', zh: '个性化治疗' },
+    body: {
+      en: 'Your treatment may include acupuncture, herbal medicine, cupping, moxibustion, gua sha, or Tuina therapy.',
+      zh: '治疗可能包括针灸、中药、拔罐、艾灸、刮痧及中医推拿等。',
+    },
+  },
+  {
+    step: '04',
+    title: { en: 'Wellness Plan', zh: '健康管理建议' },
+    body: {
+      en: 'You\\u2019ll leave with personalized recommendations to support your health between visits.',
+      zh: '提供饮食、生活方式及后续护理建议，帮助获得稳定持久、更稳定的疗效。',
+    },
+  },
+];
+
+// ---- INSURANCE & DIRECT BILLING（DEMO：深色卡片 + 4 项标签） ----
+export const billingEyebrow = { en: 'Insurance & Direct Billing', zh: '医疗保险' };
+export const billingTitle = { en: 'Making Care Easier to Access', zh: '商业保险与直接报销' };
+export const billingBody = {
+  en: 'We work with many extended health insurance providers and offer direct billing whenever available.',
+  zh: '我们与多家商业保险公司合作，并可为符合条件的保险公司提供 Direct Billing（直接报销）服务。',
+};
+export const billing: { name: Bi; note: Bi }[] = [
+  { name: { en: 'ICBC', zh: 'ICBC' }, note: { en: '', zh: '' } },
+  { name: { en: 'WorkSafeBC', zh: 'WorkSafeBC' }, note: { en: '', zh: '' } },
+  { name: { en: 'MSP', zh: 'MSP' }, note: { en: 'where applicable', zh: '适用项目' } },
+  { name: { en: 'Extended Health Plans', zh: '各大商业保险' }, note: { en: '', zh: '' } },
+];
 
 export const contact = {
   eyebrow: { en: 'Contact Us', zh: '联系我们' },
@@ -319,8 +283,8 @@ export const contact = {
     email: { en: 'Email', zh: '邮箱' },
     wechat: { en: 'WeChat', zh: '微信' },
   },
-  // 新增：地图嵌入地址
-  mapEmbedSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1555.4477990000466!2d-122.8004009081786!3d49.03072997472316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485c37c3858ea93%3A0x9f8ff4198508d8d5!2s1548%20Johnston%20Rd%2C%20White%20Rock%2C%20BC%20V4B%203Z7!5e0!3m2!1sen!2sca!4v1785620825186!5m2!1sen!2sca",
+  mapEmbedSrc:
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1555.4477990000466!2d-122.8004009081786!3d49.03072997472316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485c37c3858ea93%3A0x9f8ff4198508d8d5!2s1548%20Johnston%20Rd%2C%20White%20Rock%2C%20BC%20V4B%203Z7!5e0!3m2!1sen!2sca!4v1785620825186!5m2!1sen!2sca',
 };
 
 export const footer = {

@@ -1,25 +1,37 @@
 ---
 import Base from '../layouts/Base.astro';
-import Icon from '../components/Icon.astro';
 import {
-  site, hero, about, founder, servicesEyebrow, servicesTitle, services,
-  modalitiesEyebrow, modalities, educationEyebrow, education,
-  whyEyebrow, whyTitle, why, billingEyebrow, billingTitle, billing, vision, contact,
+  site, hero,
+  whyChooseEyebrow, whyChooseTitle, whyChooseSub, whyChoose,
+  founder,
+  servicesEyebrow, servicesTitle, servicesSub, services,
+  firstVisitEyebrow, firstVisitTitle, firstVisit,
+  billingEyebrow, billingTitle, billingBody, billing,
+  contact,
 } from '../data/content';
 
 const pageTitle =
   'SourcePoint Wellness 源真中医 | TCM & Acupuncture · White Rock / South Surrey, BC';
 const pageDesc =
   'SourcePoint Wellness 源真中医 — Traditional Chinese Medicine, acupuncture, herbal medicine and holistic wellness in White Rock / South Surrey, BC. Founded by Yuan Ding (Yolanda Ding), R.TCM.P., R.Ac.';
+
+// 简单的特色卡片图标（内联 SVG），风格与全站细线描一致
+const whyIcons: Record<string, string> = {
+  plus: '<path d="M12 5v14"/><path d="M5 12h14"/>',
+  badge:
+    '<path d="M12 3l2.4 1.7 2.9-.2 1 2.8 2.5 1.5-.9 2.8.9 2.8-2.5 1.5-1 2.8-2.9-.2L12 21l-2.4-1.7-2.9.2-1-2.8L3.2 15l.9-2.8L3.2 9.4l2.5-1.5 1-2.8 2.9.2z"/><path d="m9 12 2 2 4-4"/>',
+  evidence: '<path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M14 3v5h5"/><path d="M8 13h8"/><path d="M8 16h5"/>',
+  heart: '<path d="M12 20s-7-4.5-9.2-9C1.3 8 3 4.5 6.5 4.5c2 0 3.3 1.2 4.1 2.4l1.4 1.9 1.4-1.9c.8-1.2 2.1-2.4 4.1-2.4C21 4.5 22.7 8 21.2 11 19 15.5 12 20 12 20z"/>',
+};
 ---
 <Base title={pageTitle} description={pageDesc}>
   <!-- ===================== HERO ===================== -->
   <section class="hero" id="hero">
     <div class="container hero-grid">
-      <div class="hero-inner reveal">        
-        <p class="hero-values">
-          <span class="lang-en">{hero.values.en}</span>
-          <span class="lang-zh">{hero.values.zh}</span>
+      <div class="hero-inner reveal">
+        <p class="hero-eyebrow">
+          <span class="lang-en">{hero.eyebrow.en}</span>
+          <span class="lang-zh">{hero.eyebrow.zh}</span>
         </p>
         <h1 class="hero-title">
           <span class="lang-en">{hero.title.en}</span>
@@ -34,86 +46,94 @@ const pageDesc =
           <span class="lang-zh">{hero.body.zh.map((p) => <span class="hero-body-p">{p}</span>)}</span>
         </p>
         <div class="hero-cta">
-          <!-- 预约咨询按钮, 暂时屏蔽 <a href="#contact" class="btn btn-primary">
-            <span class="lang-en">{hero.ctaBook.en}</span>
-            <span class="lang-zh">{hero.ctaBook.zh}</span>
-          </a>  -->
           <a href="#contact" class="btn btn-ghost">
             <span class="lang-en">{hero.ctaContact.en}</span>
             <span class="lang-zh">{hero.ctaContact.zh}</span>
           </a>
         </div>
       </div>
+
       <div class="hero-media reveal">
         <img class="hero-img" src={hero.image} alt={hero.imageAlt.en} />
+        <div class="hero-overlay" aria-hidden="false">
+          <div class="hero-overlay-zh lang-zh">
+            {hero.overlay.zh.map((line) => <span class="hero-overlay-line">{line}</span>)}
+          </div>
+          <div class="hero-overlay-en lang-en">
+            {hero.overlay.en.map((line) => <span class="hero-overlay-line">{line}</span>)}
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== ABOUT ===================== -->
-  <section class="section" id="about">
-    <div class="container">
-      <p class="eyebrow reveal">
-        <span class="lang-en">{about.eyebrow.en}</span>
-        <span class="lang-zh">{about.eyebrow.zh}</span>
+  <!-- ===================== WHY CHOOSE ===================== -->
+  <section class="section section--alt" id="about">
+    <div class="container why-wrap">
+      <p class="eyebrow reveal why-eyebrow">
+        <span class="lang-en">{whyChooseEyebrow.en}</span>
+        <span class="lang-zh">{whyChooseEyebrow.zh}</span>
       </p>
-      <div class="about-grid">
-        <div class="about-intro reveal">
-          <h2 class="section-title">
-            <span class="lang-en">About SourcePoint Wellness</span>
-            <span class="lang-zh">关于源真中医</span>
-          </h2>
-          {about.intro.map((p) => (
-            <p class="about-intro-p"><span class="lang-en">{p.en}</span><span class="lang-zh">{p.zh}</span></p>
-          ))}
-        </div>
-        <div class="about-cards">
-          <div class="about-card about-card--ink reveal">
-            <h3 class="about-h">
-              <span class="lang-en">{about.missionTitle.en}</span>
-              <span class="lang-zh">{about.missionTitle.zh}</span>
+      <h2 class="section-title why-title reveal">
+        <span class="lang-en">{whyChooseTitle.en}</span>
+        <span class="lang-zh">{whyChooseTitle.zh}</span>
+      </h2>
+      <p class="why-sub reveal">
+        <span class="lang-en">{whyChooseSub.en}</span>
+        <span class="lang-zh">{whyChooseSub.zh}</span>
+      </p>
+      <div class="why-grid">
+        {whyChoose.map((w) => (
+          <article class="why-card reveal">
+            <div class="why-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={whyIcons[w.icon] ?? whyIcons.plus} />
+            </div>
+            <h3 class="why-card-title">
+              <span class="lang-en">{w.title.en}</span>
+              <span class="lang-zh">{w.title.zh}</span>
             </h3>
-            {about.mission.map((p) => (
-              <p><span class="lang-en">{p.en}</span><span class="lang-zh">{p.zh}</span></p>
-            ))}
-          </div>
-          <div class="about-card about-card--ink reveal">
-            <h3 class="about-h">
-              <span class="lang-en">{about.philosophyTitle.en}</span>
-              <span class="lang-zh">{about.philosophyTitle.zh}</span>
-            </h3>
-            {about.philosophy.map((p) => (
-              <p><span class="lang-en">{p.en}</span><span class="lang-zh">{p.zh}</span></p>
-            ))}
-          </div>
-        </div>
+            <p class="why-card-body">
+              <span class="lang-en">{w.body.en}</span>
+              <span class="lang-zh">{w.body.zh}</span>
+            </p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
 
   <!-- ===================== FOUNDER ===================== -->
-  <section class="section section--alt" id="founder">
+  <section class="section" id="founder">
     <div class="container founder-grid">
       <div class="founder-photo reveal">
         <img src="/images/founder.jpg" alt="创始人照片 / Founder portrait" />
+        <span class="founder-photo-hint lang-zh">此处替换为丁源医师专业形象照</span>
+        <span class="founder-photo-hint lang-en">Replace with Yolanda's professional portrait</span>
       </div>
-    <div class="founder-text reveal">
+      <div class="founder-text reveal">
         <p class="eyebrow">
           <span class="lang-en">{founder.eyebrow.en}</span>
           <span class="lang-zh">{founder.eyebrow.zh}</span>
         </p>
-        <h2 class="section-title founder-name">
+        <h2 class="section-title founder-title">
+          <span class="lang-en">{founder.title.en}</span>
+          <span class="lang-zh">{founder.title.zh}</span>
+        </h2>
+        <p class="founder-name">
           <span class="lang-en">{founder.name.en}</span>
           <span class="lang-zh">{founder.name.zh}</span>
-        </h2>
-        <ul class="cred-list">
+        </p>
+        <ul class="cred-tags">
           {founder.credentials.map((c) => (
             <li><span class="lang-en">{c.en}</span><span class="lang-zh">{c.zh}</span></li>
           ))}
         </ul>
         <div class="founder-bio-cols">
-          {founder.bio.map((p) => (
-            <p class="founder-bio"><span class="lang-en">{p.en}</span><span class="lang-zh">{p.zh}</span></p>
+          {founder.bio.map((p, i) => (
+            <p class={i === founder.bio.length - 1 ? 'founder-bio founder-quote' : 'founder-bio'}>
+              <span class="lang-en">{p.en}</span><span class="lang-zh">{p.zh}</span>
+            </p>
           ))}
         </div>
       </div>
@@ -121,7 +141,7 @@ const pageDesc =
   </section>
 
   <!-- ===================== SERVICES ===================== -->
-  <section class="section" id="services">
+  <section class="section section--alt" id="services">
     <div class="container">
       <p class="eyebrow reveal">
         <span class="lang-en">{servicesEyebrow.en}</span>
@@ -131,10 +151,13 @@ const pageDesc =
         <span class="lang-en">{servicesTitle.en}</span>
         <span class="lang-zh">{servicesTitle.zh}</span>
       </h2>
+      <p class="services-sub reveal">
+        <span class="lang-en">{servicesSub.en}</span>
+        <span class="lang-zh">{servicesSub.zh}</span>
+      </p>
       <div class="services-grid">
         {services.map((s) => (
           <article class="service-card reveal">
-            <div class="service-icon"><Icon name={s.icon} /></div>
             <h3 class="service-title">
               <span class="lang-en">{s.title.en}</span>
               <span class="lang-zh">{s.title.zh}</span>
@@ -149,95 +172,76 @@ const pageDesc =
     </div>
   </section>
 
-  <!-- ===================== MODALITIES + EDUCATION ===================== -->
-  <section class="section section--alt" id="modalities">
-    <div class="container two-col">
-      <div class="reveal">
-        <p class="eyebrow">
-          <span class="lang-en">{modalitiesEyebrow.en}</span>
-          <span class="lang-zh">{modalitiesEyebrow.zh}</span>
-        </p>
-        <ul class="tick-list">
-          {modalities.map((m) => (
-            <li><span class="lang-en">{m.en}</span><span class="lang-zh">{m.zh}</span></li>
-          ))}
-        </ul>
-      </div>
-      <div class="reveal" id="education">
-        <p class="eyebrow">
-          <span class="lang-en">{educationEyebrow.en}</span>
-          <span class="lang-zh">{educationEyebrow.zh}</span>
-        </p>
-        <ul class="tick-list">
-          {education.map((e) => (
-            <li><span class="lang-en">{e.en}</span><span class="lang-zh">{e.zh}</span></li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== WHY CHOOSE US ===================== -->
-  <section class="section" id="why">
-    <div class="container">
-      <p class="eyebrow reveal">
-        <span class="lang-en">{whyEyebrow.en}</span>
-        <span class="lang-zh">{whyEyebrow.zh}</span>
+  <!-- ===================== FIRST VISIT ===================== -->
+  <section class="section" id="firstvisit">
+    <div class="container fv-wrap">
+      <p class="eyebrow reveal fv-eyebrow">
+        <span class="lang-en">{firstVisitEyebrow.en}</span>
+        <span class="lang-zh">{firstVisitEyebrow.zh}</span>
       </p>
-      <h2 class="section-title reveal">
-        <span class="lang-en">{whyTitle.en}</span>
-        <span class="lang-zh">{whyTitle.zh}</span>
+      <h2 class="section-title fv-title reveal">
+        <span class="lang-en">{firstVisitTitle.en}</span>
+        <span class="lang-zh">{firstVisitTitle.zh}</span>
       </h2>
-      <div class="why-grid">
-        {why.map((w) => (
-          <div class="why-item reveal">
-            <span><span class="lang-en">{w.en}</span><span class="lang-zh">{w.zh}</span></span>
-          </div>
+      <div class="fv-grid">
+        {firstVisit.map((f) => (
+          <article class="fv-card reveal">
+            <span class="fv-step">{f.step}</span>
+            <h3 class="fv-card-title">
+              <span class="lang-en">{f.title.en}</span>
+              <span class="lang-zh">{f.title.zh}</span>
+            </h3>
+            <p class="fv-card-body">
+              <span class="lang-en">{f.body.en}</span>
+              <span class="lang-zh">{f.body.zh}</span>
+            </p>
+          </article>
         ))}
       </div>
     </div>
   </section>
 
   <!-- ===================== INSURANCE & BILLING ===================== -->
-  <section class="section section--alt" id="billing">
-    <div class="container billing-inner">
-      <p class="eyebrow reveal">
-        <span class="lang-en">{billingEyebrow.en}</span>
-        <span class="lang-zh">{billingEyebrow.zh}</span>
-      </p>
-      <h2 class="section-title reveal">
-        <span class="lang-en">{billingTitle.en}</span>
-        <span class="lang-zh">{billingTitle.zh}</span>
-      </h2>
-      <ul class="billing-list reveal">
-        {billing.map((b) => (
-          <li>
-            <span class="lang-en">{b.en}</span>
-            <span class="lang-zh">{b.zh}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
-
-  <!-- ===================== VISION ===================== -->
-  <section class="section section--alt" id="vision">
-    <div class="container vision-inner">
-      <p class="eyebrow reveal">
-        <span class="lang-en">{vision.eyebrow.en}</span>
-        <span class="lang-zh">{vision.eyebrow.zh}</span>
-      </p>
-      <p class="vision-body reveal">
-        <span class="lang-en">{vision.body.en}</span>
-        <span class="lang-zh">{vision.body.zh}</span>
-      </p>
+  <section class="section" id="billing">
+    <div class="container">
+      <div class="billing-card reveal">
+        <div class="billing-text">
+          <p class="eyebrow billing-eyebrow">
+            <span class="lang-en">{billingEyebrow.en}</span>
+            <span class="lang-zh">{billingEyebrow.zh}</span>
+          </p>
+          <h2 class="billing-title">
+            <span class="lang-en">{billingTitle.en}</span>
+            <span class="lang-zh">{billingTitle.zh}</span>
+          </h2>
+          <p class="billing-body">
+            <span class="lang-en">{billingBody.en}</span>
+            <span class="lang-zh">{billingBody.zh}</span>
+          </p>
+        </div>
+        <div class="billing-tags">
+          {billing.map((b) => (
+            <div class="billing-tag">
+              <span class="billing-tag-name">
+                <span class="lang-en">{b.name.en}</span>
+                <span class="lang-zh">{b.name.zh}</span>
+              </span>
+              {(b.note.en || b.note.zh) && (
+                <span class="billing-tag-note">
+                  <span class="lang-en">{b.note.en}</span>
+                  <span class="lang-zh">{b.note.zh}</span>
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ===================== CONTACT ===================== -->
-  <section class="section" id="contact">
+  <section class="section section--alt" id="contact">
     <div class="container">
-      <!-- 表头：横跨整行 -->
       <div class="contact-head reveal">
         <p class="eyebrow">
           <span class="lang-en">{contact.eyebrow.en}</span>
@@ -249,9 +253,7 @@ const pageDesc =
         </h2>
       </div>
 
-      <!-- 主体：左联系方式 / 右二维码，首行顶部锁死对齐 -->
       <div class="contact-grid">
-        <!-- 左列：联系方式 -->
         <ul class="contact-list reveal">
           <li>
             <span class="c-ico" aria-hidden="true">
@@ -287,7 +289,6 @@ const pageDesc =
           </li>
         </ul>
 
-        <!-- 右列：微信二维码 + 两个按钮 -->
         <div class="contact-qr reveal">
           <div class="qr-frame">
             {site.wechatQr
@@ -310,7 +311,6 @@ const pageDesc =
           </div>
         </div>
 
-        <!-- 地图（网格直接子级，横跨整行垫底） -->
         <div class="contact-map reveal">
           <iframe
             src={contact.mapEmbedSrc}
@@ -326,8 +326,6 @@ const pageDesc =
 </Base>
 
 <style>
-  /* ===================== 全局节奏覆盖 ===================== */
-  /* 加大区块垂直留白，让每个 section 更有呼吸感（西式审美偏好） */
   .section { padding-block: clamp(4.5rem, 9vw, 8rem); }
   .eyebrow { margin-bottom: 0.4rem; }
   .section-title { text-wrap: balance; }
@@ -343,24 +341,18 @@ const pageDesc =
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(2rem, 5vw, 4.5rem);
-    align-items: stretch;
+    align-items: start;      /* 顶部对齐，便于图片对齐 subtitle */
   }
   .hero-inner { max-width: 560px; }
-  .hero-logo {
-    height: clamp(48px, 6vw, 68px);
-    width: auto;
-    margin-bottom: 1.6rem;
-    display: block;
-  }
-  .hero-values {
-    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.16em;
+  .hero-eyebrow {
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em;
     text-transform: uppercase; color: var(--clay);
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.1rem;
   }
   .hero-title {
     font-family: var(--font-serif);
-    font-size: clamp(2.6rem, 5.5vw, 4.2rem);
-    line-height: 1.06; margin-bottom: 1.1rem;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    line-height: 1.08; margin-bottom: 1.1rem;
     color: var(--clay-dark);
     text-wrap: balance;
   }
@@ -368,21 +360,22 @@ const pageDesc =
   .hero-sub {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+    font-size: clamp(1.15rem, 2.3vw, 1.5rem);
     color: var(--clay); margin-bottom: 1.5rem; max-width: 34ch;
   }
   .hero-body {
-    font-size: 1.06rem; line-height: 1.7;
+    font-size: 1.04rem; line-height: 1.7;
     color: var(--ink-soft);
     max-width: 52ch; margin-bottom: 2.2rem;
   }
   .hero-body-p { display: block; margin-bottom: 0.7rem; }
   .hero-cta { display: flex; flex-wrap: wrap; gap: 0.9rem; }
 
-  /* 右侧配图 */
+  /* 右侧配图：顶部与 subtitle 对齐（用 margin-top 下压一个 eyebrow+title 的高度） */
   .hero-media {
-    height: 100%;              /* 撑满左栏高度：顶贴 eyebrow 行，底贴按钮 */
-    min-height: 0;             /* 允许在 grid 中正确收缩 */
+    position: relative;
+    margin-top: var(--hero-media-offset, 0);
+    aspect-ratio: 4 / 5;
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow-lg);
@@ -393,50 +386,78 @@ const pageDesc =
     object-fit: cover;
     display: block;
   }
-
-  /* ===================== ABOUT ===================== */
-  .about-grid {
-    display: grid; grid-template-columns: 1.15fr 0.85fr;
-    gap: clamp(2rem, 5vw, 4rem); margin-top: 1.5rem;
-    align-items: start;
+  /* 图片上叠加的竖排寄语 */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.55rem;
+    padding: clamp(1.6rem, 3.5vw, 2.6rem);
+    background: linear-gradient(90deg, rgba(46,42,38,0.42) 0%, rgba(46,42,38,0.12) 55%, transparent 100%);
   }
-  .about-intro .section-title { margin-bottom: 1.4rem; }
-  .about-intro-p { color: var(--ink-soft); font-size: 1.05rem; margin-bottom: 1rem; }
-  /* 首段用主文字色，与后续淡色段落拉开层次（贴近 Demo） */
-  .about-intro-p:first-of-type { color: var(--ink); font-size: 1.12rem; }
-  .about-cards { display: flex; flex-direction: column; gap: 1.2rem; }
-  .about-card {
-    position: relative;
-    overflow: hidden;
+  .hero-overlay-zh,
+  .hero-overlay-en { display: flex; flex-direction: column; gap: 0.5rem; }
+  .hero-overlay-line {
+    font-family: var(--font-serif);
+    color: var(--white);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-shadow: 0 2px 10px rgba(46,42,38,0.5);
+    line-height: 1.2;
+  }
+  .hero-overlay-zh .hero-overlay-line { font-size: clamp(1.5rem, 3vw, 2.1rem); }
+  .hero-overlay-en .hero-overlay-line {
+    font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+    font-style: italic;
+    letter-spacing: 0.06em;
+  }
+
+  /* 用 JS 精确对齐时的桌面近似偏移；窄屏归零 */
+  @media (min-width: 941px) {
+    .hero-media { --hero-media-offset: clamp(3.4rem, 5vw, 4.6rem); }
+  }
+
+  /* ===================== WHY CHOOSE ===================== */
+  .why-wrap { text-align: center; }
+  .why-eyebrow { justify-content: center; }
+  .why-title {
+    max-width: 20ch; margin: 0 auto 0.9rem;
+    font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+  }
+  .why-sub { color: var(--ink-soft); margin: 0 auto 2.6rem; max-width: 46ch; }
+  .why-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1.3rem; text-align: left;
+  }
+  .why-card {
     background: var(--white);
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    padding: clamp(1.6rem, 3vw, 2.2rem);
+    padding: 1.8rem 1.5rem;
     box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  /* CSS 水墨底纹：右上角几团柔和的暖色晕染，模拟宣纸水墨 */
-  .about-card--ink::before {
-    content: '';
-    position: absolute;
-    top: -30%; right: -20%;
-    width: 70%; height: 90%;
-    background:
-      radial-gradient(45% 45% at 70% 30%, rgba(194,99,46,0.10), transparent 70%),
-      radial-gradient(40% 40% at 40% 60%, rgba(111,122,90,0.08), transparent 70%),
-      radial-gradient(50% 50% at 60% 70%, rgba(232,167,107,0.10), transparent 70%);
-    filter: blur(6px);
-    pointer-events: none;
+  .why-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .why-icon {
+    width: 52px; height: 52px; margin-bottom: 1.1rem;
+    display: grid; place-content: center;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(194,99,46,.12), rgba(232,167,107,.18));
+    color: var(--clay);
   }
-  .about-card > * { position: relative; }
-  .about-h { font-size: 1.3rem; margin-bottom: 0.9rem; color: var(--sage-dark); }
-  .about-card p { color: var(--ink-soft); font-size: 0.98rem; }
+  .why-icon svg { width: 26px; height: 26px; }
+  .why-card-title { font-size: 1.12rem; margin-bottom: 0.6rem; color: var(--clay-dark); }
+  .why-card-body { font-size: 0.94rem; line-height: 1.6; color: var(--ink-soft); }
 
   /* ===================== FOUNDER ===================== */
   .founder-grid {
     display: grid; grid-template-columns: 340px 1fr;
     gap: clamp(2rem, 5vw, 4rem); align-items: start;
   }
-  .founder-text { max-width: 62ch; }
+  .founder-text { max-width: 64ch; }
   .founder-photo {
     position: sticky; top: 90px;
     aspect-ratio: 4 / 5;
@@ -445,207 +466,179 @@ const pageDesc =
     background: linear-gradient(135deg, var(--clay-soft), var(--sage));
     box-shadow: var(--shadow-lg);
   }
+  .founder-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .founder-photo-hint {
+    position: absolute; left: 12px; bottom: 12px; right: 12px;
+    background: rgba(255,255,255,0.9);
+    color: var(--ink-soft);
+    font-size: 0.72rem; line-height: 1.4;
+    padding: 0.5rem 0.7rem; border-radius: 8px;
+    text-align: center;
+  }
+  .founder-title { margin: 0.3rem 0 0.6rem; }
   .founder-name {
-    margin-bottom: 1.2rem;
-    text-wrap: balance;
-    hyphens: none;
+    font-family: var(--font-serif);
+    font-size: 1.15rem; color: var(--ink);
+    margin-bottom: 1.1rem;
   }
-  .cred-list { list-style: none; padding: 0; margin: 0 0 1.8rem; }
-  .cred-list li {
-    position: relative; padding-left: 1.6rem; margin-bottom: 0.55rem;
-    font-weight: 600; color: var(--ink);
+  .cred-tags {
+    list-style: none; padding: 0; margin: 0 0 1.6rem;
+    display: flex; flex-wrap: wrap; gap: 0.55rem;
   }
-  /* 圆点改为对勾，呼应 Demo 与截图 3 */
-  .cred-list li::before {
-    content: '✓'; position: absolute; left: 0; top: 0;
-    color: var(--clay); font-weight: 700; font-size: 1rem;
+  .cred-tags li {
+    background: rgba(194,99,46,0.10);
+    color: var(--clay-dark);
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.82rem; font-weight: 600;
+    white-space: nowrap;
   }
-  /* 介绍改为双栏结构，文字更淡 */
-  .founder-bio-cols {
-    columns: 2;
-    column-gap: clamp(1.8rem, 4vw, 3rem);
-  }
+  .founder-bio-cols { display: block; }
   .founder-bio {
     color: var(--ink-soft);
-    opacity: 0.85;               /* 比正文再淡一些，贴近截图 3 */
-    font-size: 0.98rem;
+    font-size: 0.98rem; line-height: 1.75;
     margin: 0 0 1rem;
-    break-inside: avoid;
+  }
+  .founder-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--clay-dark);
+    border-left: 3px solid var(--clay);
+    padding-left: 1.1rem;
+    margin-top: 1.4rem;
   }
 
   /* ===================== SERVICES ===================== */
+  .services-sub { color: var(--ink-soft); max-width: 60ch; margin: 0.8rem 0 0; }
   .services-grid {
     display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 1.3rem; margin-top: 1.5rem;
+    gap: 1.3rem; margin-top: 2rem;
     align-items: stretch;
   }
   .service-card {
-    display: flex;
-    flex-direction: column;
+    display: flex; flex-direction: column;
     background: var(--white);
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    padding: 1.7rem;
+    padding: 1.6rem 1.7rem;
     box-shadow: var(--shadow);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-  .service-icon {
-    width: 56px; height: 56px; margin-bottom: 1.1rem;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 14px;
-    background: linear-gradient(135deg, rgba(194,99,46,.12), rgba(232,167,107,.18));
-    color: var(--clay);
-  }
-  .service-icon svg { width: 30px; height: 30px; }
-  .service-title {
-    font-size: 1.18rem; margin-bottom: 0.6rem;
-    text-wrap: balance;
-  }
-  .service-body {
-    font-size: 0.92rem;       /* 服务明细偏辅助信息，略缩小 */
-    line-height: 1.65;
-    color: var(--ink-soft);   /* 改淡，贴近 Demo 与截图 4 */
-    opacity: 0.9;
-  }
+  .service-title { font-size: 1.14rem; margin-bottom: 0.6rem; text-wrap: balance; }
+  .service-body { font-size: 0.92rem; line-height: 1.65; color: var(--ink-soft); }
 
-  /* ===================== MODALITIES + EDUCATION ===================== */
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 6vw, 5rem); }
-  .tick-list { list-style: none; padding: 0; margin: 1.6rem 0 0; }
-  .tick-list li {
-    position: relative; padding: 0.95rem 0 0.95rem 1.9rem;
-    border-bottom: 1px solid var(--line);
-    font-weight: 500; font-size: 1.02rem;
+  /* ===================== FIRST VISIT ===================== */
+  .fv-wrap { text-align: center; }
+  .fv-eyebrow { justify-content: center; }
+  .fv-title { max-width: 22ch; margin: 0 auto 2.4rem; }
+  .fv-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1.3rem; text-align: left;
   }
-  .tick-list li::before {
-    content: '✓'; position: absolute; left: 0; top: 0.95rem;
-    color: var(--sage); font-weight: 700;
-  }
-
-  /* ===================== WHY ===================== */
-  .why-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 0.9rem; margin-top: 2rem;
-  }
-  /* 卡片式标签：白底 + 发丝边 + 左侧陶土色粗边（贴近截图 1 / Demo） */
-  .why-item {
+  .fv-card {
     background: var(--white);
     border: 1px solid var(--line);
-    border-left: 3px solid var(--clay);
-    border-radius: var(--radius-sm);
-    padding: 1rem 1.2rem;
-    font-weight: 500; line-height: 1.45;
-    color: var(--ink);
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    border-radius: var(--radius);
+    padding: 1.7rem 1.5rem;
+    box-shadow: var(--shadow);
   }
-  .why-item:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  .fv-step {
+    display: inline-block;
+    font-family: var(--font-serif);
+    font-size: 0.95rem; font-weight: 700;
+    color: var(--clay);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.8rem;
+  }
+  .fv-card-title { font-size: 1.08rem; margin-bottom: 0.55rem; color: var(--clay-dark); }
+  .fv-card-body { font-size: 0.9rem; line-height: 1.6; color: var(--ink-soft); }
 
   /* ===================== INSURANCE & BILLING ===================== */
-  .billing-inner { max-width: 1000px; }
-  /* 胶囊标签：横向排列、自动换行到下一行，单个标签宽度随文字、内部不折行 */
-  .billing-list {
-    display: flex; flex-wrap: wrap;
-    gap: 0.8rem; margin-top: 1.4rem; list-style: none; padding: 0;
-  }
-  .billing-list li {
-    display: inline-flex; align-items: center; gap: 0.55rem;
-    padding: 0.7rem 1.4rem;
-    background: var(--white); border: 1px solid var(--line);
-    border-radius: 999px;              /* 大圆角胶囊 */
-    font-weight: 600; color: var(--ink);
-    white-space: nowrap;               /* 标签内文字不换行 */
-  }
-  .billing-list li::before {
-    content: '✓';
-    color: var(--sage); font-weight: 700;
-  }
-
-  /* ===================== VISION ===================== */
-  .vision-inner { max-width: 780px; text-align: center; }
-  .vision-inner .eyebrow { justify-content: center; }
-  .vision-body {
-    position: relative;
-    font-family: var(--font-serif);
-    font-size: clamp(1.2rem, 2.4vw, 1.55rem);   /* 原 clamp(1.25rem, 2.8vw, 1.75rem)，上限降到 1.55 */     
-    line-height: 1.75;                          /* 原 1.6，提高让行间更松 */
-    color: var(--clay-dark);
-    background: var(--cream);
-    border: 1px solid var(--line);
+  .billing-card {
+    background: var(--ink);
+    color: #e9e2d7;
     border-radius: var(--radius);
-    padding: clamp(2rem, 4vw, 2.8rem) clamp(1.5rem, 5vw, 3rem);
-    box-shadow: var(--shadow);
-    margin: 0.5rem 0 0;
+    padding: clamp(2rem, 4vw, 3rem);
+    display: grid; grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(1.6rem, 4vw, 3rem);
+    align-items: center;
+    box-shadow: var(--shadow-lg);
   }
-  .vision-body::before {
-    content: '\201C';
-    position: absolute;
-    top: 0.2em;              /* 正值,收进卡片内 */
-    left: 0.3em;
-    font-size: 5rem;         /* 放大,原来大概 3.2rem,大了才像装饰 */
-    line-height: 1;
-    color: var(--clay-soft);
-    opacity: 0.35;           /* 调淡,像水印 */
+  .billing-eyebrow { color: var(--clay-soft); margin-bottom: 0.7rem; }
+  .billing-eyebrow::before { background: var(--clay-soft); }
+  .billing-title {
     font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    color: var(--white);
+    margin-bottom: 0.9rem;
+    text-wrap: balance;
+  }
+  .billing-body { color: #cfc7ba; font-size: 0.98rem; line-height: 1.7; }
+  .billing-tags {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem;
+  }
+  .billing-tag {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: var(--radius-sm);
+    padding: 0.9rem 1rem;
+    text-align: center;
+  }
+  .billing-tag-name {
+    display: block;
+    font-weight: 700; color: var(--white); font-size: 1rem;
+  }
+  .billing-tag-note {
+    display: block; margin-top: 0.2rem;
+    font-size: 0.78rem; color: var(--clay-soft);
   }
 
   /* ===================== CONTACT ===================== */
-  /* 表头横跨整行 */
   .contact-head { margin-bottom: clamp(1.8rem, 4vw, 2.6rem); }
   .contact-grid {
     display: grid; grid-template-columns: 1.1fr 0.9fr;
     gap: clamp(2rem, 5vw, 3.5rem);
-    align-items: start;   /* 列表首行与二维码顶部锁死对齐 */
+    align-items: start;
   }
   .contact-list { list-style: none; padding: 0; margin: 0; }
   .contact-list li {
     display: flex; align-items: center; gap: 0.9rem;
-    padding: 0.95rem 0; /*border-bottom: 1px solid var(--line);*/
+    padding: 0.95rem 0;
     font-size: 1rem;
   }
-  .contact-list li:first-child { padding-top: 0; }   /* 首行贴顶，便于与二维码对齐 */
-  /* 统一的线性图标方块，与 Demo 一致 */
+  .contact-list li:first-child { padding-top: 0; }
   .c-ico {
     flex: none;
     width: 40px; height: 40px;
     display: grid; place-content: center;
     border-radius: 10px;
-    background: rgba(111,122,90,0.10);   /* 淡鼠尾草底 */
+    background: rgba(111,122,90,0.10);
     color: var(--sage-dark);
   }
   .c-ico svg { width: 20px; height: 20px; display: block; }
   .contact-list a { color: var(--clay-dark); }
   .contact-list a:hover { color: var(--clay); }
 
-  /* 右列：二维码（无卡片背景，二维码直接置于页面上） */
-  .contact-qr {
-    text-align: center;
-  }
+  .contact-qr { text-align: center; }
   .contact-map {
-    grid-column: 1 / -1;   /* 横跨整行，填满右下空白 */
-    margin-top: 0.5reg /*clamp(1rem, 3vw, 1.5rem); */   /* 原 clamp(2rem, 5vw, 3rem) */
+    grid-column: 1 / -1;
+    margin-top: 0.5rem;
     border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   }
-  .contact-map iframe {
-    display: block;
-    width: 100%;
-    height: 380px;
-    border: 0;
-  }
-  @media (max-width: 640px) {
-    .contact-map iframe { height: 280px; }
-  }
+  .contact-map iframe { display: block; width: 100%; height: 380px; border: 0; }
+  @media (max-width: 640px) { .contact-map iframe { height: 280px; } }
   .qr-frame {
     width: 180px; height: 180px; margin: 0 auto 1rem;
     border-radius: var(--radius-sm);
     overflow: hidden;
     border: 1px solid var(--line);
     background: var(--cream-2);
-    box-shadow: var(--shadow-lg);   /* 柔和投影，让二维码"立"起来 */
+    box-shadow: var(--shadow-lg);
   }
   .qr-img { width: 100%; height: 100%; object-fit: cover; }
-  /* 无二维码图片时的占位纹理 */
   .qr-fallback {
     width: 100%; height: 100%;
     background:
@@ -659,36 +652,55 @@ const pageDesc =
   }
   .contact-btns {
     display: flex; flex-wrap: wrap; gap: 0.8rem;
-    justify-content: center;
-    margin-top: 3rem;   /* 与二维码/提示拉开约两行的距离 */
+    justify-content: center; margin-top: 2rem;
   }
 
   /* ===================== 响应式 ===================== */
   @media (max-width: 940px) {
-    .about-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
     .services-grid { grid-template-columns: 1fr 1fr; }
-    .why-grid { grid-template-columns: 1fr 1fr; gap: 0.2rem 1.6rem; }
+    .fv-grid { grid-template-columns: 1fr 1fr; }
     .founder-grid { grid-template-columns: 1fr; }
     .founder-text { max-width: none; }
-    .founder-bio-cols { columns: 1; }
     .founder-photo { position: static; max-width: 340px; }
-    .contact-grid {
-      grid-template-columns: 1fr;   /* 叠成单列：联系方式在上，二维码在下 */
-      gap: 2.5rem;
-    }
-    /* 单列时二维码居中，宽度自适应 */
+    .billing-card { grid-template-columns: 1fr; text-align: left; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .contact-qr { max-width: 320px; margin-inline: auto; }
-    /* hero 分栏在窄屏叠成单列：文字在上，图片在下 */
     .hero-grid { grid-template-columns: 1fr; }
     .hero-inner { max-width: none; }
-    .hero-media { aspect-ratio: 16 / 10; max-height: 420px; }
+    .hero-media { margin-top: 0; aspect-ratio: 16 / 10; max-height: 460px; }
   }
   @media (max-width: 560px) {
-    .about-grid,
-    .services-grid,
     .why-grid,
-    .two-col { grid-template-columns: 1fr; }
+    .services-grid,
+    .fv-grid,
+    .billing-tags { grid-template-columns: 1fr; }
     .hero-cta .btn,
     .contact-btns .btn { flex: 1 1 auto; justify-content: center; }
   }
 </style>
+
+<script is:inline>
+  /* Hero 右图顶部与 subtitle 精确对齐：把图片下压 = eyebrow 行高 + title 高度 + 二者下边距 */
+  (function () {
+    function alignHeroMedia() {
+      var media = document.querySelector('.hero-media');
+      var eyebrow = document.querySelector('.hero-eyebrow');
+      var title = document.querySelector('.hero-title');
+      if (!media || !eyebrow || !title) return;
+      if (window.matchMedia('(max-width: 940px)').matches) {
+        media.style.marginTop = '0px';
+        return;
+      }
+      var offset =
+        eyebrow.offsetHeight +
+        parseFloat(getComputedStyle(eyebrow).marginBottom || '0') +
+        title.offsetHeight +
+        parseFloat(getComputedStyle(title).marginBottom || '0');
+      media.style.marginTop = offset + 'px';
+    }
+    window.addEventListener('load', alignHeroMedia);
+    window.addEventListener('resize', alignHeroMedia);
+    alignHeroMedia();
+  })();
+</script>

@@ -430,10 +430,9 @@ const whyIcons: Record<string, string> = {
     position: absolute;
     top: clamp(1rem, 2.5vw, 1.6rem);
     right: clamp(1rem, 2.5vw, 1.6rem);
-    height: 1.8em;
-    font-size: clamp(1.5rem, 3vw, 2.1rem);  /* 让 1.2em 参照与竖排寄语同级 */
+    height: clamp(28px, 6vw, 40px);   /* 直接定高,给个最小值 28px */
     width: auto;
-    z-index: 2;   /* 盖在 overlay 渐变之上 */
+    z-index: 2;
     filter: drop-shadow(0 2px 8px rgba(46,42,38,0.7));
   }
   .hero-img {

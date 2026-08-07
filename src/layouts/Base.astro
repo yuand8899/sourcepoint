@@ -73,8 +73,8 @@ const { title, description } = Astro.props;
           </button>
           <!-- 预约咨询按钮, 暂时屏蔽-->
           <!-- <a href="#contact" class="btn btn-primary book-btn">
-            <span class="lang-en">{hero.ctaBook.en}</span>
-            <span class="lang-zh">{hero.ctaBook.zh}</span>
+            <span class="lang-en">{hero.ctaBooking.en}</span>
+            <span class="lang-zh">{hero.ctaBooking.zh}</span>
           </a> -->
 
           <button
@@ -100,8 +100,8 @@ const { title, description } = Astro.props;
         <!-- 预约咨询按钮, 暂时屏蔽-->
         <!-- 
         <a href="#contact" class="btn btn-primary nav-mobile-link">
-          <span class="lang-en">{hero.ctaBook.en}</span>
-          <span class="lang-zh">{hero.ctaBook.zh}</span>
+          <span class="lang-en">{hero.ctaBooking.en}</span>
+          <span class="lang-zh">{hero.ctaBooking.zh}</span>
         </a>
         -->
       </nav>
@@ -126,10 +126,10 @@ const { title, description } = Astro.props;
           <span class="lang-zh">{site.tagline.zh}</span>
         </p>
         <p class="footer-contact">
-          <span>📍 <span class="lang-en">{site.region.en}</span><span class="lang-zh">{site.region.zh}</span></span>
+          <span>📍 <span class="lang-en">{site.address.en}</span><span class="lang-zh">{site.address.zh}</span></span>
           <span>📞 <a href={`tel:${site.phone}`}>{site.phone}</a></span>
           <span>✉️ <a href={`mailto:${site.email}`}>{site.email}</a></span>
-          <span>💬 <span class="lang-en">WeChat</span><span class="lang-zh">微信</span>: {site.wechat}</span>
+          <span>💬 <span class="lang-en">WeChat</span><span class="lang-zh">微信</span>: {site.wechatId}</span>
         </p>  -->
         <p class="footer-legal">
           <span class="lang-en">{footer.rights.en}</span>

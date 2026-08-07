@@ -1,13 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import {
-  site, hero,
-  whyChooseEyebrow, whyChooseTitle, whyChooseSub, whyChoose,
-  founder,
-  servicesEyebrow, servicesTitle, servicesSub, services,
-  firstVisitEyebrow, firstVisitTitle, firstVisit,
-  billingEyebrow, billingTitle, billingBody, billing,
-  contact,
+  site, hero, whyChoose, practitioner, services, firstVisit, insurance, contact,
 } from '../data/content';
 
 const pageTitle =
@@ -42,8 +36,8 @@ const whyIcons: Record<string, string> = {
           <span class="lang-zh">{hero.subtitle.zh}</span>
         </p>
         <p class="hero-body">
-          <span class="lang-en">{hero.body.en.map((p) => <span class="hero-body-p">{p}</span>)}</span>
-          <span class="lang-zh">{hero.body.zh.map((p) => <span class="hero-body-p">{p}</span>)}</span>
+          <span class="lang-en">{hero.intro.en.map((p) => <span class="hero-body-p">{p}</span>)}</span>
+          <span class="lang-zh">{hero.intro.zh.map((p) => <span class="hero-body-p">{p}</span>)}</span>
         </p>
         <ul class="hero-highlights">
           {hero.highlights.map((h) => (
@@ -65,10 +59,10 @@ const whyIcons: Record<string, string> = {
         <img class="hero-img" src={hero.image} alt={hero.imageAlt.en} />
         <div class="hero-overlay" aria-hidden="false">
           <div class="hero-overlay-zh lang-zh">
-            {hero.overlay.zh.map((line) => <span class="hero-overlay-line">{line}</span>)}
+            {hero.imageQuote.zh.map((line) => <span class="hero-overlay-line">{line}</span>)}
           </div>
           <div class="hero-overlay-en lang-en">
-            {hero.overlay.en.map((line) => <span class="hero-overlay-line">{line}</span>)}
+            {hero.imageQuote.en.map((line) => <span class="hero-overlay-line">{line}</span>)}
           </div>
         </div>
       </div>
@@ -79,19 +73,19 @@ const whyIcons: Record<string, string> = {
   <section class="section section--alt" id="about">
     <div class="container why-wrap">
       <p class="eyebrow reveal why-eyebrow">
-        <span class="lang-en">{whyChooseEyebrow.en}</span>
-        <span class="lang-zh">{whyChooseEyebrow.zh}</span>
+        <span class="lang-en">{whyChoose.heading.eyebrow.en}</span>
+        <span class="lang-zh">{whyChoose.heading.eyebrow.zh}</span>
       </p>
       <h2 class="section-title why-title reveal">
-        <span class="lang-en">{whyChooseTitle.en}</span>
-        <span class="lang-zh">{whyChooseTitle.zh}</span>
+        <span class="lang-en">{whyChoose.heading.title.en}</span>
+        <span class="lang-zh">{whyChoose.heading.title.zh}</span>
       </h2>
       <p class="why-sub reveal">
-        <span class="lang-en">{whyChooseSub.en}</span>
-        <span class="lang-zh">{whyChooseSub.zh}</span>
+        <span class="lang-en">{whyChoose.heading.sub?.en}</span>
+        <span class="lang-zh">{whyChoose.heading.sub?.zh}</span>
       </p>
       <div class="why-grid">
-        {whyChoose.map((w) => (
+        {whyChoose.cards.map((w) => (
           <article class="why-card reveal">
             <div class="why-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
@@ -111,35 +105,35 @@ const whyIcons: Record<string, string> = {
     </div>
   </section>
 
-  <!-- ===================== FOUNDER ===================== -->
-  <section class="section" id="founder">
+  <!-- ===================== PRACTITIONER ===================== -->
+  <section class="section" id="practitioner">
     <div class="container founder-grid">
       <div class="founder-photo reveal">
-        <img src="/images/founder.jpg" alt="创始人照片 / Founder portrait" />
+        <img src="/images/founder.jpg" alt="丁源医师照片 / Yolanda Ding portrait" />
         <span class="founder-photo-hint lang-zh">此处替换为丁源医师专业形象照</span>
         <span class="founder-photo-hint lang-en">Replace with Yolanda's professional portrait</span>
       </div>
       <div class="founder-text reveal">
         <p class="eyebrow">
-          <span class="lang-en">{founder.eyebrow.en}</span>
-          <span class="lang-zh">{founder.eyebrow.zh}</span>
+          <span class="lang-en">{practitioner.heading.eyebrow.en}</span>
+          <span class="lang-zh">{practitioner.heading.eyebrow.zh}</span>
         </p>
         <h2 class="section-title founder-title">
-          <span class="lang-en">{founder.title.en}</span>
-          <span class="lang-zh">{founder.title.zh}</span>
+          <span class="lang-en">{practitioner.heading.title.en}</span>
+          <span class="lang-zh">{practitioner.heading.title.zh}</span>
         </h2>
         <p class="founder-name">
-          <span class="lang-en">{founder.name.en}</span>
-          <span class="lang-zh">{founder.name.zh}</span>
+          <span class="lang-en">{practitioner.name.en}</span>
+          <span class="lang-zh">{practitioner.name.zh}</span>
         </p>
         <ul class="cred-tags">
-          {founder.credentials.map((c) => (
+          {practitioner.credentials.map((c) => (
             <li><span class="lang-en">{c.en}</span><span class="lang-zh">{c.zh}</span></li>
           ))}
         </ul>
         <div class="founder-bio-cols">
-          {founder.bio.map((p, i) => (
-            <p class={i === founder.bio.length - 1 ? 'founder-bio founder-quote' : 'founder-bio'}>
+          {practitioner.bio.map((p, i) => (
+            <p class={i === practitioner.bio.length - 1 ? 'founder-bio founder-quote' : 'founder-bio'}>
               <span class="lang-en">{p.en}</span><span class="lang-zh">{p.zh}</span>
             </p>
           ))}
@@ -152,19 +146,19 @@ const whyIcons: Record<string, string> = {
   <section class="section section--alt" id="services">
     <div class="container">
       <p class="eyebrow reveal">
-        <span class="lang-en">{servicesEyebrow.en}</span>
-        <span class="lang-zh">{servicesEyebrow.zh}</span>
+        <span class="lang-en">{services.heading.eyebrow.en}</span>
+        <span class="lang-zh">{services.heading.eyebrow.zh}</span>
       </p>
       <h2 class="section-title reveal">
-        <span class="lang-en">{servicesTitle.en}</span>
-        <span class="lang-zh">{servicesTitle.zh}</span>
+        <span class="lang-en">{services.heading.title.en}</span>
+        <span class="lang-zh">{services.heading.title.zh}</span>
       </h2>
       <p class="services-sub reveal">
-        <span class="lang-en">{servicesSub.en}</span>
-        <span class="lang-zh">{servicesSub.zh}</span>
+        <span class="lang-en">{services.heading.sub?.en}</span>
+        <span class="lang-zh">{services.heading.sub?.zh}</span>
       </p>
       <div class="services-grid">
-        {services.map((s) => (
+        {services.items.map((s) => (
           <article class="service-card reveal">
             <h3 class="service-title">
               <span class="lang-en">{s.title.en}</span>
@@ -184,15 +178,15 @@ const whyIcons: Record<string, string> = {
   <section class="section" id="firstvisit">
     <div class="container fv-wrap">
       <p class="eyebrow reveal fv-eyebrow">
-        <span class="lang-en">{firstVisitEyebrow.en}</span>
-        <span class="lang-zh">{firstVisitEyebrow.zh}</span>
+        <span class="lang-en">{firstVisit.heading.eyebrow.en}</span>
+        <span class="lang-zh">{firstVisit.heading.eyebrow.zh}</span>
       </p>
       <h2 class="section-title fv-title reveal">
-        <span class="lang-en">{firstVisitTitle.en}</span>
-        <span class="lang-zh">{firstVisitTitle.zh}</span>
+        <span class="lang-en">{firstVisit.heading.title.en}</span>
+        <span class="lang-zh">{firstVisit.heading.title.zh}</span>
       </h2>
       <div class="fv-grid">
-        {firstVisit.map((f) => (
+        {firstVisit.steps.map((f) => (
           <article class="fv-card reveal">
             <span class="fv-step">{f.step}</span>
             <h3 class="fv-card-title">
@@ -210,25 +204,25 @@ const whyIcons: Record<string, string> = {
   </section>
 
   <!-- ===================== INSURANCE & BILLING ===================== -->
-  <section class="section section--alt" id="billing">
+  <section class="section section--alt" id="insurance">
     <div class="container">
       <div class="billing-card reveal">
         <div class="billing-text">
           <p class="eyebrow billing-eyebrow">
-            <span class="lang-en">{billingEyebrow.en}</span>
-            <span class="lang-zh">{billingEyebrow.zh}</span>
+            <span class="lang-en">{insurance.heading.eyebrow.en}</span>
+            <span class="lang-zh">{insurance.heading.eyebrow.zh}</span>
           </p>
           <h2 class="billing-title">
-            <span class="lang-en">{billingTitle.en}</span>
-            <span class="lang-zh">{billingTitle.zh}</span>
+            <span class="lang-en">{insurance.heading.title.en}</span>
+            <span class="lang-zh">{insurance.heading.title.zh}</span>
           </h2>
           <p class="billing-body">
-            <span class="lang-en">{billingBody.en}</span>
-            <span class="lang-zh">{billingBody.zh}</span>
+            <span class="lang-en">{insurance.intro.en}</span>
+            <span class="lang-zh">{insurance.intro.zh}</span>
           </p>
         </div>
         <div class="billing-tags">
-          {billing.map((b) => (
+          {insurance.providers.map((b) => (
             <div class="billing-tag">
               <span class="billing-tag-name">
                 <span class="lang-en">{b.name.en}</span>
@@ -252,8 +246,8 @@ const whyIcons: Record<string, string> = {
     <div class="container">
       <div class="contact-head reveal">
         <p class="eyebrow">
-          <span class="lang-en">{contact.eyebrow.en}</span>
-          <span class="lang-zh">{contact.eyebrow.zh}</span>
+          <span class="lang-en">{contact.heading.eyebrow.en}</span>
+          <span class="lang-zh">{contact.heading.eyebrow.zh}</span>
         </p>
         <h2 class="section-title">
           <span class="lang-en">{site.legalName.en}</span>
@@ -262,7 +256,8 @@ const whyIcons: Record<string, string> = {
       </div>
 
       <div class="contact-grid">
-        <ul class="contact-list reveal">
+        <div class="contact-info reveal">
+        <ul class="contact-list">
           <li>
             <span class="c-ico" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
@@ -273,7 +268,7 @@ const whyIcons: Record<string, string> = {
             <span class="c-ico" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
             </span>
-            <span><span class="lang-en">{site.region.en}</span><span class="lang-zh">{site.region.zh}</span></span>
+            <span><span class="lang-en">{site.address.en}</span><span class="lang-zh">{site.address.zh}</span></span>
           </li>
           <li>
             <span class="c-ico" aria-hidden="true">
@@ -297,17 +292,22 @@ const whyIcons: Record<string, string> = {
           </li>
         </ul>
 
+        <!-- 英文版按钮：放在 Facebook 下方（英文版右列不显示二维码） -->
+        <div class="contact-btns contact-btns--en lang-en">
+          <a href={`mailto:${site.email}`} class="btn btn-primary">{contact.emailBtn.en}</a>
+          <a href={`tel:${site.phone}`} class="btn btn-ghost">{contact.callBtn.en}</a>
+        </div>
+        </div>
+
         <div class="contact-qr reveal">
-          <div class="qr-frame">
+          <!-- 微信二维码仅在中文版显示（英文访客通常不使用微信） -->
+          <div class="qr-frame lang-zh">
             {site.wechatQr
-              ? <img src={site.wechatQr} alt="WeChat QR / 微信二维码" class="qr-img" />
+              ? <img src={site.wechatQr} alt="微信二维码 / WeChat QR" class="qr-img" />
               : <div class="qr-fallback" aria-hidden="true"></div>}
           </div>
-          <p class="qr-hint">
-            <span class="lang-en">Scan to add on WeChat</span>
-            <span class="lang-zh">扫码添加微信</span>
-          </p>
-          <div class="contact-btns">
+          <p class="qr-hint lang-zh">{contact.qrHint.zh}</p>
+          <div class="contact-btns lang-zh">
             <a href={`mailto:${site.email}`} class="btn btn-primary">
               <span class="lang-en">{contact.emailBtn.en}</span>
               <span class="lang-zh">{contact.emailBtn.zh}</span>
@@ -652,7 +652,7 @@ const whyIcons: Record<string, string> = {
   .contact-list { list-style: none; padding: 0; margin: 0; }
   .contact-list li {
     display: flex; align-items: center; gap: 0.9rem;
-    padding: 0.95rem 0;
+    padding: 0.5rem 0;
     font-size: 1rem;
   }
   .contact-list li:first-child { padding-top: 0; }
@@ -701,6 +701,11 @@ const whyIcons: Record<string, string> = {
   .contact-btns {
     display: flex; flex-wrap: wrap; gap: 0.8rem;
     justify-content: center; margin-top: 2rem;
+  }
+  /* 英文版按钮组：左列 Facebook 下方，左对齐 */
+  .contact-btns--en {
+    justify-content: flex-start;
+    margin-top: 1.4rem;
   }
 
   /* ===================== 响应式 ===================== */

@@ -430,7 +430,7 @@ const whyIcons: Record<string, string> = {
     position: absolute;
     top: clamp(1rem, 2.5vw, 1.6rem);
     right: clamp(1rem, 2.5vw, 1.6rem);
-    height: 1.2em;
+    height: 1.8em;
     font-size: clamp(1.5rem, 3vw, 2.1rem);  /* 让 1.2em 参照与竖排寄语同级 */
     width: auto;
     z-index: 2;   /* 盖在 overlay 渐变之上 */
@@ -443,6 +443,8 @@ const whyIcons: Record<string, string> = {
   }
   /* 图片上叠加的竖排寄语 */
   .hero-overlay {
+    /* 原有属性保留,追加这一行 */
+    transform: translateY(-1.2em);
     /* 把这一行的渐变加深 */
     background: linear-gradient(90deg, rgba(46,42,38,0.62) 0%, rgba(46,42,38,0.30) 55%, transparent 100%);
     position: absolute;

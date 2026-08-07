@@ -90,7 +90,7 @@ const whyIcons: Record<string, string> = {
           <article class="why-card reveal">
             <div class="why-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={whyIcons[w.icon] ?? whyIcons.plus} />
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><Fragment set:html={whyIcons[w.icon] ?? whyIcons.plus} /></svg>
             </div>
             <h3 class="why-card-title">
               <span class="lang-en">{w.title.en}</span>
@@ -573,7 +573,7 @@ const whyIcons: Record<string, string> = {
     background: linear-gradient(135deg, rgba(194,99,46,.12), rgba(232,167,107,.18));
     color: var(--clay);
   }
-  .service-icon svg { width: 26px; height: 26px; display: block; }
+  .service-icon svg { width: 26px; height: 26px; display: block; color: var(--clay); }
   .service-title { font-size: 1.14rem; margin-bottom: 0.6rem; text-wrap: balance; }
   .service-body { font-size: 0.92rem; line-height: 1.65; color: var(--ink-soft); }
 

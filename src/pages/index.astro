@@ -249,10 +249,13 @@ const whyIcons: Record<string, string> = {
           <span class="lang-en">{contact.heading.eyebrow.en}</span>
           <span class="lang-zh">{contact.heading.eyebrow.zh}</span>
         </p>
-        <h2 class="section-title">
-          <span class="lang-en">{site.legalName.en}</span>
-          <span class="lang-zh">{site.legalName.zh}</span>
-        </h2>
+        <div class="contact-title-row">
+          <img src="/images/logo-s.png" alt="" class="contact-logo" aria-hidden="true" />
+          <h2 class="section-title">
+            <span class="lang-en">{site.legalName.en}</span>
+            <span class="lang-zh">{site.legalName.zh}</span>
+          </h2>
+        </div>
       </div>
 
       <div class="contact-grid">
@@ -652,6 +655,18 @@ const whyIcons: Record<string, string> = {
   }
 
   /* ===================== CONTACT ===================== */
+  .contact-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .contact-logo {
+    height: 1em;
+    width: auto;
+    flex: none;
+    /* match the h2's font-size so logo height = title cap height */
+    font-size: var(--fs-section-title, clamp(1.9rem, 4vw, 2.8rem));
+  }
   .contact-head { margin-bottom: clamp(1.8rem, 4vw, 2.6rem); }
   .contact-grid {
     display: grid; grid-template-columns: 1.1fr 0.9fr;

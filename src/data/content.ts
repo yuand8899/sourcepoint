@@ -57,6 +57,13 @@ export const hero = {
       '我们提供个性化针灸及传统中医治疗，专注于疼痛治疗、女性健康、儿童健康、压力管理、美容针灸及长期健康调理，为您和家人的健康保驾护航。'
     ],
   },
+  // Hero body 下方、按钮上方的 4 个要点（对勾列表，2×2 网格）。
+  highlights: [
+    { en: '20+ Years of Clinical Experience', zh: '二十余年临床经验' },
+    { en: 'Registered TCM Practitioner & Acupuncturist in BC', zh: '加拿大注册中医师及注册针灸师' },
+    { en: 'Individualized Treatment Plans', zh: '个性化治疗方案' },
+    { en: 'ICBC · WorkSafeBC · MSP · Extended Health', zh: 'ICBC · WorkSafeBC · MSP · 商业保险' },
+  ] as Bi[],
   // Hero 右侧图片上叠加的竖排寄语。中文四行、英文三行（按你的要求）。
   overlay: {
     zh: ['源于初心', '守于至真', '寻其根本', '扶助正气'],

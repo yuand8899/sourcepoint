@@ -45,6 +45,14 @@ const whyIcons: Record<string, string> = {
           <span class="lang-en">{hero.body.en}</span>
           <span class="lang-zh">{hero.body.zh.map((p) => <span class="hero-body-p">{p}</span>)}</span>
         </p>
+        <ul class="hero-highlights">
+          {hero.highlights.map((h) => (
+            <li>
+              <span class="hl-check" aria-hidden="true">✓</span>
+              <span><span class="lang-en">{h.en}</span><span class="lang-zh">{h.zh}</span></span>
+            </li>
+          ))}
+        </ul>
         <div class="hero-cta">
           <a href="#contact" class="btn btn-ghost">
             <span class="lang-en">{hero.ctaContact.en}</span>
@@ -351,12 +359,13 @@ const whyIcons: Record<string, string> = {
   }
   .hero-title {
     font-family: var(--font-serif);
-    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-size: clamp(2.2rem, 4.4vw, 3.4rem);
     line-height: 1.08; margin-bottom: 1.1rem;
     color: var(--clay-dark);
-    text-wrap: balance;
+    white-space: nowrap;   /* 标题不换行 */
   }
   .hero-title .lang-zh { letter-spacing: 0.04em; }
+  .hero-title .lang-en { white-space: nowrap; }
   .hero-sub {
     font-family: var(--font-serif);
     font-style: italic;
@@ -369,6 +378,31 @@ const whyIcons: Record<string, string> = {
     max-width: 52ch; margin-bottom: 2.2rem;
   }
   .hero-body-p { display: block; margin-bottom: 0.7rem; }
+  /* Hero 要点：2×2 对勾网格 */
+  .hero-highlights {
+    list-style: none; padding: 0;
+    margin: 0 0 2rem;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.7rem 1.4rem;
+    max-width: 52ch;
+  }
+  .hero-highlights li {
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    font-size: 0.98rem; line-height: 1.4;
+    color: var(--ink);
+  }
+  .hl-check {
+    flex: none;
+    width: 22px; height: 22px; margin-top: 1px;
+    display: grid; place-content: center;
+    border-radius: 999px;
+    background: rgba(194,99,46,0.12);
+    color: var(--clay);
+    font-size: 0.72rem; font-weight: 700;
+  }
+  @media (max-width: 560px) {
+    .hero-highlights { grid-template-columns: 1fr; }
+  }
   .hero-cta { display: flex; flex-wrap: wrap; gap: 0.9rem; }
 
   /* 右侧配图：顶部与 subtitle 对齐（用 margin-top 下压一个 eyebrow+title 的高度） */
@@ -475,7 +509,7 @@ const whyIcons: Record<string, string> = {
     padding: 0.5rem 0.7rem; border-radius: 8px;
     text-align: center;
   }
-  .founder-title { margin: 0.3rem 0 0.6rem; }
+  .founder-title { margin: 0.3rem 0 0.6rem; white-space: nowrap; }
   .founder-name {
     font-family: var(--font-serif);
     font-size: 1.15rem; color: var(--ink);
@@ -554,44 +588,53 @@ const whyIcons: Record<string, string> = {
   .fv-card-title { font-size: 1.08rem; margin-bottom: 0.55rem; color: var(--clay-dark); }
   .fv-card-body { font-size: 0.9rem; line-height: 1.6; color: var(--ink-soft); }
 
-  /* ===================== INSURANCE & BILLING ===================== */
+  /* ===================== INSURANCE & BILLING（浅色样式，见 image1） ===================== */
   .billing-card {
-    background: var(--ink);
-    color: #e9e2d7;
-    border-radius: var(--radius);
-    padding: clamp(2rem, 4vw, 3rem);
-    display: grid; grid-template-columns: 1.1fr 0.9fr;
-    gap: clamp(1.6rem, 4vw, 3rem);
-    align-items: center;
-    box-shadow: var(--shadow-lg);
+    background: transparent;
+    color: var(--ink);
+    padding: 0;
+    display: block;
+    box-shadow: none;
   }
-  .billing-eyebrow { color: var(--clay-soft); margin-bottom: 0.7rem; }
-  .billing-eyebrow::before { background: var(--clay-soft); }
+  .billing-eyebrow { color: var(--clay); margin-bottom: 0.7rem; }
+  .billing-eyebrow::before { background: var(--clay); }
   .billing-title {
     font-family: var(--font-serif);
-    font-size: clamp(1.5rem, 3vw, 2.1rem);
-    color: var(--white);
-    margin-bottom: 0.9rem;
+    font-size: clamp(1.75rem, 4vw, 2.6rem);
+    color: var(--clay-dark);
+    margin-bottom: 1.4rem;
     text-wrap: balance;
   }
-  .billing-body { color: #cfc7ba; font-size: 0.98rem; line-height: 1.7; }
+  .billing-body {
+    color: var(--ink-soft);
+    font-size: 0.98rem; line-height: 1.7;
+    max-width: 60ch;
+    margin-bottom: 1.6rem;
+  }
+  /* 胶囊标签：白底 + 发丝边 + ✓ 前缀，横向自动换行 */
   .billing-tags {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem;
+    display: flex; flex-wrap: wrap; gap: 0.8rem;
   }
   .billing-tag {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.14);
-    border-radius: var(--radius-sm);
-    padding: 0.9rem 1rem;
-    text-align: center;
+    display: inline-flex; align-items: baseline; gap: 0.55rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.7rem 1.4rem;
+    box-shadow: var(--shadow);
+  }
+  .billing-tag::before {
+    content: '✓';
+    color: var(--clay);
+    font-weight: 700;
   }
   .billing-tag-name {
-    display: block;
-    font-weight: 700; color: var(--white); font-size: 1rem;
+    font-weight: 600; color: var(--ink); font-size: 0.98rem;
+    white-space: nowrap;
   }
   .billing-tag-note {
-    display: block; margin-top: 0.2rem;
-    font-size: 0.78rem; color: var(--clay-soft);
+    font-size: 0.8rem; color: var(--ink-soft);
+    white-space: nowrap;
   }
 
   /* ===================== CONTACT ===================== */
@@ -663,7 +706,6 @@ const whyIcons: Record<string, string> = {
     .founder-grid { grid-template-columns: 1fr; }
     .founder-text { max-width: none; }
     .founder-photo { position: static; max-width: 340px; }
-    .billing-card { grid-template-columns: 1fr; text-align: left; }
     .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .contact-qr { max-width: 320px; margin-inline: auto; }
     .hero-grid { grid-template-columns: 1fr; }
@@ -673,10 +715,11 @@ const whyIcons: Record<string, string> = {
   @media (max-width: 560px) {
     .why-grid,
     .services-grid,
-    .fv-grid,
-    .billing-tags { grid-template-columns: 1fr; }
+    .fv-grid { grid-template-columns: 1fr; }
     .hero-cta .btn,
     .contact-btns .btn { flex: 1 1 auto; justify-content: center; }
+    /* 极窄屏兜底：允许标题换行避免溢出 */
+    .hero-title, .hero-title .lang-en, .founder-title { white-space: normal; }
   }
 </style>
 

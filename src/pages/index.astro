@@ -42,7 +42,7 @@ const whyIcons: Record<string, string> = {
           <span class="lang-zh">{hero.subtitle.zh}</span>
         </p>
         <p class="hero-body">
-          <span class="lang-en">{hero.body.en}</span>
+          <span class="lang-en">{hero.body.en.map((p) => <span class="hero-body-p">{p}</span>)}</span>
           <span class="lang-zh">{hero.body.zh.map((p) => <span class="hero-body-p">{p}</span>)}</span>
         </p>
         <ul class="hero-highlights">
@@ -210,7 +210,7 @@ const whyIcons: Record<string, string> = {
   </section>
 
   <!-- ===================== INSURANCE & BILLING ===================== -->
-  <section class="section" id="billing">
+  <section class="section section--alt" id="billing">
     <div class="container">
       <div class="billing-card reveal">
         <div class="billing-text">
@@ -248,7 +248,7 @@ const whyIcons: Record<string, string> = {
   </section>
 
   <!-- ===================== CONTACT ===================== -->
-  <section class="section section--alt" id="contact">
+  <section class="section" id="contact">
     <div class="container">
       <div class="contact-head reveal">
         <p class="eyebrow">
@@ -336,7 +336,12 @@ const whyIcons: Record<string, string> = {
 <style>
   .section { padding-block: clamp(4.5rem, 9vw, 8rem); }
   .eyebrow { margin-bottom: 0.4rem; }
-  .section-title { text-wrap: balance; }
+  /* 统一：所有区块标题单行显示 + 与 HERO 标题同色（clay-dark） */
+  .section-title {
+    white-space: nowrap;
+    color: var(--clay-dark);
+    max-width: none;
+  }
 
   /* ===================== HERO ===================== */
   .hero {
@@ -349,7 +354,7 @@ const whyIcons: Record<string, string> = {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(2rem, 5vw, 4.5rem);
-    align-items: start;      /* 顶部对齐，便于图片对齐 subtitle */
+    align-items: stretch;   /* 图片撑满行高，与左栏等高 */
   }
   .hero-inner { max-width: 560px; }
   .hero-eyebrow {
@@ -405,11 +410,13 @@ const whyIcons: Record<string, string> = {
   }
   .hero-cta { display: flex; flex-wrap: wrap; gap: 0.9rem; }
 
-  /* 右侧配图：顶部与 subtitle 对齐（用 margin-top 下压一个 eyebrow+title 的高度） */
+  /* 右侧配图：顶部与 subtitle 对齐（margin-top 下压 eyebrow+title 高度），
+     底部随左栏拉伸等高，不再用固定高瘦比例 */
   .hero-media {
     position: relative;
     margin-top: var(--hero-media-offset, 0);
-    aspect-ratio: 4 / 5;
+    align-self: stretch;
+    min-height: 340px;
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow-lg);
@@ -455,13 +462,12 @@ const whyIcons: Record<string, string> = {
   }
 
   /* ===================== WHY CHOOSE ===================== */
-  .why-wrap { text-align: center; }
-  .why-eyebrow { justify-content: center; }
+  .why-wrap { text-align: left; }
   .why-title {
-    max-width: 20ch; margin: 0 auto 0.9rem;
+    max-width: none; margin: 0 0 0.9rem;
     font-size: clamp(1.7rem, 3.6vw, 2.5rem);
   }
-  .why-sub { color: var(--ink-soft); margin: 0 auto 2.6rem; max-width: 46ch; }
+  .why-sub { color: var(--ink-soft); margin: 0 0 2.6rem; max-width: 60ch; }
   .why-grid {
     display: grid; grid-template-columns: repeat(4, 1fr);
     gap: 1.3rem; text-align: left;
@@ -563,9 +569,8 @@ const whyIcons: Record<string, string> = {
   .service-body { font-size: 0.92rem; line-height: 1.65; color: var(--ink-soft); }
 
   /* ===================== FIRST VISIT ===================== */
-  .fv-wrap { text-align: center; }
-  .fv-eyebrow { justify-content: center; }
-  .fv-title { max-width: 22ch; margin: 0 auto 2.4rem; }
+  .fv-wrap { text-align: left; }
+  .fv-title { max-width: none; margin: 0 0 2.4rem; }
   .fv-grid {
     display: grid; grid-template-columns: repeat(4, 1fr);
     gap: 1.3rem; text-align: left;
@@ -603,7 +608,7 @@ const whyIcons: Record<string, string> = {
     font-size: clamp(1.75rem, 4vw, 2.6rem);
     color: var(--clay-dark);
     margin-bottom: 1.4rem;
-    text-wrap: balance;
+    white-space: nowrap;
   }
   .billing-body {
     color: var(--ink-soft);
@@ -711,6 +716,9 @@ const whyIcons: Record<string, string> = {
     .hero-grid { grid-template-columns: 1fr; }
     .hero-inner { max-width: none; }
     .hero-media { margin-top: 0; aspect-ratio: 16 / 10; max-height: 460px; }
+    /* 中小屏：释放标题单行限制，避免长英文标题溢出 */
+    .section-title, .billing-title,
+    .hero-title, .hero-title .lang-en, .founder-title { white-space: normal; }
   }
   @media (max-width: 560px) {
     .why-grid,
@@ -718,8 +726,6 @@ const whyIcons: Record<string, string> = {
     .fv-grid { grid-template-columns: 1fr; }
     .hero-cta .btn,
     .contact-btns .btn { flex: 1 1 auto; justify-content: center; }
-    /* 极窄屏兜底：允许标题换行避免溢出 */
-    .hero-title, .hero-title .lang-en, .founder-title { white-space: normal; }
   }
 </style>
 

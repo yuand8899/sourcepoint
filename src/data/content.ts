@@ -31,7 +31,7 @@ export const site = {
 
 export const nav: { id: string; label: Bi }[] = [
   { id: 'about', label: { en: 'About', zh: '关于我们' } },
-  { id: 'founder', label: { en: 'Founder', zh: '创始人' } },
+  { id: 'founder', label: { en: 'About Yolanda', zh: '关于丁源医师' } },
   { id: 'services', label: { en: 'Services', zh: '服务项目' } },
   { id: 'billing', label: { en: 'Insurance', zh: '保险结算' } },
   { id: 'contact', label: { en: 'Contact', zh: '联系我们' } },
@@ -44,17 +44,24 @@ export const hero = {
     en: 'Calm natural setting representing balance and wellness',
     zh: '象征平衡与健康的自然场景',
   },
-  eyebrow: { en: 'SourcePoint Wellness', zh: '源真中医' },
-  title: { en: 'Acupuncture · Traditional Chinese Medicine', zh: '针灸 · 中药 · 推拿 · 健康管理' },
+  eyebrow: {
+    en: 'Trusted Acupuncture Clinic in White Rock & South Surrey',
+    zh: '白石 · 南素里值得信赖的针灸中医诊所',
+  },
+  title: { en: 'Acupuncture · Chinese Herbal Medicine · Tuina Therapy', zh: '针灸 · 中药 · 推拿' },
   subtitle: {
-    en: 'Evidence-Informed · Patient-Centered · Rooted in Tradition',
-    zh: '循证实践 · 以患者为中心 · 传承中医精髓',
+    en: 'Helping You Feel Better, Naturally.',
+    zh: '回归平衡，自然健康',
   },
   body: {
-    en: 'Personalized acupuncture and Traditional Chinese Medicine to relieve pain, restore balance, and support women\\u2019s health, pediatric care, stress management, digestive health, cosmetic acupuncture, and lifelong wellness.',
+    en: [
+      'Personalized acupuncture and Traditional Chinese Medicine designed to relieve pain, restore balance, and support your overall health. Through individualized, evidence-informed care, we help patients with women\\u2019s health, pediatric care, digestive health, stress management, sports injuries, and cosmetic acupuncture.',
+      'At SourcePoint Wellness, every treatment is tailored to your unique needs, with a focus on lasting results\\u2014not just temporary symptom relief.',
+    ],
     zh: [
-      '源真中医相信，健康不仅是没有疾病，更是身心平衡、充满活力与幸福感的状态。我们致力于通过中医智慧帮助个人与家庭实现最佳健康状态。',
-      '我们提供个性化针灸及传统中医治疗，专注于疼痛治疗、女性健康、儿童健康、压力管理、美容针灸及长期健康调理，为您和家人的健康保驾护航。'
+      '在源真中医，我们融合传统中医智慧与现代循证临床理念，为每一位患者提供安全、专业、个性化的中医诊疗服务。',
+      '我们坚持辨证施治、治病求本，根据您的体质、症状及健康目标，制定专属于您的治疗方案，而不仅仅着眼于症状本身。',
+      '无论是疼痛管理、妇科调理、儿科保健、消化系统问题、压力管理、运动损伤，还是美容针灸，我们都致力于帮助您恢复身体平衡，促进长期健康，让您由内而外感受身心的改变。',
     ],
   },
   // Hero body 下方、按钮上方的 4 个要点（对勾列表，2×2 网格）。

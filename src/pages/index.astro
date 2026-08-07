@@ -58,6 +58,7 @@ const whyIcons: Record<string, string> = {
 
       <div class="hero-media reveal">
         <img class="hero-img" src={hero.image} alt={hero.imageAlt.en} />
+        <img src="/images/logo-s.png" alt="" class="hero-media-logo" aria-hidden="true" />
         <div class="hero-overlay" aria-hidden="false">
           <div class="hero-overlay-zh lang-zh">
             {hero.imageQuote.zh.map((line) => <span class="hero-overlay-line">{line}</span>)}
@@ -425,6 +426,16 @@ const whyIcons: Record<string, string> = {
     box-shadow: var(--shadow-lg);
     background: linear-gradient(135deg, var(--clay-soft), var(--sage));
   }
+  .hero-media-logo {
+    position: absolute;
+    top: clamp(1rem, 2.5vw, 1.6rem);
+    right: clamp(1rem, 2.5vw, 1.6rem);
+    height: 1.2em;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);  /* 让 1.2em 参照与竖排寄语同级 */
+    width: auto;
+    z-index: 2;   /* 盖在 overlay 渐变之上 */
+    filter: drop-shadow(0 2px 6px rgba(46,42,38,0.5));
+  }
   .hero-img {
     width: 100%; height: 100%;
     object-fit: cover;
@@ -432,6 +443,8 @@ const whyIcons: Record<string, string> = {
   }
   /* 图片上叠加的竖排寄语 */
   .hero-overlay {
+    /* 把这一行的渐变加深 */
+    background: linear-gradient(90deg, rgba(46,42,38,0.62) 0%, rgba(46,42,38,0.30) 55%, transparent 100%);
     position: absolute;
     inset: 0;
     display: flex;
@@ -449,7 +462,10 @@ const whyIcons: Record<string, string> = {
     color: var(--white);
     font-weight: 600;
     letter-spacing: 0.14em;
-    text-shadow: 0 2px 10px rgba(46,42,38,0.5);
+    /* 用双层阴影：一层近实描边感 + 一层扩散 */
+    text-shadow:
+      0 1px 2px rgba(46,42,38,0.9),
+      0 2px 14px rgba(46,42,38,0.6);
     line-height: 1.2;
   }
   .hero-overlay-zh .hero-overlay-line { font-size: clamp(1.5rem, 3vw, 2.1rem); }

@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
-// https://astro.build/config
 export default defineConfig({
-  site: 'https://sourcepoint-dpl.pages.dev',
+  site: 'https://sourcepointacu.com',
+  integrations: [sitemap()],
 });

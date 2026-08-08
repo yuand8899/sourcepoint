@@ -761,7 +761,15 @@ const whyIcons: Record<string, string> = {
     .contact-qr { max-width: 320px; margin-inline: auto; }
     .hero-grid { grid-template-columns: 1fr; }
     .hero-inner { max-width: none; }
-    .hero-media { margin-top: 0; aspect-ratio: 16 / 10; max-height: 460px; }
+    /*.hero-media { margin-top: 0; aspect-ratio: 16 / 10; max-height: 460px; }*/
+    .hero-media {
+      margin-top: 0;
+      aspect-ratio: 16 / 10;
+      max-height: 460px;
+      min-height: 0;
+      width: 100%;
+      max-width: 100%;
+    }
     /* 中小屏：释放标题单行限制，避免长英文标题溢出 */
     .section-title, .billing-title,
     .hero-title, .hero-title .lang-en, .founder-title { white-space: normal; }

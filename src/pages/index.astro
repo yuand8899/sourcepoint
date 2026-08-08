@@ -29,7 +29,9 @@ const whyIcons: Record<string, string> = {
           <span class="lang-zh">{hero.tagline.zh}</span>
         </p>
         <h1 class="hero-title">
-          <span class="lang-en">{hero.title.en}</span>
+          <span class="lang-en">
+            {hero.title.en.split(' · ').map((part) => <span class="title-line">{part}</span>)}
+          </span>
           <span class="lang-zh">{hero.title.zh}</span>
         </h1>
         <p class="hero-sub">
@@ -368,13 +370,14 @@ const whyIcons: Record<string, string> = {
   }
   .hero-title {
     font-family: var(--font-serif);
-    font-size: clamp(2.2rem, 4.4vw, 2.4rem);
+    font-size: clamp(2.2rem, 4.4vw, 3.4rem);
     line-height: 1.08; margin-bottom: 1.1rem;
     color: var(--clay-dark);
     white-space: nowrap;   /* 标题不换行 */
   }
   .hero-title .lang-zh { letter-spacing: 0.04em; }
-  .hero-title .lang-en { white-space: nowrap; }
+  /*.hero-title .lang-en { white-space: nowrap; }*/
+  .hero-title .lang-en .title-line {display: block;} /* 每段换行 */
   .hero-sub {
     font-family: var(--font-serif);
     font-style: italic;

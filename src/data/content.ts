@@ -251,7 +251,7 @@ export const services = {
     },
     {
       icon: 'massage',
-      title: { en: 'Tuina Therapy (Acupressure)', zh: '中医推拿（Tuina）' },
+      title: { en: 'Tuina Therapy (Acupressure)', zh: '中医推拿' },
       body: {
         en: 'Hands-on therapy to improve mobility, relieve muscle tension, and restore function.',
         zh: '运用传统中医推拿手法，帮助缓解肌肉紧张、减轻疼痛、改善关节活动能力，促进身体恢复。',

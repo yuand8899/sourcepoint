@@ -341,7 +341,7 @@ export const contact = {
     wechat: { en: 'WeChat', zh: '微信' },
   },
   mapEmbedSrc:
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2203024.191828278!2d-122.54339870156868!3d47.20518300649057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485c3a7107b16a9%3A0xf7c67f0be6913d92!2sSourcePoint%20Acupuncture%20Clinic!5e0!3m2!1sen!2sca!4v1786249704329!5m2!1sen!2sca',
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1468.1479765180495!2d-122.80060380885884!3d49.030709208391784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485c3a7107b16a9%3A0xf7c67f0be6913d92!2sSourcePoint%20Acupuncture%20Clinic!5e0!3m2!1sen!2sca!4v1786250561394!5m2!1sen!2sca',
 };
 
 // ---- 页脚 ----

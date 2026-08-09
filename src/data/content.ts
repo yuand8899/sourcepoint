@@ -158,11 +158,11 @@ export const practitioner = {
   bio: [
     {
       en: 'Raised in a third-generation Traditional Chinese Medicine family, Yolanda developed a deep appreciation for holistic healthcare from an early age. She earned a Master’s degree in Traditional Chinese Medicine after completing more than eight years of formal university education in China, followed by years of hospital and clinical experience.',
-      zh: '丁源医师出生于中医世家，是第三代中医传承者，自幼受中医文化熏陶，对中医产生了浓厚兴趣，并坚定地选择了中医作为一生的事业。她在中国完成了八年以上系统的中医医学大学学位，获得中医硕士学位，随后长期从事医院及临床诊疗及教学工作。',
+      zh: '丁源医师出生于中医世家，是第三代中医传承者。自幼耳濡目染中医文化，她对传统医学产生了浓厚兴趣，并将中医作为毕生追求。她完成了八年以上系统的中医学教育，获得中医硕士学位，随后长期从事临床诊疗、医学教育及中医教学工作。',
     },
     {
       en: 'Today, with over 20 years of healthcare experience and professional practice in Canada, she combines deep traditional knowledge with modern, evidence-informed care to help patients achieve lasting health. She believes lasting health comes from understanding the root cause of illness — not simply managing symptoms.',
-      zh: '如今，拥有二十余年医疗健康领域经验的丁医师，在加拿大继续从事中医临床及教学工作，将传统中医智慧与现代循证医学相结合，帮助患者实现更加持久、全面的健康管理。她始终相信：真正持久的健康，来自于找到疾病的根源，而不仅仅是缓解症状。',
+      zh: '拥有二十余年医疗健康领域经验，丁医师现于加拿大从事中医临床及教学工作。她将传统中医的整体观、辨证论治理念，与现代循证医学相结合，坚持以患者为中心，为每位患者提供个性化、循证且富有整体观的治疗方案。她始终相信，真正的治疗，不只是消除症状，而是帮助身体恢复平衡，让健康由内而外自然回归。',
     },
     {
       en: '“Helping people feel better is more than my profession — it’s my lifelong commitment.”',

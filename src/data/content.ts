@@ -33,7 +33,7 @@ export const site = {
     zh: 'Unit 203 1548 Johnston Road, White Rock, BC, V4B 3Z7',
   },
   legalName: {
-    en: 'SourcePoint Acupuncture',
+    en: 'SourcePoint Acupuncture Clinic',
     zh: '源真中医',
   },
 };

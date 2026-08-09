@@ -14,10 +14,10 @@ export type SectionHeading = { eyebrow: Bi; title: Bi; sub?: Bi };
 
 // ---- 站点基础信息（页头、页脚、联系方式共用） ----
 export const site = {
-  name: { en: 'SourcePoint Wellness', zh: '源真中医' },
+  name: { en: 'SourcePoint Acupuncture', zh: '源真中医' },
   // Logo 图片路径（页头、页脚、Hero 共用）。以后换 Logo 只改这一行。
   logo: '/images/logo.png',
-  logoAlt: { en: 'SourcePoint Wellness logo', zh: '源真中医 Logo' },
+  logoAlt: { en: 'SourcePoint Acupuncture logo', zh: '源真中医 Logo' },
   tagline: {
     en: 'Traditional Chinese Medicine · Acupuncture · Herbal Medicine · Wellness Education',
     zh: '针灸 · 中药 · 推拿 · 健康管理',
@@ -41,9 +41,9 @@ export const site = {
 // ---- 顶部导航 ----
 export const nav: { id: string; label: Bi }[] = [
   { id: 'about', label: { en: 'About', zh: '关于我们' } },
-  { id: 'practitioner', label: { en: 'Yolanda', zh: '丁源医师' } },
+  { id: 'practitioner', label: { en: 'Meet Yolanda', zh: '丁源医师' } },
   { id: 'services', label: { en: 'Services', zh: '服务项目' } },
-  { id: 'insurance', label: { en: 'Insurance', zh: '保险结算' } },
+  { id: 'insurance', label: { en: 'Direct Billing', zh: '保险结算' } },
   { id: 'contact', label: { en: 'Contact', zh: '联系我们' } },
 ];
 

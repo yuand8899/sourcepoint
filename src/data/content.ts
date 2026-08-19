@@ -68,7 +68,8 @@ export const hero = {
   // 首屏介绍段落（英文 2 段、中文 3 段）
   intro: {
     en: [
-      'Personalized acupuncture and Traditional Chinese Medicine designed to relieve pain, restore balance, and support your overall health.Through individualized, evidence-informed care, we support patients of all ages with pain and musculoskeletal conditions, sports injuries, stress and sleep concerns, digestive health, women’s health, pediatric care, cosmetic acupuncture, and overall wellness.',
+      'Personalized acupuncture and Traditional Chinese Medicine designed to relieve pain, restore balance, and support your overall health.'
+      'Through individualized, evidence-informed care, we support patients of all ages with pain and musculoskeletal conditions, sports injuries, stress and sleep concerns, digestive health, women’s health, pediatric care, cosmetic acupuncture, and overall wellness.',
       'At SourcePoint Acupuncture Clinic, every treatment is tailored to your individual needs, with a focus on addressing the underlying cause—not just temporary symptom relief.',
     ],
     zh: [
